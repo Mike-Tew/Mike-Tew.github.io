@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>List of Quotes</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>List of Quotes</h1>
+        <hr>
+        <ul>
+            {% for i in quotes %}
+            <li>{{ "{}. {} - {}".format(i[0], i[1], i[2]) }}</li>
+            {% endfor %}
+        </ul>
+        <hr>
+    </div>
+    <div class="container">
+        <div class="submit">
+            <form method="GET" action="/send">
+                <label>Submit Your Own Quote</label><br>Quote: 
+                <input type="text" name="data" placeholder="Use the force Harry">Author:
+                <input type="text" name="data2" placeholder="Gandalf">
+                <button type="submit" value="submit">SUBMIT</button>
+            </form>
+        </div>
+        <div class="delete">
+            <form method="GET" action="/delete">
+                <label>Delete Quote</label><br>
+                <input type="text" name="delete" placeholder="ID #">
+                <button type="submit" value="submit">DELETE</button>
+            </form>
+        </div>
+    </div>
+    <div class="box">
+        <a class="link" href="/"><h4>Get a random quote</h4></a>
+    </div>
+</body>
+</html>

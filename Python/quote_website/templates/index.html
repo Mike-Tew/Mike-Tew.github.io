@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Quotes</title>
+    <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+</head>
+<body>
+    <div class="container-1">
+        <div class="box">
+            <q>{{ quotes[num][1] }}</q>
+        </div>
+        <div class="box">
+            <h3 class="author">{{ quotes[num][2] }}</h4>
+        </div>
+        <div class="box">
+            <a class="link" href="/quote_list"><h4>Click here for a complete list of quotes</h4></a>
+        </div>
+    </div>
+</body>
+</html>

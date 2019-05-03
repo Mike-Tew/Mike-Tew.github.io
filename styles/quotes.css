@@ -1,0 +1,28 @@
+* {
+    text-align: center;
+}
+
+q {
+    font-size: 3rem;
+    font-weight: bold;
+}
+
+a {
+    display: inline-block;
+    padding: 0.7rem 1.7rem;
+    margin: 2rem;
+    border-radius: 0.2rem;
+    font-weight: 400;
+    text-decoration: none;
+    color: #FFFFFF;
+    background-color: #3369FF;
+}
+
+ul {
+    list-style: none;
+    text-align: left;
+}
+
+li {
+    text-align: left;
+}

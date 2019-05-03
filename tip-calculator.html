@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Tip Calculator</title>
+    <link rel="stylesheet" type="text/css" href="styles/tip-calculator.css">
+    <link rel="stylesheet" href="styles/navbar.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <div id="navbar"></div>
+    <div class="container">
+        <h1>Tip Calculator</h1>
+        <h2>How much was your bill?</h2>
+        <label>$</label>
+        <input id="bill" type="text" placeholder="Bill Amount">
+        <h2>How was your service?</h2>
+        <select id="service">
+            <option>Excellent</option>
+            <option>Good</option>
+            <option>OK</option>
+            <option>Bad</option>
+            <option>Terrible</option>
+        </select>
+        <h2>How many people are sharing the bill?</h2>
+        <input id="people" type="text" placeholder="Number of People">
+        <label>people</label><br>
+        <button id="calculate" type="button">CALCULATE</button>
+        <hr>
+        <h3>Your bill total is: <span id="bill-total"></span></h3>
+        <h3>You found your serive to be <span id="report"></span></h3>
+        <h3>Each of the <span id="person">_</span> people should pay <span id="per-person"></span></h3>
+    </div>
+    <script src="scripts/tip-calculator.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,85 @@
+/* Landing Page CSS */
+html {
+    font-family: 'lato', sans-serif;
+    background-color: #333333;
+    text-align: center;
+}
+
+.container-1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10rem;
+}
+
+.box {
+    width: 50%;
+    margin: auto;
+}
+
+q {
+    font-size: 2.5rem;
+    color: #ccc;
+}
+
+.author:before {
+    content: "- ";
+}
+
+.author {
+    font-size: 2rem;
+    color: #777;
+}
+
+.link {
+    text-decoration: none;
+}
+
+.link h4 {
+    font-weight: 400;
+    font-size: 40px;
+    padding: 0.5rem 5rem;
+    color: #CCC;
+    background-color: darkgreen;
+    border: 1px solid #777;
+    border-radius: 0.5rem;
+}
+
+/* Quote List Webpage */
+.container {
+    margin: auto;
+    width: 50%;
+}
+
+h1 {
+    color: #CCC;
+}
+
+ul {
+    text-align: left;
+    list-style: none;
+    color: #CCC;
+}
+
+li {
+    padding: 0.3rem;
+    font-size: 1.2rem;
+}
+
+label {
+    display: block;
+    margin-top: 4rem;
+    font-size: 2rem;
+}
+
+.input-container {
+    border: 1px solid red;
+}
+
+.submit {
+    color: #CCC;
+}
+
+.delete {
+    color: #CCC;
+}
