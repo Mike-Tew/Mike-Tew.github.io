@@ -1,0 +1,26 @@
+* {
+    text-align: center;
+}
+
+#image {
+    margin: 4rem;
+}
+
+p {
+    display: block;
+}
+
+/* PLLs page */
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.block {
+    width: 23%;
+}
+
+.block img {
+    width: 90%;
+}
