@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/styles/pace-calculator.css">
+    <link rel="stylesheet" href="styles/navbar.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <title>Pace Calculator</title>
+</head>
+
+<body>
+    <div id="navbar"></div>
+    <div class="container">
+        <h1>Pace Calculator</h1>
+        <hr>
+        <div class="time-container">
+            <h2>Time</h2>
+            <input id="time-hours" type="text" placeholder="hours">
+            <input id="time-minutes" type="text" placeholder="minutes">
+            <input id="time-seconds" type="text" placeholder="seconds">
+            <button id="time-submit" type="button">Calculate Time</button>
+        </div>
+        <hr>
+        <div class="distance-container">
+            <h2>Distance</h2>
+            <input id="distance-miles" type="text" placeholder="miles">
+            <button id="distance-submit" type="button">Calculate Distance</button>
+        </div>
+        <hr>
+        <div class="pace-container">
+            <h2>Pace</h2>
+            <input id="pace-hours" type="text" placeholder="hours">
+            <input id="pace-minutes" type="text" placeholder="minutes">
+            <input id="pace-seconds" type="text" placeholder="seconds">
+            <button id="pace-submit" type="button">Calculate Pace</button>
+        </div>
+    </div>
+
+    <script src="scripts/pace-calculator.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,30 @@
+/* * {border: 1px solid red;} */
+
+.container {
+    width: 30rem;
+    text-align: center;
+    margin: auto;
+    margin-top: 4rem;
+    border: 2px solid black;
+    border-radius: 0.5rem;
+}
+
+.time-container h2 {
+    display: inline-block;
+}
+
+.time-container input {
+    width: 3rem;
+}
+
+.distance-container h2 {
+    display: inline-block;
+}
+
+.pace-container h2 {
+    display: inline-block;
+}
+
+.pace-container input {
+    width: 3rem;
+}
