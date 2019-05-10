@@ -7,7 +7,7 @@ q {
     font-weight: bold;
 }
 
-a {
+.quote-list {
     display: inline-block;
     padding: 0.7rem 1.7rem;
     margin: 2rem;

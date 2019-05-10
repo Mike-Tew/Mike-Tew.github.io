@@ -11,11 +11,12 @@ body {
 
 #navbar ul {
     display: inline-block;
+    padding: 0%;
 }
 
 #navbar li {
     display: inline-block;
-    padding: 0rem 0.5rem;
+    padding: 0rem 0.8rem;
 }
 
 .links {
