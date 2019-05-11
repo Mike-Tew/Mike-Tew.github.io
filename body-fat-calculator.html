@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="styles/body-fat-calculator.css">
+    <link rel="stylesheet" href="styles/navbar.css">
+    <title>Body Fat Calculator</title>
+</head>
+
+<body>
+    <div id="navbar"></div>
+    <div class="container">
+        <h1>Body Fact Calculator</h1>
+        <div class="input">
+            <form id="input">
+                <label>AGE</label>
+                <input type="text" name="age" id="age" placeholder="age">
+                <label>WEIGHT</label>
+                <input type="text" name="weight" id="weight" placeholder="weight">
+                <label>CHEST SKINFOLD</label>
+                <input type="text" name="chest" id="chest" placeholder="mm">
+                <label>ABDOMINAL SKINFOLD</label>
+                <input type="text" name="abdominal" id="abdominal" placeholder="mm">
+                <label>THIGH SKINFOLD</label>
+                <input type="text" name="thigh" id="thigh" placeholder="mm">
+                <button id="calculate" type="button">Calculate</button>
+            </form>
+        </div>
+        <h2>Results</h2>
+        <div class="results">
+            <h3>Your body fat is: <span id="percentage"></span></h3>
+            <h3>Your fat mass is: <span id="fat-mass"></span></h3>
+            <h3>Your lean mass is: <span id="lean-mass"></span></h3>
+        </div>
+    </div>
+    <script src="scripts/body-fat-calculator.js"></script>
+</body>
+
+</html>
