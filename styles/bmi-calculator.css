@@ -1,0 +1,62 @@
+.container {
+    width: 30rem;
+    margin: 2rem auto;
+    border: 2px solid lightgray;
+    border-radius: 0.5rem;
+    font: italic 20px arial, sans-serif;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+#title {
+    width: 100%;
+    border-radius: 0.5rem 0.5rem 0 0;
+    border-bottom: 2px solid lightgray;
+    background-color: rgb(0, 172, 193);
+    padding-left: 1rem;
+    color: white;
+}
+
+#title h3 {
+    margin: 0%;
+    padding: 1.5rem;
+}
+
+#input {
+    width: 45%;
+    padding: 1rem;
+}
+
+#input * {
+    font: 1rem arial, sans-serif;
+}
+
+input {
+    border-radius: 0.3rem;
+}
+
+#weight {
+    width: 9.3rem;
+}
+
+#height, #inches {
+    width: 4rem;
+}
+
+#results {
+    width: 45%;
+    height: 10rem;
+    text-align: center;
+}
+
+#bmi {
+    display: block;
+    padding-top: 3rem;
+    font: 3rem arial, sans-serif;
+}
+
+#bmi-text {
+    display: block;
+    font-size: 1rem;
+}

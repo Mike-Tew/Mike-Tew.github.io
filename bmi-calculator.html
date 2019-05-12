@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="styles/bmi-calculator.css">
+    <link rel="stylesheet" href="styles/navbar.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <title>BMI Calculator</title>
+</head>
+
+<body>
+    <div id="navbar"></div>
+    <div class="container">
+        <div id="title">
+            <h3>Body Mass Index (BMI)</h3>
+        </div>
+        <div id="input">
+            <label for="weight">Weight</label><br>
+            <input id="weight" type="text"><span>lb</span><br>
+            <label for="height">Height</label><br>
+            <input id="height" type="text"><span>ft</span>
+            <input id="inches" type="text"><span>in</span>
+        </div>
+        <div id="results">
+            <span id="bmi">--.-</span>
+            <span id="bmi-text">BMI</span>
+        </div>
+    </div>
+    <script src="scripts/bmi-calculator.js"></script>
+</body>
+
+</html>
