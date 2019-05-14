@@ -18,14 +18,14 @@ let quoteList = [
     { "Stand by to get some": "Jocko Willink" }
 ]
 
-// generateQuote();
-
+// Generate a quote
 function generateQuote() {
     text1 = quoteList[Math.floor(Math.random() * quoteList.length)];
     document.getElementById("quote").innerHTML = Object.keys(text1);
     document.getElementById("author").innerHTML = "- ".concat(Object.values(text1));
 }
 
+// Generate quote list
 function listOfQuotes() {
     node = document.getElementById("this-list");
     while (node.firstChild) {
