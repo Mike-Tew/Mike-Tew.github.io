@@ -24,4 +24,3 @@ clickySquare.addEventListener("click", () => {
         clickySquare.children[0].innerHTML = "You clicked too soon!";
     }
 })
-
