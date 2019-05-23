@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="styles/savings-calculator.css">
+    <link rel="stylesheet" href="styles/navbar.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <title>Savings Calculator</title>
+</head>
+
+<body>
+
+    <div id="navbar"></div>
+    <div class="container">
+        <h1 id="title">Savings Calculator</h1>
+        <div class="block">
+            <label for="balance">Starting Balance</label><br>
+            <input id="balance" type="text"><br>
+        </div>
+        <div class="block">
+            <label for="monthly">Monthly Deposit</label><br>
+            <input id="monthly" type="text"><br>
+        </div>
+        <div class="block">
+            <label for="intervals">Years to Grow</label><br>
+            <input id="intervals" type="text"><br>
+        </div>
+        <div class="block">
+            <label for="interest">Annual Interest Rate</label><br>
+            <input id="interest" type="text"><br>
+        </div>
+        <button id="calculate">Calculate</button>
+        <hr>
+        <h3>END BALANCE: $<span id="total"></span></h3>
+    </div>
+    <hr>
+    <div>
+        <h1 style="text-align: center;">WORK IN PROGRESS</h1>
+    </div>
+    <script src="scripts/savings-calculator.js"></script>
+</body>
+
+</html>

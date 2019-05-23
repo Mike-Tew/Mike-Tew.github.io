@@ -40,7 +40,7 @@ function start() {
         minutes.innerHTML = (intMinutes < 10 ? "0"
             + intMinutes : intMinutes) + ":";
         seconds.innerHTML = "0" + intSeconds + ".";
-    } else if (intMilliseconds == 99) {
+    } else if (intMilliseconds == 93) {
         intMilliseconds = 0;
         intSeconds++;
         seconds.innerHTML = (intSeconds < 10 ? "0"
