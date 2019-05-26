@@ -1,4 +1,3 @@
-/* eslint-disable indent */
 let playerOne = true;
 const s1 = document.getElementById('square-1');
 const s2 = document.getElementById('square-2');
