@@ -1,4 +1,8 @@
+* {border: 1px solid red;}
+
 .header {
+    width: 50rem;
+    margin: auto;
     text-align: center;
     font: bold 3rem Georgia;
 }
@@ -86,6 +90,11 @@
 
 #square-9 {
     border: 0px;
+}
+
+.container {
+    width: 50rem;
+    margin: auto;
 }
 
 #reset {
