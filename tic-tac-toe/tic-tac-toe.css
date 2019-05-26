@@ -1,0 +1,98 @@
+.header {
+    text-align: center;
+    font: bold 3rem Georgia;
+}
+
+#players {
+    width: 50rem;
+    margin: auto;
+    margin-bottom: 2rem;
+    padding-top: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    border-top: 1px solid black;
+}
+
+#players h2 {
+    flex-basis: 49.5%;
+    font-size: 3rem;
+    text-align: center;
+    margin: 0%;
+}
+
+.gameboard {
+    background-color: aliceblue;
+    border: 2px solid lightgray;
+    overflow: hidden;
+    margin: auto;
+    height: 50rem;
+    width: 50rem;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.squares {
+    height: 33%;
+    width: 32.5%;
+    font-size: 15rem;
+    text-align: center;
+    font-family: Arial;
+    cursor: default;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+#square-1 {
+    border: solid black;
+    border-width: 0px 10px 10px 0px;
+}
+
+#square-2 {
+    border: solid black;
+    border-width: 0px 10px 10px 0px;
+}
+
+#square-3 {
+    border: solid black;
+    border-width: 0px 0px 10px 0px;
+}
+
+#square-4 {
+    border: solid black;
+    border-width: 0px 10px 10px 0px;
+}
+
+#square-5 {
+    border: solid black;
+    border-width: 0px 10px 10px 0px;
+}
+
+#square-6 {
+    border: solid black;
+    border-width: 0px 0px 10px 0px;
+}
+
+#square-7 {
+    border: solid black;
+    border-width: 0px 10px 0px 0px;
+}
+
+#square-8 {
+    border: solid black;
+    border-width: 0px 10px 0px 0px;
+}
+
+#square-9 {
+    border: 0px;
+}
+
+#reset {
+    font-size: 1.3rem;
+    height: 3rem;
+    width: 10rem;
+    margin: 1rem auto;
+    display: block;
+    border-radius: 1rem;
+}
