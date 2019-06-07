@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="styles/calculator.css">
+    <link rel="stylesheet" href="styles/navbar.css">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Calculator</title>
+</head>
+
+<body>
+    <div id="navbar"></div>
+    <div id="calculator">
+        <div id="display">0</div>
+        <div id="button-panel">
+            <button class="light-button" onclick="input('7')">7</button>
+            <button class="light-button" onclick="input('8')">8</button>
+            <button class="light-button" onclick="input('9')">9</button>
+            <button class="dark-button" onclick="opFunction('/')">/</button>
+            <button class="light-button" onclick="input('4')">4</button>
+            <button class="light-button" onclick="input('5')">5</button>
+            <button class="light-button" onclick="input('6')">6</button>
+            <button class="dark-button" onclick="opFunction('*')">*</button>
+            <button class="light-button" onclick="input('1')">1</button>
+            <button class="light-button" onclick="input('2')">2</button>
+            <button class="light-button" onclick="input('3')">3</button>
+            <button class="dark-button" onclick="opFunction('-')">-</button>
+            <button class="light-button" onclick="input('0')">0</button>
+            <button class="light-button" onclick="decimal()">.</button>
+            <button id="equal" class="light-button" onclick="equals()">=</button>
+            <button class="dark-button" onclick="opFunction('+')">+</button>
+            <button id="reset" class="dark-button" onclick="reset()">CLEAR</button>
+        </div>
+    </div>
+
+    <script src="scripts/calculator.js"></script>
+</body>
+
+</html>
