@@ -1,4 +1,3 @@
-// Clean up extra HTML buttons
 // Add a negative number button
 
 $(function () {
@@ -28,11 +27,9 @@ function input(num) {
   if (!operator) {
     num1 += num;
     display.innerHTML = num1;
-    console.log(num1);
   } else {
     num2 += num;
     display.innerHTML = num2;
-    console.log(num2);
   }
 };
 
@@ -43,6 +40,16 @@ function opFunction(op) {
     allowDecimal = !allowDecimal;
   }
 };
+
+function negative() {
+  if (!operator) {
+    num1 = -num1;
+    display.innerHTML = num1;
+  } else {
+    num2 = -num2;
+    display.innerHTML = num2;
+  }
+}
 
 const calc = {
   '+': function (num1, num2) {
@@ -65,7 +72,6 @@ function equals() {
     num2 = parseFloat(num2);
     num1 = calc[operator](num1, num2);
     display.innerHTML = num1;
-    console.log(calc[operator](num1, num2));
     num2 = '';
     operator = '';
   }

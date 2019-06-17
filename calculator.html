@@ -28,11 +28,12 @@
             <button class="light-button" onclick="input('2')">2</button>
             <button class="light-button" onclick="input('3')">3</button>
             <button class="dark-button" onclick="opFunction('-')">-</button>
-            <button class="light-button" onclick="input('0')">0</button>
+            <button id="zero" class="light-button" onclick="input('0')">0</button>
             <button class="light-button" onclick="decimal()">.</button>
-            <button id="equal" class="light-button" onclick="equals()">=</button>
             <button class="dark-button" onclick="opFunction('+')">+</button>
-            <button id="reset" class="dark-button" onclick="reset()">CLEAR</button>
+            <button id="equal" class="light-button" onclick="equals()">=</button>
+            <button class="dark-button" onclick="negative()">+/-</button>
+            <button class="dark-button" onclick="reset()">AC</button>
         </div>
     </div>
 

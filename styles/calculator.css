@@ -38,6 +38,7 @@ button:active {
     border-color: #bdc1c6;
 }
 
+
 .dark-button {
     background-color: #dfe1e5;
 }
@@ -56,11 +57,12 @@ button:active {
     border-color: #e8eaeb;
 }
 
-#reset {
-    width: 98%;
+#zero {
+    width: 48%;
 }
 
 #equal {
+    width: 48%;
     background-color: #4285f4;
     color: #fff;
     border-color: #4285f4;
