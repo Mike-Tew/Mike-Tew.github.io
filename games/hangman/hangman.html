@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="hangman.css">
+    <title>Hangman</title>
+</head>
+
+<body>
+    <div class="container">
+        <div>
+            <h1>HANGMAN</h1>
+            <hr>
+        </div>
+        <div id="gameboard">
+            <div id="gallows">
+                <canvas id="canvas" width="500" height="400"></canvas>
+            </div>
+            <div class="word-box">
+                <div id="chosen-word">
+                </div>
+            </div>
+            <hr>
+            <div id="letters">
+                <div class="letter" onclick="takeTurn('a')">A</div>
+                <div class="letter" onclick="takeTurn('b')">B</div>
+                <div class="letter" onclick="takeTurn('c')">C</div>
+                <div class="letter" onclick="takeTurn('d')">D</div>
+                <div class="letter" onclick="takeTurn('e')">E</div>
+                <div class="letter" onclick="takeTurn('f')">F</div>
+                <div class="letter" onclick="takeTurn('g')">G</div>
+                <div class="letter" onclick="takeTurn('h')">H</div>
+                <div class="letter" onclick="takeTurn('i')">I</div>
+                <div class="letter" onclick="takeTurn('j')">J</div>
+                <div class="letter" onclick="takeTurn('k')">K</div>
+                <div class="letter" onclick="takeTurn('l')">L</div>
+                <div class="letter" onclick="takeTurn('m')">M</div>
+                <div class="letter" onclick="takeTurn('n')">N</div>
+                <div class="letter" onclick="takeTurn('o')">O</div>
+                <div class="letter" onclick="takeTurn('p')">P</div>
+                <div class="letter" onclick="takeTurn('q')">Q</div>
+                <div class="letter" onclick="takeTurn('r')">R</div>
+                <div class="letter" onclick="takeTurn('s')">S</div>
+                <div class="letter" onclick="takeTurn('t')">T</div>
+                <div class="letter" onclick="takeTurn('u')">U</div>
+                <div class="letter" onclick="takeTurn('v')">V</div>
+                <div class="letter" onclick="takeTurn('w')">W</div>
+                <div class="letter" onclick="takeTurn('x')">X</div>
+                <div class="letter" onclick="takeTurn('y')">Y</div>
+                <div class="letter" onclick="takeTurn('z')">Z</div>
+            </div>
+        </div>
+    </div>
+    <script src="word-list.json"></script>
+    <script type="application/javascript" src="canvas.js"></script>
+    <script type="application/javascript" src="hangman.js"></script>
+</body>
+
+</html>

@@ -5,9 +5,15 @@ h2 {
 #container {
     text-align: center;
     display: block;
+    line-height: 10rem;
     height: 10rem;
     width: 20rem;
     background-color: rgb(228, 228, 228);
     margin: auto;
     border-radius: 2rem;
+}
+
+#reset {
+    display: block;
+    margin: 1rem auto;
 }
