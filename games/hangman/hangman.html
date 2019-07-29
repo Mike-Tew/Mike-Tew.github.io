@@ -9,11 +9,18 @@
 
 <body>
     <div class="container">
+        <div id="overlay">
+            <h1 id="victory"></h1>
+            <h2>Your word was <span id="word"></span></h2>
+            <button id="restart" onclick="gameStart()">PLAY AGAIN</button>
+        </div>
         <div>
-            <h1>HANGMAN</h1>
-            <hr>
+            <h1 id="title">HANGMAN</h1>
         </div>
         <div id="gameboard">
+            <div>
+                <h1 id="turns">YOU HAVE <span id="turns-left"></span> TURNS LEFT</h1>
+            </div>
             <div id="gallows">
                 <canvas id="canvas" width="500" height="400"></canvas>
             </div>
@@ -21,7 +28,6 @@
                 <div id="chosen-word">
                 </div>
             </div>
-            <hr>
             <div id="letters">
                 <div class="letter" onclick="takeTurn('a')">A</div>
                 <div class="letter" onclick="takeTurn('b')">B</div>

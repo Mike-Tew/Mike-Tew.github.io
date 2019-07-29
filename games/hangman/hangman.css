@@ -1,29 +1,54 @@
-/* * {
-    border: 1px solid red;
-} */
+body {
+    background-color: #012d4f;
+}
 
 .container {
-    background-color: rgb(250, 250, 250);
     margin: 3rem auto;
     width: 40rem;
     text-align: center;
     border: 1px solid black;
+    background-color: #d0d8df;
+}
+
+#title {
+    background-color: #46667f;
+    margin: 0%;
+    padding: 1rem;
+}
+
+#overlay {
+    position: fixed;
+    padding-bottom: 2rem;
+    color: white;
+    width: 40rem;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+#restart {
+    height: 3rem;
+    width: 10rem;
+    font-size: 1.4rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+}
+
+#turns {
+    display: inline-block;
+    margin: 1rem auto;
 }
 
 #gallows {
-    background-color: aquamarine;
     height: 25rem;
+    background-color: #d0d8df;
 }
 
 .word-box {
-    background-color: antiquewhite;
-
+    background-color: #b9c5cf;
 }
 
 #chosen-word {
     width: 90%;
     height: 3rem;
-    border: 1px solid green;
     margin: auto;
     padding: 1rem 0rem;
     display: flex;
@@ -40,16 +65,24 @@
 
 #letters {
     display: flex;
+    background-color: #46667f;
     flex-wrap: wrap;
     justify-content: space-around;
     height: 20rem;
+    padding-top: 1rem;
 }
 
 .letter {
     width: 9%;
     border: 1px solid black;
+    border-radius: 15%;
     margin: 0.7rem;
     height: 3rem;
     line-height: 3rem;
     font-size: 3rem;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
