@@ -24,7 +24,6 @@ function gameStart() {
     element.style.pointerEvents = 'auto';
     element.style.background = 'white';
   });
-  console.log(randomWord);
 }
 
 gameStart();
@@ -34,7 +33,6 @@ This function takes the letter input and
 checks if it is present in the word.
 */
 function takeTurn(letter) {
-  console.log(letter);
   for (const i of letters) {
     if (i.innerHTML === letter.toUpperCase()) {
       i.style.background = 'gray';
