@@ -11,15 +11,12 @@
 <body>
     <div id="navbar"></div>
     <div class="stopwatch">
-        <h1 id="timer"><span id="hours">00:</span><span id="minutes">00:</span><span id="seconds">00.</span><span
-                id="milliseconds">00</span></h1>
+        <h1 id="timer">0:00:00:00</h1>
     </div>
     <div class="container">
-        <button id="start">START</button>
-        <button id="stop">STOP</button>
-        <button id="reset">RESET</button>
+        <button id="start" onclick="startTimer()">START</button>
+        <button id="stop" onclick="stopTimer()">STOP</button>
+        <button id="reset" onclick="reset()">RESET</button>
     </div>
-    <hr>
-    <h1 style="text-align: center;">Work In Progress</h1>
     <script src="scripts/stopwatch.js"></script>
 </body>
