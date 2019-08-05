@@ -1,5 +1,5 @@
 $(() => {
-  $("#navbar").load("navbar.html");
+  $('#navbar').load('../navbar.html');
 });
 
 const firstPercent = 0;

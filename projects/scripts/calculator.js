@@ -1,7 +1,5 @@
-// Add a negative number button
-
-$(function () {
-  $('#navbar').load('navbar.html');
+$(() => {
+  $('#navbar').load('../navbar.html');
 });
 
 const display = document.getElementById('display');
@@ -31,7 +29,7 @@ function input(num) {
     num2 += num;
     display.innerHTML = num2;
   }
-};
+}
 
 function opFunction(op) {
   if (num1) {
@@ -39,7 +37,7 @@ function opFunction(op) {
     display.innerHTML = op;
     allowDecimal = !allowDecimal;
   }
-};
+}
 
 function negative() {
   if (!operator) {
@@ -63,7 +61,7 @@ const calc = {
   },
   '/': function (num1, num2) {
     return num1 / num2;
-  }
+  },
 };
 
 function equals() {
@@ -75,7 +73,7 @@ function equals() {
     num2 = '';
     operator = '';
   }
-};
+}
 
 function reset() {
   display.innerHTML = '0';
@@ -83,4 +81,4 @@ function reset() {
   num1 = '';
   num2 = '';
   allowDecimal = true;
-};
+}
