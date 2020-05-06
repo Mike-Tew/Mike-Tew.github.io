@@ -2,20 +2,63 @@ $(() => {
   $('#navbar').load('../navbar.html');
 });
 
-const firstPercent = 0;
-const secondPercent = 40;
-let mainPercent = 0;
+let goalId = 1;
+const goalArray = [];
+let totalPercent = 0;
 
-const firstGoal = document.getElementById('first-goal');
-const secondGoal = document.getElementById('second-goal');
-const mainGoal = document.getElementById('main-goal');
-
-function changePercent(goal, percent) {
-  const whiteSpace = percent - 100;
-  goal.style.background = `linear-gradient(to right, \
-    blue ${percent}%, white ${whiteSpace}%)`;
-  mainPercent = (firstPercent + secondPercent) / 2;
-  const mainWhite = mainPercent - 100;
-  mainGoal.style.background = `linear-gradient(to right, \
-    blue ${mainPercent}%, white ${mainWhite}%)`;
+// This function creates a goal element and adds it to the DOM.
+function createDiv(name, id) {
+  const div = document.createElement('div');
+  div.innerHTML = `<h3>${name}</h3>`;
+  div.classList.add('goal');
+  div.id = id;
+  document.getElementById('goals').appendChild(div);
 }
+
+function setPercent(percent, id) {
+  const goal = document.getElementById(id);
+  goal.style.background = `linear-gradient(to right, red ${percent}%,
+    white ${percent - 100}%, white)`;
+}
+
+class MainGoal {
+  constructor(name) {
+    this.name = name;
+    this.id = 'main-goal';
+    createDiv(this.name, this.id);
+  }
+
+  setMain() {
+    setPercent(totalPercent / goalArray.length, this.id);
+  }
+}
+
+const mainGoal = new MainGoal('Do The Main Thing');
+
+// This class creates goal instances
+class Goal {
+  constructor(name, percent) {
+    this.name = name;
+    this.percent = percent;
+    this.id = `goal-${goalId}`;
+    goalId += 1;
+    createDiv(this.name, this.id);
+    this.setPercent(percent);
+    totalPercent += this.percent;
+    goalArray.push(this.id);
+  }
+
+  // This method sets the percent of the goal
+  setPercent(newPercent) {
+    totalPercent -= this.percent;
+    this.percent = newPercent;
+    totalPercent += this.percent;
+    setPercent(newPercent, this.id);
+    mainGoal.setMain();
+  }
+}
+
+const firstGoal = new Goal('Fix Sink', 20);
+const firstGoal2 = new Goal('Clean Gutters', 60);
+
+console.log(firstGoal);
