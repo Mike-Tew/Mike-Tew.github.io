@@ -1,31 +1,21 @@
-/* Navigation Bar */
-body {
-    margin: 0%;
-}
-
 #navbar {
-    background-color: lightblue;
-    border: 1px solid black;
-    text-align: left;
+  width: 50%;
+  margin: auto;
+  text-align: center;
 }
 
 #navbar ul {
-    display: inline-block;
-    padding: 0%;
+  background-color: #24252a;
+  padding: 1rem;
 }
 
-#navbar li {
-    display: inline-block;
-    padding: 0rem 0.8rem;
+#navbar ul li {
+  display: inline-block;
 }
 
-.links {
-    padding: 1rem;
-    display: block;
-    text-decoration: none;
-    color: black;
-    background-color: lightgray;
-    border: 1px solid gray;
-    border-radius: 0.5rem;
-    font: italic bold 20px/30px Georgia, serif;
+#navbar ul li a {
+  color: white;
+  text-decoration: none;
+  padding: 1rem;
+  margin: 0 2rem;
 }
