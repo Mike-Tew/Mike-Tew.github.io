@@ -1,8 +1,24 @@
-/* * {
-    border: 1px solid red;
+#navbar {
+  width: 50%;
+  margin: auto;
+  text-align: center;
 }
- */
 
+#navbar ul {
+  background-color: #24252a;
+  padding: 1rem;
+}
+
+#navbar ul li {
+  display: inline-block;
+}
+
+#navbar ul li a {
+  color: white;
+  text-decoration: none;
+  padding: 1rem;
+  margin: 0 2rem;
+}
 
 .projects {
     text-align: center;
