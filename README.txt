@@ -1,1 +1,1 @@
-This is a repository with some different practice code that I am learning.
+Various projects built with HTML/JavaScript.

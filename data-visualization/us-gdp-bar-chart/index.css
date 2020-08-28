@@ -1,0 +1,32 @@
+body {
+    background-color: #708090;
+}
+
+.container {
+    height: 35rem;
+    width: 70rem;
+    background-color: white;
+    text-align: center;
+    font-family: "Roboto";
+}
+
+.bar {
+    fill: #33adff;
+}
+
+.bar:hover {
+    fill: rgb(175, 229, 250);
+}
+
+#tooltip {
+    display: none;
+    background-color: lightsteelblue;
+    position: absolute;
+    height: 50px;
+    width: 150px;
+    text-align: center;
+    padding-top: 10px;
+    font: 12px;
+    border-radius: 2px;
+    box-shadow: 1px, 1px, 10px;
+}

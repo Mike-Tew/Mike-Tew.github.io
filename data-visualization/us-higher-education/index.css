@@ -1,0 +1,14 @@
+* {
+  text-align: center;
+}
+
+#tooltip {
+  position: fixed;
+  height: 40px;
+  line-height: 40px;
+  padding: 0 15px;
+  background-color: rgb(255, 255, 204);
+  border: 1px solid grey;
+  border-radius: 5px;
+  opacity: 0;
+}

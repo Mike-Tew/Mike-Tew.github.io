@@ -1,0 +1,18 @@
+.heading {
+  text-align: center;
+  width: 1000px;
+}
+
+#tooltip {
+  position: fixed;
+  text-align: center;
+  background-color: black;
+  border-radius: 10%;
+  height: 80px;
+  width: 120px;
+  color: white;
+  padding: 10px;
+  line-height: 1.5rem;
+  pointer-events: none;
+  opacity: 0;
+}
