@@ -1,7 +1,3 @@
-$(() => {
-  $('#navbar').load('../navbar.html');
-});
-
 const display = document.getElementById('display');
 let operator = '';
 let num1 = '';

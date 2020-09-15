@@ -5,16 +5,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
     <link rel="stylesheet" href="styles/body-fat-calculator.css">
-    <link rel="stylesheet" href="../styles/navbar.css">
     <title>Body Fat Calculator</title>
 </head>
 
 <body>
-    <div id="navbar"></div>
-    <div class="container">
-        <h1>Body Fat Calculator</h1>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNavAltMarkup"
+        aria-controls="navbarNavAltMarkup"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <a class="nav-item nav-link" href="../index.html">Home</a>
+          <a class="nav-item nav-link active" href="../projects.html">Projects</a>
+          <a class="nav-item nav-link" href="../games.html">Games</a>
+          <a class="nav-item nav-link" href="../data-visualization.html">Data Visualization</a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="box p-0">
+        <h2>Body Fat Calculator</h2>
         <div class="input">
             <form id="input">
                 <label>AGE</label>
@@ -32,12 +58,13 @@
         </div>
         <h2>Results</h2>
         <div class="results">
-            <h3>Your body fat is: <span id="percentage"></span></h3>
-            <h3>Your fat mass is: <span id="fat-mass"></span></h3>
-            <h3>Your lean mass is: <span id="lean-mass"></span></h3>
+            <h4>Your body fat is: <span id="percentage"></span></h4>
+            <h4>Your fat mass is: <span id="fat-mass"></span></h4>
+            <h4>Your lean mass is: <span id="lean-mass"></span></h4>
         </div>
     </div>
     <script src="scripts/body-fat-calculator.js"></script>
+
 </body>
 
 </html>

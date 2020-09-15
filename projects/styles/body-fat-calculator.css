@@ -1,4 +1,4 @@
-.container {
+.box {
     width: 20rem;
     border: 1px solid black;
     border-radius: 0.4rem;
@@ -15,8 +15,6 @@ h1 {
 input, label {
     display: block;
 }
-
-
 
 h2 {
     text-align: center;

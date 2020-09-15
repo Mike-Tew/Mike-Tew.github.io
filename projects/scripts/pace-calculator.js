@@ -1,8 +1,3 @@
-$(() => {
-  $('#navbar').load('../navbar.html');
-});
-
-
 document.getElementById('time-submit').addEventListener('click', () => {
   const distance = document.getElementById('distance-miles').value;
   const paceHours = document.getElementById('pace-hours').value;

@@ -1,7 +1,3 @@
-$(() => {
-  $('#navbar').load('../navbar.html');
-});
-
 let startTime;
 let endTime;
 let randNum;

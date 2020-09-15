@@ -1,6 +1,4 @@
-/* * {border: 1px solid red;} */
-
-.container {
+.box {
     width: 30rem;
     border: 1px solid black;
     border-radius: 1rem;
@@ -17,10 +15,8 @@
 }
 
 .block {
-    /* border: 1px solid red; */
     padding-left: 1rem;
     padding-top: 1rem;
-    /* display: block; */
 }
 
 label {

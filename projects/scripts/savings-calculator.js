@@ -1,8 +1,3 @@
-const {$} = window;
-$(() => {
-  $('#navbar').load('../navbar.html');
-});
-
 document.getElementById('calculate').addEventListener('click', () => {
   const balance = +(document.getElementById('balance').value);
   const monthly = +(document.getElementById('monthly').value);

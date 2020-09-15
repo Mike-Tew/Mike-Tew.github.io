@@ -1,7 +1,3 @@
-$(() => {
-  $('#navbar').load('../navbar.html');
-});
-
 document.getElementById('lb').addEventListener('click', () => {
   lb = +(document.getElementById('weights')[0].value);
   document.getElementById('weights')[2].value = (lb * 16).toFixed(1);

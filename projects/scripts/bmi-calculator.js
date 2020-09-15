@@ -1,8 +1,3 @@
-const {$} = window;
-$(() => {
-  $('#navbar').load('../navbar.html');
-});
-
 /*
 A function that calculates a person's BMI and displays it.
 */

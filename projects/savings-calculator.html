@@ -4,15 +4,40 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="styles/savings-calculator.css">
-    <link rel="stylesheet" href="../styles/navbar.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
     <title>Savings Calculator</title>
 </head>
 
 <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNavAltMarkup"
+        aria-controls="navbarNavAltMarkup"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <a class="nav-item nav-link" href="../index.html">Home</a>
+          <a class="nav-item nav-link active" href="../projects.html">Projects</a>
+          <a class="nav-item nav-link" href="../games.html">Games</a>
+          <a class="nav-item nav-link" href="../data-visualization.html">Data Visualization</a>
+        </div>
+      </div>
+    </nav>
 
-    <div id="navbar"></div>
-    <div class="container">
+    <div class="box">
         <h1 id="title">Savings Calculator</h1>
         <div class="block">
             <label for="balance">Starting Balance</label><br>
@@ -33,10 +58,6 @@
         <button id="calculate">Calculate</button>
         <hr>
         <h3>END BALANCE: $<span id="total"></span></h3>
-    </div>
-    <hr>
-    <div>
-        <h1 style="text-align: center;">WORK IN PROGRESS</h1>
     </div>
     <script src="scripts/savings-calculator.js"></script>
 </body>

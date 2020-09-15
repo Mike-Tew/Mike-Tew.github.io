@@ -1,7 +1,3 @@
-$(() => {
-  $('#navbar').load('../navbar.html');
-});
-
 document.getElementById('calculate').addEventListener('click', () => {
   // Get all user inputs from form
   const age = +(document.getElementById('age').value);

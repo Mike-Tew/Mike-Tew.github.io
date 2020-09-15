@@ -1,7 +1,3 @@
-$(() => {
-    $("#navbar").load("../navbar.html");
-});
-
 document.getElementById('calculate').addEventListener('click', () => {
   bill = parseFloat(document.getElementById('bill').value) * 1.2;
   document.getElementById('bill-total').innerHTML = '$' + bill.toFixed(2);

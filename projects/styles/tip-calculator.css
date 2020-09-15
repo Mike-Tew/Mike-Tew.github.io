@@ -1,8 +1,4 @@
-.navbar a {
-    text-decoration: none;
-}
-
-.container {
+.box {
     width: 30rem;
     border: 2px solid black;
     border-radius: 2rem;

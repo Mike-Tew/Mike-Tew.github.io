@@ -4,18 +4,44 @@
 <head>
     <title>Tip Calculator</title>
     <link rel="stylesheet" type="text/css" href="styles/tip-calculator.css">
-    <link rel="stylesheet" href="../styles/navbar.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
 </head>
 
 <body>
-    <div id="navbar"></div>
-    <div class="container">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNavAltMarkup"
+        aria-controls="navbarNavAltMarkup"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <a class="nav-item nav-link" href="../index.html">Home</a>
+          <a class="nav-item nav-link active" href="../projects.html">Projects</a>
+          <a class="nav-item nav-link" href="../games.html">Games</a>
+          <a class="nav-item nav-link" href="../data-visualization.html">Data Visualization</a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="box">
         <h1>Tip Calculator</h1>
-        <h2>How much was your bill?</h2>
+        <h4>How much was your bill?</h4>
         <label>$</label>
         <input id="bill" type="text" placeholder="Bill Amount">
-        <h2>How was your service?</h2>
+        <h4>How was your service?</h4>
         <select id="service">
             <option>Excellent</option>
             <option>Good</option>
@@ -23,14 +49,14 @@
             <option>Bad</option>
             <option>Terrible</option>
         </select>
-        <h2>How many people are sharing the bill?</h2>
+        <h4>How many people are sharing the bill?</h4>
         <input id="people" type="text" placeholder="Number of People">
         <label>people</label><br>
         <button id="calculate" type="button">CALCULATE</button>
         <hr>
-        <h3>Your bill total is: <span id="bill-total"></span></h3>
-        <h3>You found your serive to be <span id="report"></span></h3>
-        <h3>Each of the <span id="person">_</span> people should pay <span id="per-person"></span></h3>
+        <h5>Your bill total is: <span id="bill-total"></span></h5>
+        <h5>You found your serive to be <span id="report"></span></h5>
+        <h5>Each of the <span id="person">_</span> people should pay <span id="per-person"></span></h5>
     </div>
     <script src="scripts/tip-calculator.js"></script>
 </body>

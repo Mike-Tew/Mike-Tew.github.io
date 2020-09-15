@@ -1,7 +1,3 @@
-$(() => {
-  $('#navbar').load('../navbar.html');
-});
-
 // Declaring variables.
 let timer;
 let display;

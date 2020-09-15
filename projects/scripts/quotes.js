@@ -1,7 +1,3 @@
-$(() => {
-  $('#navbar').load('../navbar.html');
-});
-
 const quoteList = [{
   'Get some': 'Jocko Willink',
 },
