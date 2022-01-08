@@ -40,11 +40,11 @@ const drawSprite = (img, sX, sY, sW, sH, dX, dY, dW, dH) => {
 }
 
 const movePlayer = () => {
-  if (keys['ArrowUp'] && player.y > 100) {
+  if (keys['ArrowUp'] && player.y > 0) {
     player.y -= player.speed
     player.frameY = 1
   }
-  if (keys['ArrowLeft'] && player.y > 0) {
+  if (keys['ArrowLeft'] && player.x > 0) {
     player.x -= player.speed
     player.frameY = 3
   }
@@ -56,6 +56,11 @@ const movePlayer = () => {
     player.x += player.speed
     player.frameY = 2
   }
+}
+
+const handlePlayerFrame = () => {
+  if (player.frameX < 3 && player.moving) player.frameX++
+  else player.frameX = 0
 }
 
 // Animation Loop
@@ -74,6 +79,7 @@ const animate = () => {
     player.height
   )
   movePlayer()
+  handlePlayerFrame()
   requestAnimationFrame(animate)
 }
 
@@ -81,8 +87,10 @@ animate()
 
 window.addEventListener('keydown', (e) => {
   keys[e.key] = true
+  player.moving = true
 })
 
 window.addEventListener('keyup', (e) => {
   delete keys[e.key]
+  player.moving = false
 })
