@@ -8,15 +8,16 @@ const keys = []
 
 // Player
 const player = {
-  x: 100,
-  y: 100,
+  x: 200,
+  y: 200,
   width: 64,
   height: 64,
   frameX: 0,
   frameY: 0,
   moving: false,
   spriteWidth: 64,
-  spriteHeight: 64
+  spriteHeight: 64,
+  speed: 10
 }
 
 const playerSprite = new Image()
@@ -38,11 +39,50 @@ const drawSprite = (img, sX, sY, sW, sH, dX, dY, dW, dH) => {
   ctx.drawImage(img, sX, sY, sW, sH, dX, dY, dW, dH)
 }
 
+const movePlayer = () => {
+  if (keys['ArrowUp'] && player.y > 100) {
+    player.y -= player.speed
+    player.frameY = 1
+  }
+  if (keys['ArrowLeft'] && player.y > 0) {
+    player.x -= player.speed
+    player.frameY = 3
+  }
+  if (keys['ArrowDown'] && player.y < canvas.height - player.height) {
+    player.y += player.speed
+    player.frameY = 0
+  }
+  if (keys['ArrowRight'] && player.x < canvas.width - player.width) {
+    player.x += player.speed
+    player.frameY = 2
+  }
+}
+
 // Animation Loop
 const animate = () => {
+  ctx.clearRect(0, 0, canvas.width, canvas.height)
   // ctx.drawImage()
-  drawSprite(playerSprite, 0, 0, player.width, player.height, 0, 0, player.width, player.height)
+  drawSprite(
+    playerSprite,
+    player.width * player.frameX,
+    player.height * player.frameY,
+    player.width,
+    player.height,
+    player.x,
+    player.y,
+    player.width,
+    player.height
+  )
+  movePlayer()
   requestAnimationFrame(animate)
 }
 
 animate()
+
+window.addEventListener('keydown', (e) => {
+  keys[e.key] = true
+})
+
+window.addEventListener('keyup', (e) => {
+  delete keys[e.key]
+})
