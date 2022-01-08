@@ -43,47 +43,29 @@ const movePlayer = () => {
   if (keys['ArrowUp'] && player.y > 0) {
     player.y -= player.speed
     player.frameY = 1
+    player.moving = true
   }
   if (keys['ArrowLeft'] && player.x > 0) {
     player.x -= player.speed
     player.frameY = 3
+    player.moving = true
   }
   if (keys['ArrowDown'] && player.y < canvas.height - player.height) {
     player.y += player.speed
     player.frameY = 0
+    player.moving = true
   }
   if (keys['ArrowRight'] && player.x < canvas.width - player.width) {
     player.x += player.speed
     player.frameY = 2
+    player.moving = true
   }
 }
 
 const handlePlayerFrame = () => {
-  if (player.frameX < 3 && player.moving) player.frameX++
+  if (player.frameX < 4 && player.moving) player.frameX++
   else player.frameX = 0
 }
-
-// Animation Loop
-const animate = () => {
-  ctx.clearRect(0, 0, canvas.width, canvas.height)
-  // ctx.drawImage()
-  drawSprite(
-    playerSprite,
-    player.width * player.frameX,
-    player.height * player.frameY,
-    player.width,
-    player.height,
-    player.x,
-    player.y,
-    player.width,
-    player.height
-  )
-  movePlayer()
-  handlePlayerFrame()
-  requestAnimationFrame(animate)
-}
-
-animate()
 
 window.addEventListener('keydown', (e) => {
   keys[e.key] = true
@@ -94,3 +76,39 @@ window.addEventListener('keyup', (e) => {
   delete keys[e.key]
   player.moving = false
 })
+
+// Animation Loop
+let fps, fpsInterval, startTime, now, then, elapsed
+
+const startAnimating = (fps) => {
+  fpsInterval = 1000 / fps
+  then = Date.now()
+  startTime = then
+  animate()
+}
+
+const animate = () => {
+  requestAnimationFrame(animate)
+  now = Date.now()
+  elapsed = now - then
+  if (elapsed > fpsInterval) {
+    then = now - (elapsed % fpsInterval)
+    ctx.clearRect(0, 0, canvas.width, canvas.height)
+    // ctx.drawImage()
+    drawSprite(
+      playerSprite,
+      player.width * player.frameX,
+      player.height * player.frameY,
+      player.width,
+      player.height,
+      player.x,
+      player.y,
+      player.width,
+      player.height
+    )
+    movePlayer()
+    handlePlayerFrame()
+  }
+}
+
+startAnimating(30)
