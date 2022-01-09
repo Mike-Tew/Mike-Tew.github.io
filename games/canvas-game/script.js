@@ -1,9 +1,16 @@
+// Todos
+// Implement mobs
+// Add a title
+// Add mob collision detection
+// Label things better
+// Add some kind of score
+// Add a background
+
 const canvas = document.getElementById('canvas-1')
 const ctx = canvas.getContext('2d')
 canvas.width = 800
 canvas.height = 600
 
-// Keypress Listeners
 const keys = []
 
 // Player
@@ -17,7 +24,7 @@ const player = {
   moving: false,
   spriteWidth: 64,
   spriteHeight: 64,
-  speed: 10
+  speed: 20
 }
 
 const playerSprite = new Image()
