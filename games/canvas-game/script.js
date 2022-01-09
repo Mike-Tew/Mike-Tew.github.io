@@ -24,7 +24,7 @@ const player = {
   moving: false,
   spriteWidth: 64,
   spriteHeight: 64,
-  speed: 20
+  speed: 10
 }
 
 const playerSprite = new Image()
@@ -32,14 +32,40 @@ playerSprite.src = 'assests/player.png'
 
 // Monsters
 class Monster {
-  constructor() {
-    this.x = 200
+  constructor(src) {
+    this.sprite = new Image()
+    this.sprite.src = src
+    this.x = canvas.width - 100
     this.y = 200
-    this.spriteWidth = 50
-    this.spriteHeight = 50
+    this.height = 36
+    this.width = 46
+    this.spriteHeight = 36
+    this.spriteWidth = 46
     this.frameX = 0
-    this.frameY = 0
+    this.frameY = 3
   }
+
+  draw() {
+    drawSprite(
+      this.sprite,
+      this.width * this.frameX,
+      this.height * this.frameY,
+      this.width,
+      this.height,
+      this.x,
+      this.y,
+      this.width,
+      this.height
+      )
+  }
+}
+
+monster = new Monster('assests/zombie-1.png')
+
+const handleMonsterMovement = () => {
+  monster.x -= 5
+  if (monster.frameX < 2) monster.frameX++
+  else monster.frameX = 0
 }
 
 const drawSprite = (img, sX, sY, sW, sH, dX, dY, dW, dH) => {
@@ -115,6 +141,8 @@ const animate = () => {
     )
     movePlayer()
     handlePlayerFrame()
+    handleMonsterMovement()
+    monster.draw()
   }
 }
 
