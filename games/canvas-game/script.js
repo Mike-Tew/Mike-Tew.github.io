@@ -1,19 +1,39 @@
 // Todos
-// Implement mobs
 // Add a title
 // Add mob collision detection
 // Label things better
 // Add some kind of score
 // Add a background
 
+// ================ Canvas Setup ===============
 const canvas = document.getElementById('canvas-1')
 const ctx = canvas.getContext('2d')
 canvas.width = 800
 canvas.height = 600
-
 const keys = []
 
-// Player
+// ======== Player And Monsters Sprites =========
+const playerSprite = new Image()
+playerSprite.src = 'assests/player.png'
+
+const monsterImages = [
+  'assests/zombie-0.png',
+  'assests/zombie-1.png',
+  'assests/zombie-2.png',
+  'assests/zombie-3.png',
+  'assests/zombie-4.png',
+  'assests/zombie-5.png'
+]
+const monsterSprites = []
+monsterImages.forEach(image => {
+  const sprite = new Image()
+  sprite.src = image
+  monsterSprites.push(sprite)
+});
+console.log(monsterSprites);
+
+
+// ========== Player And Monsters Objects =========
 const player = {
   x: 200,
   y: 200,
@@ -27,10 +47,6 @@ const player = {
   speed: 10
 }
 
-const playerSprite = new Image()
-playerSprite.src = 'assests/player.png'
-
-// Monsters
 class Monster {
   constructor(src, y, speed) {
     this.sprite = new Image()
@@ -67,12 +83,15 @@ const getRandomInt = (max) => {
 
 monsters = []
 const createMonster = () => {
+  if (!document.hasFocus()) return
+
   sprite = getRandomInt(6)
   y = getRandomInt(canvas.height - 50)
   speed = getRandomInt(5) + 5
   monster = new Monster(`assests/zombie-${sprite}.png`, y, speed)
   monsters.push(monster)
 }
+
 setInterval(createMonster, 1000)
 
 const handleMonsterMovement = (monster) => {
@@ -123,7 +142,7 @@ window.addEventListener('keyup', (e) => {
   player.moving = false
 })
 
-// Animation Loop
+// ============ Animation Loop =============
 let fps, fpsInterval, startTime, now, then, elapsed
 
 const startAnimating = (fps) => {
@@ -135,6 +154,7 @@ const startAnimating = (fps) => {
 
 const animate = () => {
   requestAnimationFrame(animate)
+
   now = Date.now()
   elapsed = now - then
   if (elapsed > fpsInterval) {
@@ -154,8 +174,11 @@ const animate = () => {
     )
     movePlayer()
     handlePlayerFrame()
-    monsters.forEach(monster => {
+    monsters.forEach((monster, index) => {
       handleMonsterMovement(monster)
+      if (monster.x < player.x) {
+        monsters.splice(index, 1)
+      }
       monster.draw()
     });
   }
