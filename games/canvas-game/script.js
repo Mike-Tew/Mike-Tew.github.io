@@ -86,22 +86,22 @@ const drawSprite = (img, sX, sY, sW, sH, dX, dY, dW, dH) => {
 }
 
 const movePlayer = () => {
-  if (keys['ArrowUp'] && player.y > 0) {
+  if (keys['w'] && player.y > 0) {
     player.y -= player.speed
     player.frameY = 1
     player.moving = true
   }
-  if (keys['ArrowLeft'] && player.x > 0) {
+  if (keys['a'] && player.x > 0) {
     player.x -= player.speed
     player.frameY = 3
     player.moving = true
   }
-  if (keys['ArrowDown'] && player.y < canvas.height - player.height) {
+  if (keys['s'] && player.y < canvas.height - player.height) {
     player.y += player.speed
     player.frameY = 0
     player.moving = true
   }
-  if (keys['ArrowRight'] && player.x < canvas.width - player.width) {
+  if (keys['d'] && player.x < canvas.width - player.width) {
     player.x += player.speed
     player.frameY = 2
     player.moving = true
