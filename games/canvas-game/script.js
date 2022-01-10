@@ -48,9 +48,8 @@ const player = {
 }
 
 class Monster {
-  constructor(src, y, speed) {
-    this.sprite = new Image()
-    this.sprite.src = src
+  constructor(sprite, y, speed) {
+    this.sprite = sprite
     this.x = canvas.width
     this.y = y
     this.height = 36
@@ -85,10 +84,10 @@ monsters = []
 const createMonster = () => {
   if (!document.hasFocus()) return
 
-  sprite = getRandomInt(6)
   y = getRandomInt(canvas.height - 50)
   speed = getRandomInt(5) + 5
-  monster = new Monster(`assests/zombie-${sprite}.png`, y, speed)
+  const sprite = monsterSprites[Math.floor(Math.random() * monsterSprites.length)]
+  monster = new Monster(sprite, y, speed)
   monsters.push(monster)
 }
 
