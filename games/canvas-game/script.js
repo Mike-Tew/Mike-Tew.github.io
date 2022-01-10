@@ -87,8 +87,7 @@ const createMonster = () => {
   y = getRandomInt(canvas.height - 50)
   speed = getRandomInt(5) + 5
   const sprite = monsterSprites[Math.floor(Math.random() * monsterSprites.length)]
-  monster = new Monster(sprite, y, speed)
-  monsters.push(monster)
+  monsters.push(new Monster(sprite, y, speed))
 }
 
 setInterval(createMonster, 1000)
@@ -173,11 +172,16 @@ const animate = () => {
     )
     movePlayer()
     handlePlayerFrame()
+
     monsters.forEach((monster, index) => {
-      handleMonsterMovement(monster)
-      if (monster.x < player.x) {
+      const dist = Math.hypot(monster.x - player.x, monster.y - player.y)
+      if (dist < 50) {
+        console.log(dist);
         monsters.splice(index, 1)
       }
+    })
+    monsters.forEach((monster) => {
+      handleMonsterMovement(monster)
       monster.draw()
     });
   }
