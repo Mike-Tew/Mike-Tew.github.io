@@ -32,17 +32,18 @@ playerSprite.src = 'assests/player.png'
 
 // Monsters
 class Monster {
-  constructor(src) {
+  constructor(src, y, speed) {
     this.sprite = new Image()
     this.sprite.src = src
-    this.x = canvas.width - 100
-    this.y = 200
+    this.x = canvas.width
+    this.y = y
     this.height = 36
     this.width = 46
     this.spriteHeight = 36
     this.spriteWidth = 46
     this.frameX = 0
     this.frameY = 3
+    this.speed = speed
   }
 
   draw() {
@@ -60,10 +61,22 @@ class Monster {
   }
 }
 
-monster = new Monster('assests/zombie-1.png')
+const getRandomInt = (max) => {
+  return Math.floor(Math.random() * max)
+}
 
-const handleMonsterMovement = () => {
-  monster.x -= 5
+monsters = []
+const createMonster = () => {
+  sprite = getRandomInt(6)
+  y = getRandomInt(canvas.height - 50)
+  speed = getRandomInt(5) + 5
+  monster = new Monster(`assests/zombie-${sprite}.png`, y, speed)
+  monsters.push(monster)
+}
+setInterval(createMonster, 1000)
+
+const handleMonsterMovement = (monster) => {
+  monster.x -= monster.speed
   if (monster.frameX < 2) monster.frameX++
   else monster.frameX = 0
 }
@@ -141,8 +154,10 @@ const animate = () => {
     )
     movePlayer()
     handlePlayerFrame()
-    handleMonsterMovement()
-    monster.draw()
+    monsters.forEach(monster => {
+      handleMonsterMovement(monster)
+      monster.draw()
+    });
   }
 }
 
