@@ -32,7 +32,6 @@ monsterImages.forEach(image => {
   sprite.src = image
   monsterSprites.push(sprite)
 });
-console.log(monsterSprites);
 
 
 // ========== Player And Monsters Objects =========
@@ -44,8 +43,6 @@ const player = {
   frameX: 0,
   frameY: 0,
   moving: false,
-  spriteWidth: 64,
-  spriteHeight: 64,
   speed: 10
 }
 
@@ -56,8 +53,6 @@ class Monster {
     this.y = y
     this.height = 36
     this.width = 46
-    this.spriteHeight = 36
-    this.spriteWidth = 46
     this.frameX = 0
     this.frameY = 3
     this.speed = speed
@@ -128,6 +123,15 @@ const handlePlayerFrame = () => {
   else player.frameX = 0
 }
 
+const handleMonsterCollision = (monster) => {
+  return (
+    monster.x < player.x + player.width &&
+    monster.x + monster.width > player.x + 40 &&
+    monster.y < player.y + player.height &&
+    monster.y + monster.height > player.y
+  )
+}
+
 window.addEventListener('keydown', (e) => {
   keys[e.key] = true
   player.moving = true
@@ -176,12 +180,9 @@ const animate = () => {
     handlePlayerFrame()
 
     monsters.forEach((monster, index) => {
-      const dist = Math.hypot(monster.x - player.x, monster.y - player.y)
-      if (dist < 50) {
-        console.log(dist);
-        monsters.splice(index, 1)
-      }
+      if (handleMonsterCollision(monster)) monsters.splice(index, 1)
     })
+
     monsters.forEach((monster) => {
       handleMonsterMovement(monster)
       monster.draw()
