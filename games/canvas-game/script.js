@@ -10,6 +10,8 @@ const canvas = document.getElementById('canvas-1')
 const ctx = canvas.getContext('2d')
 canvas.width = 800
 canvas.height = 600
+let prevMonsterSpawn = 0
+const spawnRate = 1000
 const keys = []
 
 // ======== Player And Monsters Sprites =========
@@ -82,15 +84,11 @@ const getRandomInt = (max) => {
 
 monsters = []
 const createMonster = () => {
-  if (!document.hasFocus()) return
-
   y = getRandomInt(canvas.height - 50)
   speed = getRandomInt(5) + 5
   const sprite = monsterSprites[Math.floor(Math.random() * monsterSprites.length)]
   monsters.push(new Monster(sprite, y, speed))
 }
-
-setInterval(createMonster, 1000)
 
 const handleMonsterMovement = (monster) => {
   monster.x -= monster.speed
@@ -151,10 +149,14 @@ const startAnimating = (fps) => {
 }
 
 const animate = () => {
-  requestAnimationFrame(animate)
-
   now = Date.now()
   elapsed = now - then
+
+  if (Date.now() - prevMonsterSpawn > spawnRate) {
+    createMonster()
+    prevMonsterSpawn = Date.now()
+  }
+
   if (elapsed > fpsInterval) {
     then = now - (elapsed % fpsInterval)
     ctx.clearRect(0, 0, canvas.width, canvas.height)
@@ -185,6 +187,8 @@ const animate = () => {
       monster.draw()
     });
   }
+
+  requestAnimationFrame(animate)
 }
 
 startAnimating(30)
