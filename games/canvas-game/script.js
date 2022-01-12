@@ -1,6 +1,5 @@
 // Todos
 // Add a title
-// Add mob collision detection
 // Label things better
 // Add some kind of score
 // Add a background
@@ -180,7 +179,7 @@ const animate = () => {
     handlePlayerFrame()
 
     monsters.forEach((monster, index) => {
-      if (handleMonsterCollision(monster)) monsters.splice(index, 1)
+      if (handleMonsterCollision(monster)) monsters.splice(index, 1);
     })
 
     monsters.forEach((monster) => {
@@ -188,7 +187,6 @@ const animate = () => {
       monster.draw()
     });
   }
-
   requestAnimationFrame(animate)
 }
 
