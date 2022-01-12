@@ -2,7 +2,7 @@
 // Add a title
 // Label things better
 // Add some kind of score
-// Add a background
+// Add win condition
 
 // ================ Canvas Setup ===============
 const canvas = document.getElementById('canvas-1')
@@ -31,7 +31,6 @@ monsterImages.forEach(image => {
   sprite.src = image
   monsterSprites.push(sprite)
 });
-
 
 // ========== Player And Monsters Objects =========
 const player = {
@@ -150,20 +149,20 @@ const startAnimating = (fps) => {
   startTime = then
   animate()
 }
-
+const background = new Image()
+background.src = 'assests/background.jpg'
 const animate = () => {
-  now = Date.now()
-  elapsed = now - then
-
   if (Date.now() - prevMonsterSpawn > spawnRate) {
     createMonster()
     prevMonsterSpawn = Date.now()
   }
 
+  now = Date.now()
+  elapsed = now - then
   if (elapsed > fpsInterval) {
     then = now - (elapsed % fpsInterval)
     ctx.clearRect(0, 0, canvas.width, canvas.height)
-    // ctx.drawImage()
+    ctx.drawImage(background, 0, 0, canvas.width, canvas.height)
     drawSprite(
       playerSprite,
       player.width * player.frameX,
