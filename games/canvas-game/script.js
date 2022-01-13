@@ -1,8 +1,6 @@
 // Todos
 // Add a title
 // Label things better
-// Add some kind of score
-// Add win condition
 
 // ================ Canvas Setup ===============
 const canvas = document.getElementById('canvas-1')
@@ -10,8 +8,11 @@ const ctx = canvas.getContext('2d')
 canvas.width = 800
 canvas.height = 600
 let prevMonsterSpawn = 0
+let score = 0
 const spawnRate = 1000
 const keys = []
+const background = new Image()
+background.src = 'assests/background.jpg'
 
 // ======== Player And Monsters Sprites =========
 const playerSprite = new Image()
@@ -34,8 +35,8 @@ monsterImages.forEach(image => {
 
 // ========== Player And Monsters Objects =========
 const player = {
-  x: 200,
-  y: 200,
+  x: canvas.width / 2,
+  y: canvas.height / 2,
   width: 64,
   height: 64,
   frameX: 0,
@@ -149,8 +150,7 @@ const startAnimating = (fps) => {
   startTime = then
   animate()
 }
-const background = new Image()
-background.src = 'assests/background.jpg'
+
 const animate = () => {
   if (Date.now() - prevMonsterSpawn > spawnRate) {
     createMonster()
@@ -178,7 +178,11 @@ const animate = () => {
     handlePlayerFrame()
 
     monsters.forEach((monster, index) => {
-      if (handleMonsterCollision(monster)) monsters.splice(index, 1);
+      if (handleMonsterCollision(monster)) {
+        monsters.splice(index, 1)
+        score += 1
+        if (score >= 20) console.log('You Win');
+      }
     })
 
     monsters.forEach((monster) => {
