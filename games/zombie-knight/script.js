@@ -133,7 +133,6 @@ const handleMonsterCollision = (monster) => {
 
 window.addEventListener('keydown', (e) => {
   keys[e.key] = true
-  player.moving = true
 })
 
 window.addEventListener('keyup', (e) => {
