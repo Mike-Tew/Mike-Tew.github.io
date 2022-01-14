@@ -1,6 +1,5 @@
 // Todos
 // Add a title
-// Label things better
 
 // ================ Canvas Setup ===============
 const canvas = document.getElementById('canvas-1')
@@ -12,7 +11,7 @@ let score = 0
 const spawnRate = 1000
 const keys = []
 const background = new Image()
-background.src = 'assests/background.jpg'
+background.src = 'assests/canvas-image.jpg'
 
 // ======== Player And Monsters Sprites =========
 const playerSprite = new Image()
