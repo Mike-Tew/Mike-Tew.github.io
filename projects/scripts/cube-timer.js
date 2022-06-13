@@ -1,27 +1,42 @@
-const clock = document.getElementById('clock');
-let timer;
-let startTime;
-let stopTime;
+let timerIsRunning = false
+const clock = document.getElementById('clock')
 
 const displayTime = () => {
-  let time = Date.now() - startTime;
+  let time = Date.now() - startTime
   let formatted = formatTime(time)
-  clock.innerHTML = time;
-};
+  clock.innerHTML = formatted
+}
 
 const startTimer = () => {
-  startTime = Date.now();
-  timer = setInterval(displayTime, 10);
-};
+  startTime = Date.now()
+  timer = setInterval(displayTime, 10)
+}
 
 const stopTimer = () => {
-  clearInterval(timer);
-};
+  clearInterval(timer)
+}
+
+document.addEventListener('keyup', (event) => {
+  if (event.code !== 'Space') {
+    return
+  }
+  if (!timerIsRunning) {
+    timerIsRunning = true
+    startTimer()
+  } else {
+    timerIsRunning = false
+    stopTimer()
+  }
+})
 
 const formatTime = (ms) => {
-  const centiseconds = parseInt(ms / 10) % 100
-  const seconds = parseInt(ms / 1000) % 60
-  const minutes = parseInt(ms / 1000 / 60) % 60
-  console.log(minutes, seconds, centiseconds);
-  // console.log(typeof seconds);
-};
+  let centiseconds = parseInt(ms / 10) % 100
+  let seconds = parseInt(ms / 1000) % 60
+  let minutes = parseInt(ms / 1000 / 60) % 60
+
+  centiseconds = centiseconds < 10 ? `0${centiseconds}` : centiseconds
+  seconds = seconds < 10 ? `0${seconds}` : seconds
+  minutes = minutes < 10 ? `0${minutes}` : minutes
+
+  return `${minutes}:${seconds}.${centiseconds}`
+}
