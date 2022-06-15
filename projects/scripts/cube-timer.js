@@ -1,4 +1,3 @@
-let resultsArray = []
 let time = 0
 let timerIsRunning = false
 const clock = document.getElementById('clock')
@@ -18,6 +17,7 @@ const startTimer = () => {
 const stopTimer = () => {
   clearInterval(timer)
   resultsArray.push(time)
+  saveCookie()
   refresh_results()
 }
 
@@ -56,3 +56,32 @@ const formatTime = (ms) => {
 
   return `${minutes}:${seconds}.${centiseconds}`
 }
+
+const saveCookie = () => {
+  let jsonStr = JSON.stringify(resultsArray)
+  setCookie('results', jsonStr, 30)
+}
+
+const setCookie = (name, value, days) => {
+  let expires = ''
+  if (days) {
+    let date = new Date()
+    date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000)
+    expires = '; expires=' + date.toUTCString()
+  }
+  document.cookie = name + '=' + (value || '') + expires + '; path=/'
+}
+
+const getCookie = (name) => {
+  let nameEQ = name + '='
+  let ca = document.cookie.split(';')
+  for (let i = 0; i < ca.length; i++) {
+    let c = ca[i]
+    while (c.charAt(0) == ' ') c = c.substring(1, c.length)
+    if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length)
+  }
+  return null
+}
+
+resultsArray = JSON.parse(getCookie('results'))
+refresh_results()
