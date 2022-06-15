@@ -69,7 +69,7 @@ const setCookie = (name, value, days) => {
     date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000)
     expires = '; expires=' + date.toUTCString()
   }
-  document.cookie = name + '=' + (value || '') + expires + '; path=/'
+  document.cookie = name + '=' + (value || '') + expires + '; path=/;SameSite=Lax'
 }
 
 const getCookie = (name) => {
@@ -81,6 +81,12 @@ const getCookie = (name) => {
     if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length)
   }
   return null
+}
+
+const clearResults = () => {
+  resultsArray = []
+  saveCookie()
+  refresh_results()
 }
 
 resultsArray = JSON.parse(getCookie('results'))
