@@ -1,8 +1,11 @@
+let resultsArray = []
+let time = 0
 let timerIsRunning = false
 const clock = document.getElementById('clock')
+const results = document.getElementById('results')
 
 const displayTime = () => {
-  let time = Date.now() - startTime
+  time = Date.now() - startTime
   let formatted = formatTime(time)
   clock.innerHTML = formatted
 }
@@ -14,6 +17,19 @@ const startTimer = () => {
 
 const stopTimer = () => {
   clearInterval(timer)
+  resultsArray.push(time)
+  refresh_results()
+}
+
+const refresh_results = () => {
+  while (results.firstChild) {
+    results.removeChild(results.firstChild)
+  }
+  resultsArray.forEach((element) => {
+    let p = document.createElement('li')
+    p.innerHTML = formatTime(element)
+    results.appendChild(p)
+  })
 }
 
 document.addEventListener('keyup', (event) => {
