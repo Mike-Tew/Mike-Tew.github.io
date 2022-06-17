@@ -89,5 +89,6 @@ const clearResults = () => {
   refresh_results()
 }
 
-resultsArray = JSON.parse(getCookie('results'))
+cookie = JSON.parse(getCookie('results'))
+let resultsArray = (cookie == null) ? [] : cookie
 refresh_results()
