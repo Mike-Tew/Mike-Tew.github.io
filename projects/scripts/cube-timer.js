@@ -2,6 +2,10 @@ let time = 0
 let timerIsRunning = false
 const clock = document.getElementById('clock')
 const results = document.getElementById('results')
+const avg = document.getElementById('avg')
+const best = document.getElementById('best')
+const avg5 = document.getElementById('avg5')
+const avg12 = document.getElementById('avg12')
 
 const displayTime = () => {
   time = Date.now() - startTime
@@ -18,10 +22,24 @@ const stopTimer = () => {
   clearInterval(timer)
   resultsArray.push(time)
   saveCookie()
-  refresh_results()
+  refreshResults()
+  refreshStats()
 }
 
-const refresh_results = () => {
+const getAverage = (numArr) => {
+  const sum = numArr.reduce((partialSum, num) => partialSum + num, 0)
+  const average = sum / numArr.length
+  return average
+}
+
+const refreshStats = () => {
+  const average = formatTime(getAverage(resultsArray))
+  const bestTime = formatTime(Math.min(...resultsArray))
+  avg.innerHTML = `Average: ${average}`
+  best.innerHTML = `Best: ${bestTime}`
+}
+
+const refreshResults = () => {
   while (results.firstChild) {
     results.removeChild(results.firstChild)
   }
@@ -69,7 +87,8 @@ const setCookie = (name, value, days) => {
     date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000)
     expires = '; expires=' + date.toUTCString()
   }
-  document.cookie = name + '=' + (value || '') + expires + '; path=/;SameSite=Lax'
+  document.cookie =
+    name + '=' + (value || '') + expires + '; path=/;SameSite=Lax'
 }
 
 const getCookie = (name) => {
@@ -86,9 +105,12 @@ const getCookie = (name) => {
 const clearResults = () => {
   resultsArray = []
   saveCookie()
-  refresh_results()
+  refreshResults()
+  refreshResults()
 }
 
 cookie = JSON.parse(getCookie('results'))
-let resultsArray = (cookie == null) ? [] : cookie
-refresh_results()
+let resultsArray = cookie == null ? [] : cookie
+refreshResults()
+
+refreshStats()
