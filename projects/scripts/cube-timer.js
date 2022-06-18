@@ -21,40 +21,39 @@ const startTimer = () => {
 const stopTimer = () => {
   clearInterval(timer)
   resultsArray.push(time)
-  saveCookie()
-  refreshResults()
-  refreshStats()
+  refresh()
 }
 
-const getAverage = (numArr) => {
-  const sum = numArr.reduce((partialSum, num) => partialSum + num, 0)
-  const average = sum / numArr.length
+const getAverage = (times) => {
+  const sum = times.reduce((partialSum, num) => partialSum + num, 0)
+  const average = sum / times.length
   return average
 }
 
-const getBestAvg = (arr, len) => {
+const getBestAvg = (times, len) => {
   let start = 0
   let stop = len
   let bestAvg = 999999999999
 
-  while (stop <= arr.length) {
-    times = arr.slice(start, stop)
+  while (stop <= times.length) {
+    croppedTimes = times.slice(start, stop)
+    timesAvg = getAverage(removeMinMax(croppedTimes))
+    bestAvg = timesAvg < bestAvg ? timesAvg : bestAvg
+
     start += 1
     stop += 1
-    timesAvg = getAverage(removeMinMax(times))
-    bestAvg = timesAvg < bestAvg ? timesAvg : bestAvg
   }
 
   return bestAvg
 }
 
-const removeMinMax = (arr) => {
-  arr.sort((first, second) => {
+const removeMinMax = (times) => {
+  times.sort((first, second) => {
     return first - second
   })
-  arr.shift()
-  arr.pop()
-  return arr
+  times.shift()
+  times.pop()
+  return times
 }
 
 const refreshStats = () => {
@@ -133,13 +132,15 @@ const getCookie = (name) => {
 
 const clearResults = () => {
   resultsArray = []
+  refresh()
+}
+
+const refresh = () => {
   saveCookie()
   refreshResults()
-  refreshResults()
+  refreshStats()
 }
 
 cookie = JSON.parse(getCookie('results'))
 let resultsArray = cookie == null ? [] : cookie
-refreshResults()
-
-refreshStats()
+refresh()
