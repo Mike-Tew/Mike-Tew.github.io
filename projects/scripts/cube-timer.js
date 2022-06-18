@@ -32,11 +32,40 @@ const getAverage = (numArr) => {
   return average
 }
 
+const getBestAvg = (arr, len) => {
+  let start = 0
+  let stop = len
+  let bestAvg = 999999999999
+
+  while (stop <= arr.length) {
+    times = arr.slice(start, stop)
+    start += 1
+    stop += 1
+    timesAvg = getAverage(removeMinMax(times))
+    bestAvg = timesAvg < bestAvg ? timesAvg : bestAvg
+  }
+
+  return bestAvg
+}
+
+const removeMinMax = (arr) => {
+  arr.sort((first, second) => {
+    return first - second
+  })
+  arr.shift()
+  arr.pop()
+  return arr
+}
+
 const refreshStats = () => {
   const average = formatTime(getAverage(resultsArray))
-  const bestTime = formatTime(Math.min(...resultsArray))
   avg.innerHTML = `Average: ${average}`
+  const bestTime = formatTime(Math.min(...resultsArray))
   best.innerHTML = `Best: ${bestTime}`
+  const avgOfFive = formatTime(getBestAvg(resultsArray, 5))
+  avg5.innerHTML = `3 of 5: ${avgOfFive}`
+  const avgOfTwelve = formatTime(getBestAvg(resultsArray, 12))
+  avg12.innerHTML = `10 of 12: ${avgOfTwelve}`
 }
 
 const refreshResults = () => {
