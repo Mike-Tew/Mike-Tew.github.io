@@ -1,5 +1,6 @@
 let time = 0
 let timerIsRunning = false
+const defaultTime = '00:00.00'
 const clock = document.getElementById('clock')
 const results = document.getElementById('results')
 const avg = document.getElementById('avg')
@@ -27,6 +28,7 @@ const stopTimer = () => {
 const getAverage = (times) => {
   const sum = times.reduce((partialSum, num) => partialSum + num, 0)
   const average = sum / times.length
+  console.log(times.length < 1 ? average : 0)
   return average
 }
 
@@ -57,13 +59,25 @@ const removeMinMax = (times) => {
 }
 
 const refreshStats = () => {
-  const average = formatTime(getAverage(resultsArray))
+  let average = formatTime(getAverage(resultsArray))
+  let bestTime = formatTime(Math.min(...resultsArray))
+  let avgOfFive = formatTime(getBestAvg(resultsArray, 5))
+  let avgOfTwelve = formatTime(getBestAvg(resultsArray, 12))
+
+  if (resultsArray.length < 1) {
+    average = defaultTime
+    bestTime = defaultTime
+  }
+  if (resultsArray.length < 5) {
+    avgOfFive = defaultTime
+  }
+  if (resultsArray.length < 12) {
+    avgOfTwelve = defaultTime
+  }
+
   avg.innerHTML = `Average: ${average}`
-  const bestTime = formatTime(Math.min(...resultsArray))
   best.innerHTML = `Best: ${bestTime}`
-  const avgOfFive = formatTime(getBestAvg(resultsArray, 5))
   avg5.innerHTML = `3 of 5: ${avgOfFive}`
-  const avgOfTwelve = formatTime(getBestAvg(resultsArray, 12))
   avg12.innerHTML = `10 of 12: ${avgOfTwelve}`
 }
 
