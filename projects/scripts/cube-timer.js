@@ -2,6 +2,7 @@ let time = 0
 let timerIsRunning = false
 const defaultTime = '00:00.00'
 const clock = document.getElementById('clock')
+const scrambleEl = document.getElementById('scramble')
 const timesEl = document.getElementById('times')
 const avg = document.getElementById('avg')
 const best = document.getElementById('best')
@@ -87,17 +88,26 @@ const refreshResults = () => {
   })
 }
 
-document.addEventListener('keyup', (event) => {
-  if (event.code !== 'Space') {
-    return
-  }
+const timerEvent = () => {
   if (!timerIsRunning) {
     timerIsRunning = true
     startTimer()
   } else {
     timerIsRunning = false
     stopTimer()
+    scrambleEl.innerHTML = getScramble()
   }
+}
+
+window.addEventListener('touchend', () => {
+  timerEvent()
+})
+
+document.addEventListener('keyup', (event) => {
+  if (event.code !== 'Space') {
+    return
+  }
+  timerEvent()
 })
 
 const formatTime = (ms) => {
@@ -110,6 +120,19 @@ const formatTime = (ms) => {
   minutes = minutes < 10 ? `0${minutes}` : minutes
 
   return `${minutes}:${seconds}.${centiseconds}`
+}
+
+const getScramble = () => {
+  const sides = ['F', 'B', 'U', 'D', 'R', 'L']
+  const rotation = ["'", '2', '']
+  const scramble = []
+  while (scramble.length < 20) {
+    let side = sides[Math.floor(Math.random() * sides.length)]
+    if (side == scramble[scramble.length - 1]) continue
+    let rotate = rotation[Math.floor(Math.random() * rotation.length)]
+    scramble.push(side + rotate)
+  }
+  return `Scramble: ${scramble.join(' ')}`
 }
 
 const saveCookie = () => {
@@ -152,4 +175,5 @@ const refresh = () => {
 
 cookie = JSON.parse(getCookie('results'))
 let timesArr = cookie == null ? [] : cookie
+scrambleEl.innerHTML = getScramble()
 refresh()
