@@ -28,7 +28,6 @@ const stopTimer = () => {
 const getAverage = (times) => {
   const sum = times.reduce((partialSum, num) => partialSum + num, 0)
   const average = sum / times.length
-  console.log(times.length < 1 ? average : 0)
   return average
 }
 
@@ -36,6 +35,9 @@ const getBestAvg = (times, len) => {
   let start = 0
   let stop = len
   let bestAvg = 999999999999
+  if (times.length < len) {
+    return 0
+  }
 
   while (stop <= times.length) {
     croppedTimes = times.slice(start, stop)
@@ -59,26 +61,19 @@ const removeMinMax = (times) => {
 }
 
 const refreshStats = () => {
-  let average = formatTime(getAverage(resultsArray))
-  let bestTime = formatTime(Math.min(...resultsArray))
-  let avgOfFive = formatTime(getBestAvg(resultsArray, 5))
-  let avgOfTwelve = formatTime(getBestAvg(resultsArray, 12))
-
+  let average = getAverage(resultsArray)
+  let bestTime = Math.min(...resultsArray)
   if (resultsArray.length < 1) {
-    average = defaultTime
-    bestTime = defaultTime
+    average = 0
+    bestTime = 0
   }
-  if (resultsArray.length < 5) {
-    avgOfFive = defaultTime
-  }
-  if (resultsArray.length < 12) {
-    avgOfTwelve = defaultTime
-  }
+  let avgOfFive = getBestAvg(resultsArray, 5)
+  let avgOfTwelve = getBestAvg(resultsArray, 12)
 
-  avg.innerHTML = `Average: ${average}`
-  best.innerHTML = `Best: ${bestTime}`
-  avg5.innerHTML = `3 of 5: ${avgOfFive}`
-  avg12.innerHTML = `10 of 12: ${avgOfTwelve}`
+  avg.innerHTML = `Average: ${formatTime(average)}`
+  best.innerHTML = `Best: ${formatTime(bestTime)}`
+  avg5.innerHTML = `3 of 5: ${formatTime(avgOfFive)}`
+  avg12.innerHTML = `10 of 12: ${formatTime(avgOfTwelve)}`
 }
 
 const refreshResults = () => {
