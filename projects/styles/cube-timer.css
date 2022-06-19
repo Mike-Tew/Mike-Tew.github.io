@@ -1,4 +1,19 @@
+.results-div {
+  background-color: aqua;
+}
+
+#times {
+  background-color: white;
+  overflow: auto;
+  height: 10rem;
+  list-style-type: none;;
+}
+
 .stats {
   font-size: 0.7rem;
   font-weight: bold;
+}
+
+p {
+  background-color: white;
 }

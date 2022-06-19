@@ -2,7 +2,7 @@ let time = 0
 let timerIsRunning = false
 const defaultTime = '00:00.00'
 const clock = document.getElementById('clock')
-const results = document.getElementById('results')
+const timesEl = document.getElementById('times')
 const avg = document.getElementById('avg')
 const best = document.getElementById('best')
 const avg5 = document.getElementById('avg5')
@@ -21,7 +21,7 @@ const startTimer = () => {
 
 const stopTimer = () => {
   clearInterval(timer)
-  resultsArray.push(time)
+  timesArr.push(time)
   refresh()
 }
 
@@ -61,14 +61,14 @@ const removeMinMax = (times) => {
 }
 
 const refreshStats = () => {
-  let average = getAverage(resultsArray)
-  let bestTime = Math.min(...resultsArray)
-  if (resultsArray.length < 1) {
+  let average = getAverage(timesArr)
+  let bestTime = Math.min(...timesArr)
+  if (timesArr.length < 1) {
     average = 0
     bestTime = 0
   }
-  let avgOfFive = getBestAvg(resultsArray, 5)
-  let avgOfTwelve = getBestAvg(resultsArray, 12)
+  let avgOfFive = getBestAvg(timesArr, 5)
+  let avgOfTwelve = getBestAvg(timesArr, 12)
 
   avg.innerHTML = `Average: ${formatTime(average)}`
   best.innerHTML = `Best: ${formatTime(bestTime)}`
@@ -77,13 +77,13 @@ const refreshStats = () => {
 }
 
 const refreshResults = () => {
-  while (results.firstChild) {
-    results.removeChild(results.firstChild)
+  while (timesEl.firstChild) {
+    timesEl.removeChild(timesEl.firstChild)
   }
-  resultsArray.forEach((element) => {
-    let p = document.createElement('li')
-    p.innerHTML = formatTime(element)
-    results.appendChild(p)
+  timesArr.forEach((time, index) => {
+    let li = document.createElement('li')
+    li.innerHTML = `${index + 1}: ${formatTime(time)}`
+    timesEl.prepend(li)
   })
 }
 
@@ -113,7 +113,7 @@ const formatTime = (ms) => {
 }
 
 const saveCookie = () => {
-  let jsonStr = JSON.stringify(resultsArray)
+  let jsonStr = JSON.stringify(timesArr)
   setCookie('results', jsonStr, 30)
 }
 
@@ -140,7 +140,7 @@ const getCookie = (name) => {
 }
 
 const clearResults = () => {
-  resultsArray = []
+  timesArr = []
   refresh()
 }
 
@@ -151,5 +151,5 @@ const refresh = () => {
 }
 
 cookie = JSON.parse(getCookie('results'))
-let resultsArray = cookie == null ? [] : cookie
+let timesArr = cookie == null ? [] : cookie
 refresh()
