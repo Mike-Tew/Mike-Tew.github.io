@@ -14,6 +14,10 @@
   font-weight: bold;
 }
 
+.delete {
+  /* background-color: red; */
+}
+
 p {
   background-color: white;
 }
