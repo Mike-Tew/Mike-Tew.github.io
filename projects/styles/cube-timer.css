@@ -5,8 +5,8 @@
 #times {
   background-color: white;
   overflow: auto;
-  height: 10rem;
-  list-style-type: none;;
+  height: 15rem;
+  width: 10rem;
 }
 
 .stats {
@@ -14,10 +14,6 @@
   font-weight: bold;
 }
 
-.delete {
-  /* background-color: red; */
-}
-
-p {
-  background-color: white;
+td {
+  font-size: 0.75rem;
 }

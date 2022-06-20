@@ -39,28 +39,47 @@
       </div>
     </nav>
 
-    <div class="container">
+    <div class="container text-center">
       <div class="row justify-content-center">
-        <div class="col-md-7">
+        <div class="col-md-9">
           <h1>Cube Timer</h1>
           <h2 id="clock">00:00.00</h2>
           <h5 id="scramble"></h5>
         </div>
-        <div class="col-md-4 results-div">
+        <div class="container col-md-3 results-div">
           <div class="d-inline-flex">
             <h1>Results</h1>
             <button id="clearBtn" onclick="clearResults()">Clear</button>
           </div>
-          <div>
-            <ol id="times"></ul>
+          <div class="d-flex justify-content-center">
+            <ol id="times" class="list-unstyled"></ol>
           </div>
-          <div class="container">
-            <div class="row row-cols-2">
-              <p class="col stats" id="avg">Average: 12:12.23</p>
-              <p class="col stats" id="avg5">3 of 5: 00:22.21</p>
-              <p class="col stats" id="best">Best: 00:12.22</p>
-              <p class="col stats" id="avg12">10 of 12: 00:09.09</p>
-            </div>
+          <div class="">
+            <table class="w-100 text-end table table-light">
+              <tbody>
+                <tr>
+                  <td>
+                    Avg:
+                  </td>
+                  <td id="avg"></p>
+                  <td>
+                    Best 3 of 5:
+                  </td>
+                  <td id="avg5"></p>
+                  </tr>
+                  <tr>
+                    <td>
+                      Best:
+                    </td>
+                    <td id="best"></p>
+                    <td>
+                      Best 10 of 12:
+                    </td>
+                  <td id="avg12"></p>
+
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
       </div>

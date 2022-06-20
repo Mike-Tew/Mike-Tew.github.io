@@ -71,10 +71,10 @@ const refreshStats = () => {
   let avgOfFive = getBestAvg(timesArr, 5)
   let avgOfTwelve = getBestAvg(timesArr, 12)
 
-  avg.innerHTML = `Average: ${formatTime(average)}`
-  best.innerHTML = `Best: ${formatTime(bestTime)}`
-  avg5.innerHTML = `3 of 5: ${formatTime(avgOfFive)}`
-  avg12.innerHTML = `10 of 12: ${formatTime(avgOfTwelve)}`
+  avg.innerHTML = formatTime(average)
+  best.innerHTML = formatTime(bestTime)
+  avg5.innerHTML = formatTime(avgOfFive)
+  avg12.innerHTML = formatTime(avgOfTwelve)
 }
 
 const refreshResults = () => {
