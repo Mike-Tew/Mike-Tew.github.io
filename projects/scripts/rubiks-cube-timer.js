@@ -83,26 +83,19 @@ const refreshResults = () => {
   }
   timesArr.forEach((time, index) => {
     let li = document.createElement('li')
-    const btn = document.createElement('button')
-    const txt = document.createTextNode('\u00D7')
-    btn.className = 'delete'
-    btn.appendChild(txt)
-    li.innerHTML = `${index + 1}: ${formatTime(time)}`
-    li.append(btn)
+    const icn = document.createElement('i')
+    icn.className = 'fa fa-trash-o'
+    icn.style.cursor = 'pointer'
+    li.innerHTML = `${index + 1}:\xa0\xa0\xa0${formatTime(time)}\xa0\xa0\xa0`
+    li.append(icn)
     li.setAttribute('timeIndex', index)
     timesEl.prepend(li)
-    btn.onclick = () => {
+    icn.onclick = () => {
       const timeIndex = li.getAttribute('timeIndex')
       timesArr.splice(+timeIndex, 1)
       refresh()
     }
   })
-}
-
-const getTimeEl = (el) => {
-  timeEl = timesEl.children
-  console.log(timesEl.children)
-  console.log(el);
 }
 
 const timerEvent = () => {
