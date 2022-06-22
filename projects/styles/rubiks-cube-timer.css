@@ -1,5 +1,5 @@
 .results-div {
-  background-color: aqua;
+  background: linear-gradient(#d6dfff, #bacafe 30%, #bacafe);
 }
 
 #clock {
@@ -19,6 +19,10 @@
 .stats {
   font-size: 0.7rem;
   font-weight: bold;
+}
+
+table {
+  background-color: #f0f4ff;
 }
 
 td {
