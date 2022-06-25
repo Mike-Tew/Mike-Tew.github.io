@@ -1,5 +1,7 @@
+
 .results-div {
   background: linear-gradient(#d6dfff, #bacafe 30%, #bacafe);
+  border: 1px solid #89c;
 }
 
 #clock {
@@ -10,10 +12,10 @@
 }
 
 #times {
-  background-color: white;
   overflow: auto;
   height: 15rem;
-  width: 10rem;
+  width: 12rem;
+  border: 1px solid #89c;
 }
 
 .stats {
@@ -23,6 +25,7 @@
 
 table {
   background-color: #f0f4ff;
+  border: 1px solid #89c;
 }
 
 td {
