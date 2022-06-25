@@ -1,5 +1,5 @@
 #title {
-  font-size: 5rem;
+  font-size: 4rem;
 }
 
 #results {
@@ -15,6 +15,7 @@
 
 #scramble {
   font-size: 2rem;
+  padding: 2rem;
 }
 
 .results-div {
@@ -43,6 +44,11 @@ td {
   font-size: 2rem;
 }
 
+#clearBtn {
+  font-size: 3rem;
+  padding: 2rem;
+}
+
 @media (min-width: 992px) {
   #title {
     font-size: 4rem;
@@ -59,8 +65,13 @@ td {
   #times {
     overflow: auto;
     height: 15rem;
-    width: 10rem;
+    width: 11rem;
     border: 1px solid #89c;
+  }
+
+  #clearBtn {
+    font-size: 1.5rem;
+    padding: 1rem;
   }
 
   li {
