@@ -1,6 +1,7 @@
 let time = 0
 let timerIsRunning = false
 const defaultTime = '00:00.00'
+const touchArea = document.getElementById('touch-area')
 const clock = document.getElementById('clock')
 const scrambleEl = document.getElementById('scramble')
 const timesEl = document.getElementById('times')
@@ -109,7 +110,7 @@ const timerEvent = () => {
   }
 }
 
-window.addEventListener('touchend', () => {
+touchArea.addEventListener('touchend', () => {
   timerEvent()
 })
 
