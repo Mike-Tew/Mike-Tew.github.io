@@ -1,7 +1,9 @@
+#title {
+  font-size: 5rem;
+}
 
-.results-div {
-  background: linear-gradient(#d6dfff, #bacafe 30%, #bacafe);
-  border: 1px solid #89c;
+#results {
+  font-size: 7rem;
 }
 
 #clock {
@@ -11,16 +13,25 @@
   font-weight: bold;
 }
 
-#times {
-  overflow: auto;
-  height: 15rem;
-  width: 12rem;
+#scramble {
+  font-size: 2rem;
+}
+
+.results-div {
+  background: linear-gradient(#d6dfff, #bacafe 30%, #bacafe);
   border: 1px solid #89c;
 }
 
-.stats {
-  font-size: 0.7rem;
-  font-weight: bold;
+#times {
+  overflow: auto;
+  height: 40rem;
+  width: 25rem;
+  border: 1px solid #89c;
+}
+
+li {
+  font-size: 2.5rem;
+  margin: 0.5rem;
 }
 
 table {
@@ -29,5 +40,35 @@ table {
 }
 
 td {
-  font-size: 0.75rem;
+  font-size: 2rem;
+}
+
+@media (min-width: 992px) {
+  #title {
+    font-size: 4rem;
+  }
+
+  #results {
+    font-size: 3rem;
+  }
+
+  #scramble {
+    font-size: 1rem;
+  }
+
+  #times {
+    overflow: auto;
+    height: 15rem;
+    width: 10rem;
+    border: 1px solid #89c;
+  }
+
+  li {
+    font-size: 1rem;
+    margin: 0;
+  }
+
+  td {
+    font-size: 0.75rem;
+  }
 }
