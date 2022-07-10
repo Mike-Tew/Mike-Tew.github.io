@@ -94,6 +94,7 @@ const refreshResults = () => {
     icn.onclick = () => {
       const timeIndex = li.getAttribute('timeIndex')
       li.className = 'fade'
+      li.style.color = 'red'
       setTimeout(() => {
         timesArr.splice(+timeIndex, 1)
         refresh()
