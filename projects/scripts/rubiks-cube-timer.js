@@ -93,8 +93,11 @@ const refreshResults = () => {
     timesEl.prepend(li)
     icn.onclick = () => {
       const timeIndex = li.getAttribute('timeIndex')
-      timesArr.splice(+timeIndex, 1)
-      refresh()
+      li.className = 'fade'
+      setTimeout(() => {
+        timesArr.splice(+timeIndex, 1)
+        refresh()
+      }, 300)
     }
   })
 }

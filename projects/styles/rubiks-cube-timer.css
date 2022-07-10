@@ -26,7 +26,7 @@
 #times {
   overflow: auto;
   height: 35rem;
-  width: 25rem;
+  width: 30rem;
   border: 1px solid #89c;
 }
 
@@ -65,7 +65,7 @@ td {
   #times {
     overflow: auto;
     height: 15rem;
-    width: 11rem;
+    width: 11.5rem;
     border: 1px solid #89c;
   }
 
@@ -82,4 +82,10 @@ td {
   td {
     font-size: 0.75rem;
   }
+}
+
+.fade {
+  transition: opacity 0.3s;
+  -webkit-transition: opacity 0.3s;
+  -moz-transition: opacity 0.3s;
 }
