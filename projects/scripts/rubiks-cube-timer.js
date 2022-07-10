@@ -87,7 +87,7 @@ const refreshResults = () => {
     const icn = document.createElement('i')
     icn.className = 'fa fa-trash-o'
     icn.style.cursor = 'pointer'
-    li.innerHTML = `${index + 1}:\xa0\xa0\xa0${formatTime(time)}\xa0\xa0\xa0\xa0`
+    li.innerHTML = `${index + 1}:\xa0\xa0${formatTime(time)}\xa0\xa0`
     li.append(icn)
     li.setAttribute('timeIndex', index)
     timesEl.prepend(li)
