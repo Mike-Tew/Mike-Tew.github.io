@@ -84,14 +84,16 @@ const refreshResults = () => {
   }
   timesArr.forEach((time, index) => {
     let li = document.createElement('li')
-    const icn = document.createElement('i')
-    icn.className = 'fa fa-trash-o'
-    icn.style.cursor = 'pointer'
+    const icon = document.createElement('i')
+    icon.className = 'fa fa-trash-o'
+    icon.style.cursor = 'pointer'
     li.innerHTML = `${index + 1}:\xa0\xa0${formatTime(time)}\xa0\xa0`
-    li.append(icn)
+    li.append(icon)
     li.setAttribute('timeIndex', index)
     timesEl.prepend(li)
-    icn.onclick = () => {
+
+    const deleteTime = (evt) => {
+      evt.preventDefault()
       const timeIndex = li.getAttribute('timeIndex')
       li.className = 'fade'
       li.style.color = 'red'
@@ -100,6 +102,9 @@ const refreshResults = () => {
         refresh()
       }, 300)
     }
+
+    icon.addEventListener('touchend', deleteTime)
+    icon.addEventListener('click', deleteTime)
   })
 }
 
