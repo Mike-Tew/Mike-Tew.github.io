@@ -6,6 +6,9 @@ canvas.width = LENGTH
 canvas.height = LENGTH
 
 ctx.lineWidth = 10
+ctx.font = '50px serif'
+ctx.textAlign = 'center'
+ctx.textBaseline = 'middle'
 
 // ================= Square Objects ================
 class Square {
@@ -51,11 +54,11 @@ while (squareNums.length > 0) {
   board.push(row)
 }
 
-console.log(board);
-board.forEach(row => {
+console.log(board)
+console.log(board.flat())
 
-})
-
-squares.forEach((square) => {
-  square.draw()
+// =============== Draw Board =================
+board.flat().forEach((square) => {
+  ctx.strokeRect(square.x, square.y, SQUARE_LEN, SQUARE_LEN)
+  ctx.fillText(square.val, square.x + SQUARE_LEN / 2, square.y + SQUARE_LEN / 2)
 })
