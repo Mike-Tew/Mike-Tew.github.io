@@ -11,18 +11,6 @@ ctx.textAlign = 'center'
 ctx.textBaseline = 'middle'
 
 // ================= Square Objects ================
-class Square {
-  constructor(val, x, y) {
-    this.val = val
-    this.x = x
-    this.y = y
-  }
-
-  draw() {
-    ctx.strokeRect(this.x, this.y, SQUARE_LEN, SQUARE_LEN)
-  }
-}
-
 const squareNums = [
   ' ',
   '1',
@@ -48,7 +36,7 @@ while (squareNums.length > 0) {
   while (row.length < 4) {
     x = row.length * SQUARE_LEN
     y = board.length * SQUARE_LEN
-    square = new Square(squareNums.pop(), x, y)
+    square = squareNums.pop()
     row.push(square)
   }
   board.push(row)
@@ -58,7 +46,43 @@ console.log(board)
 console.log(board.flat())
 
 // =============== Draw Board =================
+const drawBoard = () => {
+  ctx.clearRect(0, 0, canvas.width, canvas.height)
+  board.forEach((row, row_idx) => {
+    row.forEach((square, col_idx) => {
+      ctx.strokeRect(
+        col_idx * SQUARE_LEN,
+        row_idx * SQUARE_LEN,
+        SQUARE_LEN,
+        SQUARE_LEN
+      )
+      ctx.fillText(
+        square,
+        col_idx * SQUARE_LEN + SQUARE_LEN / 2,
+        row_idx * SQUARE_LEN + SQUARE_LEN / 2
+      )
+    })
+  })
+}
+
+let blankSquare = 1
 board.flat().forEach((square) => {
-  ctx.strokeRect(square.x, square.y, SQUARE_LEN, SQUARE_LEN)
-  ctx.fillText(square.val, square.x + SQUARE_LEN / 2, square.y + SQUARE_LEN / 2)
+  if (square.val == ' ') blankSquare = square
 })
+canvas.addEventListener('click', (event) => {
+  x = blankSquare.x
+  y = blankSquare.y + canvas.offsetTop
+  if (
+    event.x > x &&
+    event.x < x + SQUARE_LEN &&
+    event.y > y &&
+    event.y < y + SQUARE_LEN
+  ) {
+    console.log('object')
+    console.log(blankSquare)
+  }
+})
+console.log(canvas.offsetTop)
+const swapSquares = () => {}
+swapSquares()
+drawBoard()
