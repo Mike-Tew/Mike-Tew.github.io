@@ -42,9 +42,6 @@ while (squareNums.length > 0) {
   board.push(row)
 }
 
-console.log(board)
-console.log(board.flat())
-
 // =============== Draw Board =================
 const drawBoard = () => {
   ctx.clearRect(0, 0, canvas.width, canvas.height)
@@ -65,13 +62,18 @@ const drawBoard = () => {
   })
 }
 
-let blankSquare = 1
-board.flat().forEach((square) => {
-  if (square.val == ' ') blankSquare = square
-})
+const getBlankSquareCoords = () => {
+  const index = board.flat().indexOf(' ')
+  const row = parseInt(index / 4)
+  const col = index % 4
+  return [row, col]
+}
+
 canvas.addEventListener('click', (event) => {
-  x = blankSquare.x
-  y = blankSquare.y + canvas.offsetTop
+  const [row, col] = getBlankSquareCoords()
+  y = row * 100 + canvas.offsetTop
+  x = col * 100
+
   if (
     event.x > x &&
     event.x < x + SQUARE_LEN &&
@@ -79,10 +81,8 @@ canvas.addEventListener('click', (event) => {
     event.y < y + SQUARE_LEN
   ) {
     console.log('object')
-    console.log(blankSquare)
   }
 })
-console.log(canvas.offsetTop)
 const swapSquares = () => {}
 swapSquares()
 drawBoard()
