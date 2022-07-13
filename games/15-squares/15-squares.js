@@ -12,17 +12,17 @@ ctx.textBaseline = 'middle'
 
 // ================= Square Objects ================
 const squareNums = [
-  ' ',
+  '10',
   '1',
   '2',
   '3',
   '4',
+  ' ',
   '5',
   '6',
   '7',
   '8',
   '9',
-  '10',
   '11',
   '12',
   '13',
@@ -69,8 +69,6 @@ const getBlankSquareIndex = () => {
   return [row, col]
 }
 
-const squareCoords = () => {}
-
 const clickDetection = (clickCoords, squareCoords) => {
   const [clickX, clickY] = clickCoords
   const [squareX, squareY] = squareCoords
@@ -90,17 +88,38 @@ canvas.addEventListener('click', (event) => {
   if (clickDetection([event.x, event.y], [x, y])) {
     console.log('blank square')
   } else if (clickDetection([event.x, event.y + SQUARE_LEN], [x, y])) {
-    console.log('up')
+    swapSquares('up')
   } else if (clickDetection([event.x - SQUARE_LEN, event.y], [x, y])) {
-    console.log('right')
+    swapSquares('right')
   } else if (clickDetection([event.x, event.y - SQUARE_LEN], [x, y])) {
-    console.log('down')
+    swapSquares('down')
   } else if (clickDetection([event.x + SQUARE_LEN, event.y], [x, y])) {
-    console.log('left')
+    swapSquares('left')
   }
 })
-const swapSquares = () => {
-  ;[board[1][1], board[0][1]] = [board[0][1], board[1][1]]
+const swapSquares = (direction) => {
+  const [x, y] = getBlankSquareIndex()
+  console.log(x, y)
+  switch (direction) {
+    case 'up':
+      ;[board[x][y], board[x - 1][y]] = [board[x - 1][y], board[x][y]]
+      console.log(direction)
+      break
+    case 'right':
+      ;[board[x][y], board[x][y + 1]] = [board[x][y + 1], board[x][y]]
+      console.log(direction)
+      break
+    case 'down':
+      ;[board[x][y], board[x + 1][y]] = [board[x + 1][y], board[x][y]]
+      console.log(direction)
+      break
+    case 'left':
+      ;[board[x][y], board[x][y - 1]] = [board[x][y - 1], board[x][y]]
+      console.log(direction)
+      break
+  }
+  console.log(board);
+  drawBoard()
 }
-swapSquares()
+
 drawBoard()
