@@ -62,27 +62,45 @@ const drawBoard = () => {
   })
 }
 
-const getBlankSquareCoords = () => {
+const getBlankSquareIndex = () => {
   const index = board.flat().indexOf(' ')
   const row = parseInt(index / 4)
   const col = index % 4
   return [row, col]
 }
 
+const squareCoords = () => {}
+
+const clickDetection = (clickCoords, squareCoords) => {
+  const [clickX, clickY] = clickCoords
+  const [squareX, squareY] = squareCoords
+  return (
+    clickX > squareX &&
+    clickX < squareX + SQUARE_LEN &&
+    clickY > squareY &&
+    clickY < squareY + SQUARE_LEN
+  )
+}
+
 canvas.addEventListener('click', (event) => {
-  const [row, col] = getBlankSquareCoords()
+  const [row, col] = getBlankSquareIndex()
   y = row * 100 + canvas.offsetTop
   x = col * 100
 
-  if (
-    event.x > x &&
-    event.x < x + SQUARE_LEN &&
-    event.y > y &&
-    event.y < y + SQUARE_LEN
-  ) {
-    console.log('object')
+  if (clickDetection([event.x, event.y], [x, y])) {
+    console.log('blank square')
+  } else if (clickDetection([event.x, event.y + SQUARE_LEN], [x, y])) {
+    console.log('up')
+  } else if (clickDetection([event.x - SQUARE_LEN, event.y], [x, y])) {
+    console.log('right')
+  } else if (clickDetection([event.x, event.y - SQUARE_LEN], [x, y])) {
+    console.log('down')
+  } else if (clickDetection([event.x + SQUARE_LEN, event.y], [x, y])) {
+    console.log('left')
   }
 })
-const swapSquares = () => {}
+const swapSquares = () => {
+  ;[board[1][1], board[0][1]] = [board[0][1], board[1][1]]
+}
 swapSquares()
 drawBoard()
