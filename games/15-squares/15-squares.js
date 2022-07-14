@@ -1,7 +1,7 @@
 const canvas = document.getElementById('game-canvas')
 const ctx = canvas.getContext('2d')
-const LENGTH = 500
-const SQUARE_LEN = LENGTH / 5
+const LENGTH = 400
+const SQUARE_LEN = LENGTH / 4
 canvas.width = LENGTH
 canvas.height = LENGTH
 
@@ -79,46 +79,44 @@ const clickDetection = (clickCoords, squareCoords) => {
     clickY < squareY + SQUARE_LEN
   )
 }
-
 canvas.addEventListener('click', (event) => {
+  const offset = canvas.getBoundingClientRect()
+  const clickX = event.x - offset.left
+  const clickY = event.y - offset.top
+
   const [row, col] = getBlankSquareIndex()
-  y = row * 100 + canvas.offsetTop
+  y = row * 100
   x = col * 100
 
-  if (clickDetection([event.x, event.y], [x, y])) {
-    console.log('blank square')
-  } else if (clickDetection([event.x, event.y + SQUARE_LEN], [x, y])) {
+  if (clickDetection([clickX, clickY], [x, y])) {
+  } else if (clickDetection([clickX, clickY + SQUARE_LEN], [x, y])) {
     swapSquares('up')
-  } else if (clickDetection([event.x - SQUARE_LEN, event.y], [x, y])) {
+  } else if (clickDetection([clickX - SQUARE_LEN, clickY], [x, y])) {
     swapSquares('right')
-  } else if (clickDetection([event.x, event.y - SQUARE_LEN], [x, y])) {
+  } else if (clickDetection([clickX, clickY - SQUARE_LEN], [x, y])) {
     swapSquares('down')
-  } else if (clickDetection([event.x + SQUARE_LEN, event.y], [x, y])) {
+  } else if (clickDetection([clickX + SQUARE_LEN, clickY], [x, y])) {
     swapSquares('left')
   }
 })
+
 const swapSquares = (direction) => {
   const [x, y] = getBlankSquareIndex()
-  console.log(x, y)
   switch (direction) {
     case 'up':
       ;[board[x][y], board[x - 1][y]] = [board[x - 1][y], board[x][y]]
-      console.log(direction)
       break
     case 'right':
       ;[board[x][y], board[x][y + 1]] = [board[x][y + 1], board[x][y]]
-      console.log(direction)
       break
     case 'down':
       ;[board[x][y], board[x + 1][y]] = [board[x + 1][y], board[x][y]]
-      console.log(direction)
       break
     case 'left':
       ;[board[x][y], board[x][y - 1]] = [board[x][y - 1], board[x][y]]
-      console.log(direction)
       break
   }
-  console.log(board);
+
   drawBoard()
 }
 
