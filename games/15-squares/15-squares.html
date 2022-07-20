@@ -40,7 +40,37 @@
       </div>
     </nav>
 
-    <canvas id='game-canvas'></canvas>
+    <div class="container-fluid text-center">
+      <h1>15 SQUARES</h1>
+    </div>
+
+    <div class="container">
+      <div
+        class="
+          container
+          d-flex
+          justify-content-center
+          row row-cols-1 row-cols-lg-2
+        "
+      >
+        <div
+          class="
+            container
+            d-flex
+            justify-content-center
+            col
+            border border-5
+            flex-shrink-1
+          "
+        >
+          <canvas class="flex-shrink-1" id="game-canvas"></canvas>
+        </div>
+        <div class="text-center border border-5">
+          <h3>stats</h3>
+          <button class="btn btn-primary btn-lg">RESET</button>
+        </div>
+      </div>
+    </div>
 
     <script src="15-squares.js"></script>
   </body>

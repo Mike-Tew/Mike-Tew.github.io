@@ -63,7 +63,6 @@ const clickDetection = (clickCoords, squareCoords) => {
 }
 
 document.addEventListener('keydown', (event) => {
-  console.log(event.key)
   const key = event.key
   if (key == 'ArrowDown') {
     swapSquares('up')
@@ -119,6 +118,16 @@ const swapSquares = (direction) => {
   }
 
   drawBoard()
+  checkWin()
+}
+
+const checkWin = () => {
+  const solvedBoard = [...Array(16).keys()]
+  solvedBoard[0] = ' '
+  solvedBoard.push(solvedBoard.shift())
+  console.log(board.flat() == solvedBoard);
+  // console.log(board.flat());
+  // console.log(solvedBoard);
 }
 
 drawBoard()
