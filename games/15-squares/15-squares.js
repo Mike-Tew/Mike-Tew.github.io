@@ -10,20 +10,73 @@ ctx.font = '50px serif'
 ctx.textAlign = 'center'
 ctx.textBaseline = 'middle'
 
-const squareNums = [...Array(16).keys()]
-squareNums[0] = ' '
-
-const board = []
-while (squareNums.length > 0) {
-  let row = []
-  while (row.length < 4) {
-    x = row.length * SQUARE_LEN
-    y = board.length * SQUARE_LEN
-    square = squareNums.pop()
-    row.push(square)
+const shuffle = (boardArr) => {
+  let boardLen = boardArr.length,
+    randomNumIndex,
+    randomNum
+  while (--boardLen > 0) {
+    randomNumIndex = Math.floor(Math.random() * (boardLen + 1))
+    randomNum = boardArr[randomNumIndex]
+    boardArr[randomNumIndex] = boardArr[boardLen]
+    boardArr[boardLen] = randomNum
   }
-  board.push(row)
+  return boardArr
 }
+
+const isSolvable = (puzzle) => {
+  let parity = 0
+  let gridWidth = 4
+  let row = 0
+  let blankRow = 0
+  for (let i = 0; i < puzzle.length; i++) {
+    if (i % gridWidth == 0) {
+      row++
+    }
+    if (puzzle[i] == ' ') {
+      blankRow = row
+      continue
+    }
+    for (var j = i + 1; j < puzzle.length; j++) {
+      if (puzzle[i] > puzzle[j] && puzzle[j] != 0) {
+        parity++
+      }
+    }
+  }
+
+  if (gridWidth % 2 == 0) {
+    if (blankRow % 2 == 0) {
+      return parity % 2 == 0
+    } else {
+      return parity % 2 != 0
+    }
+  } else {
+    return parity % 2 == 0
+  }
+}
+
+const createBoard = () => {
+  const squareNums = [...Array(16).keys()]
+  squareNums[0] = ' '
+  const board = []
+
+  while (squareNums.length > 0) {
+    let row = []
+    while (row.length < 4) {
+      square = squareNums.pop()
+      row.push(square)
+    }
+    board.push(row)
+  }
+
+  const shuffled = shuffle(board.flat())
+  console.log(isSolvable(shuffled))
+  if (board.flat()) return board
+}
+
+const board = createBoard()
+console.log(board)
+
+console.log(shuffle(board.flat()))
 
 const drawBoard = () => {
   ctx.clearRect(0, 0, canvas.width, canvas.height)
@@ -125,9 +178,7 @@ const checkWin = () => {
   const solvedBoard = [...Array(16).keys()]
   solvedBoard[0] = ' '
   solvedBoard.push(solvedBoard.shift())
-  console.log(board.flat() == solvedBoard);
-  // console.log(board.flat());
-  // console.log(solvedBoard);
+  console.log(board.flat() == solvedBoard)
 }
 
 drawBoard()
