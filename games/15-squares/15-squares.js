@@ -178,10 +178,11 @@ const checkWin = () => {
   const solvedBoard = [...Array(16).keys()]
   solvedBoard[0] = ' '
   solvedBoard.push(solvedBoard.shift())
-  let difference = solvedBoard.filter((x) => !board.flat().includes(x))
-  console.log(difference);
-  // console.log(board.flat());
-  // console.log(solvedBoard);
+  console.log(checkEquality(solvedBoard, board));
+}
+
+const checkEquality = (solvedBoard, currentBoard) => {
+  return solvedBoard.every((val, idx) => val === currentBoard.flat()[idx])
 }
 
 drawBoard()
