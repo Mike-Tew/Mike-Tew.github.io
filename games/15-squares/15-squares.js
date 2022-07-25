@@ -54,29 +54,29 @@ const isSolvable = (puzzle) => {
   }
 }
 
-const createBoard = () => {
-  const squareNums = [...Array(16).keys()]
-  squareNums[0] = ' '
-  const board = []
+const createBoard = (shuffled) => {
+  const shuffledBoard = []
 
-  while (squareNums.length > 0) {
+  while (shuffled.length > 0) {
     let row = []
     while (row.length < 4) {
-      square = squareNums.pop()
+      square = shuffled.pop()
       row.push(square)
     }
-    board.push(row)
+    shuffledBoard.push(row)
   }
-
-  const shuffled = shuffle(board.flat())
-  console.log(isSolvable(shuffled))
-  if (board.flat()) return board
+  return shuffledBoard
 }
 
-const board = createBoard()
-console.log(board)
+const squareNums = [...Array(16).keys()]
+squareNums[0] = ' '
+let shuffledNums = squareNums
 
-console.log(shuffle(board.flat()))
+while (isSolvable(shuffledNums) === false) {
+  shuffledNums = shuffle(squareNums)
+}
+
+const board = createBoard(shuffledNums)
 
 const drawBoard = () => {
   ctx.clearRect(0, 0, canvas.width, canvas.height)
@@ -178,7 +178,10 @@ const checkWin = () => {
   const solvedBoard = [...Array(16).keys()]
   solvedBoard[0] = ' '
   solvedBoard.push(solvedBoard.shift())
-  console.log(board.flat() == solvedBoard)
+  let difference = solvedBoard.filter((x) => !board.flat().includes(x))
+  console.log(difference);
+  // console.log(board.flat());
+  // console.log(solvedBoard);
 }
 
 drawBoard()
