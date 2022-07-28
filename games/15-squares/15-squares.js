@@ -173,7 +173,7 @@ const checkWin = () => {
   solvedBoard[0] = ' '
   solvedBoard.push(solvedBoard.shift())
   if (checkEquality(solvedBoard, board)) {
-    console.log('You Win')
+    document.getElementById('move-count').innerHTML = `Move Count: ${moveCount}`
   }
 }
 
@@ -198,6 +198,5 @@ const resetBoard = () => {
 }
 
 document.getElementById('close-modal-btn').addEventListener('click', resetBoard)
-
 document.getElementById('reset').addEventListener('click', resetBoard)
 resetBoard()
