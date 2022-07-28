@@ -1,4 +1,6 @@
 const canvas = document.getElementById('game-canvas')
+let moveCount = 0
+let board = []
 const LENGTH = 400
 const SQUARE_LEN = LENGTH / 4
 canvas.width = LENGTH
@@ -67,16 +69,6 @@ const createBoard = (shuffled) => {
   }
   return shuffledBoard
 }
-
-const squareNums = [...Array(16).keys()]
-squareNums[0] = ' '
-let shuffledNums = squareNums
-
-while (isSolvable(shuffledNums) === false) {
-  shuffledNums = shuffle(squareNums)
-}
-
-const board = createBoard(shuffledNums)
 
 const drawBoard = () => {
   ctx.clearRect(0, 0, canvas.width, canvas.height)
@@ -170,6 +162,8 @@ const swapSquares = (direction) => {
       break
   }
 
+  moveCount++
+  document.getElementById('moves').innerHTML = `Moves: ${moveCount}`
   drawBoard()
   checkWin()
 }
@@ -178,11 +172,32 @@ const checkWin = () => {
   const solvedBoard = [...Array(16).keys()]
   solvedBoard[0] = ' '
   solvedBoard.push(solvedBoard.shift())
-  console.log(checkEquality(solvedBoard, board));
+  if (checkEquality(solvedBoard, board)) {
+    console.log('You Win')
+  }
 }
 
 const checkEquality = (solvedBoard, currentBoard) => {
   return solvedBoard.every((val, idx) => val === currentBoard.flat()[idx])
 }
 
-drawBoard()
+const resetBoard = () => {
+  moveCount = 0
+  document.getElementById('moves').innerHTML = `Moves: ${moveCount}`
+
+  let squareNums = [...Array(16).keys()]
+  squareNums[0] = ' '
+  let shuffledNums = squareNums
+
+  while (isSolvable(shuffledNums) === false) {
+    shuffledNums = shuffle(squareNums)
+  }
+
+  board = createBoard(shuffledNums)
+  drawBoard(board)
+}
+
+document.getElementById('close-modal-btn').addEventListener('click', resetBoard)
+
+document.getElementById('reset').addEventListener('click', resetBoard)
+resetBoard()

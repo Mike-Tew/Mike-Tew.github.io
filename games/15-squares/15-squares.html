@@ -67,11 +67,49 @@
         </div>
         <div class="text-center border border-5">
           <h3>stats</h3>
-          <button class="btn btn-primary btn-lg">RESET</button>
+          <h4 id="moves">Moves:</h4>
+          <button id="reset" class="btn btn-primary btn-lg">RESET</button>
         </div>
       </div>
     </div>
 
+    <button
+      type="button"
+      class="btn btn-primary"
+      data-bs-toggle="modal"
+      data-bs-target="#winModal"
+    >
+      Launch demo modal
+    </button>
+
+    <div
+      class="modal fade"
+      id="winModal"
+      tabindex="-1"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-body">Congratulation! You Win!</div>
+          <div class="modal-footer">
+            <button
+              id="close-modal-btn"
+              type="button"
+              class="btn btn-primary"
+              data-bs-dismiss="modal"
+            >
+              Play Again
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
     <script src="15-squares.js"></script>
   </body>
 </html>
