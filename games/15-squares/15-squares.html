@@ -44,33 +44,14 @@
       <h1>15 SQUARES</h1>
     </div>
 
-    <div class="container">
-      <div
-        class="
-          container
-          d-flex
-          justify-content-center
-          row row-cols-1 row-cols-lg-2
-        "
-      >
-        <div
-          class="
-            container
-            d-flex
-            justify-content-center
-            col
-            border border-5
-            flex-shrink-1
-          "
-        >
-          <canvas class="flex-shrink-1" id="game-canvas"></canvas>
-        </div>
-        <div class="text-center border border-5">
-          <h3>stats</h3>
-          <h4 id="moves">Moves:</h4>
-          <button id="reset" class="btn btn-primary btn-lg">RESET</button>
-        </div>
+    <div class="d-flex flex-row justify-content-center">
+      <div class="container-canvas">
+        <canvas id="game-canvas"></canvas>
       </div>
+    </div>
+    <div class="text-center">
+      <h4 id="moves">Moves:</h4>
+      <button id="reset" class="btn btn-primary btn-lg">RESET</button>
     </div>
 
     <button
