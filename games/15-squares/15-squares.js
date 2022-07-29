@@ -174,6 +174,8 @@ const checkWin = () => {
   solvedBoard.push(solvedBoard.shift())
   if (checkEquality(solvedBoard, board)) {
     document.getElementById('move-count').innerHTML = `Move Count: ${moveCount}`
+    const myModal = new bootstrap.Modal(document.getElementById('winModal'))
+    myModal.show()
   }
 }
 

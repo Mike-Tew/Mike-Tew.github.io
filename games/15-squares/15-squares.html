@@ -82,18 +82,22 @@
       Launch demo modal
     </button>
 
-    <div class="modal fade" id="winModal" tabindex="-1" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-body">
-            <h2>Congratulation You Win!</h4>
-            <h4 id="move-count"></h2>
-          </div>
-          <div class="modal-footer">
+    <div
+      class="modal fade"
+      id="winModal"
+      data-bs-backdrop="static"
+      tabindex="-1"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content container">
+          <div class="modal-body m-3 row">
+            <h2 class="text-center">Congratulation You Win!</h2>
+            <h4 id="move-count" class="text-center"></h4>
             <button
               id="close-modal-btn"
               type="button"
-              class="btn btn-primary"
+              class="btn btn-lg btn-primary"
               data-bs-dismiss="modal"
             >
               Play Again
