@@ -1,5 +1,8 @@
 // Todos
 // Implement number of lives
+// Clear monsters array
+// Remove monsters when they exit the screen
+// Increase monster speed on level up
 
 // ================ Canvas Setup ===============
 const canvas = document.getElementById('canvas-1')
@@ -7,6 +10,7 @@ const ctx = canvas.getContext('2d')
 canvas.width = 800
 canvas.height = 600
 let prevMonsterSpawn = 0
+let lives = 5
 let score = 0
 const spawnRate = 1000
 const keys = []
@@ -167,6 +171,8 @@ const animate = () => {
     ctx.fillStyle = '#ee1c27'
     ctx.fillText(`SCORE   ${score}`, 525, 70)
     ctx.strokeText(`SCORE   ${score}`, 525, 70)
+    ctx.fillText(`LIVES   ${lives}`, 50, 70)
+    ctx.strokeText(`LIVES   ${lives}`, 50, 70)
 
     drawSprite(
       playerSprite,
@@ -193,9 +199,13 @@ const animate = () => {
     monsters.forEach((monster) => {
       handleMonsterMovement(monster)
       monster.draw()
+      if (monster.x <= 50) {
+        lives -= 1
+        monster.remove = true
+      }
     })
+    monsters = monsters.filter((monster) => monster.remove != true)
   }
-
 
   requestAnimationFrame(animate)
 }
