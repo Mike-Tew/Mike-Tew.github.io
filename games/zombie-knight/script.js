@@ -1,5 +1,5 @@
 // Todos
-// Add a title
+// Implement number of lives
 
 // ================ Canvas Setup ===============
 const canvas = document.getElementById('canvas-1')
@@ -26,11 +26,11 @@ const monsterImages = [
   'assests/zombie-5.png'
 ]
 const monsterSprites = []
-monsterImages.forEach(image => {
+monsterImages.forEach((image) => {
   const sprite = new Image()
   sprite.src = image
   monsterSprites.push(sprite)
-});
+})
 
 // ========== Player And Monsters Objects =========
 const player = {
@@ -67,7 +67,7 @@ class Monster {
       this.y,
       this.width,
       this.height
-      )
+    )
   }
 }
 
@@ -75,11 +75,12 @@ const getRandomInt = (max) => {
   return Math.floor(Math.random() * max)
 }
 
-monsters = []
+let monsters = []
 const createMonster = () => {
   y = getRandomInt(canvas.height - 50)
   speed = getRandomInt(5) + 5
-  const sprite = monsterSprites[Math.floor(Math.random() * monsterSprites.length)]
+  const sprite =
+    monsterSprites[Math.floor(Math.random() * monsterSprites.length)]
   monsters.push(new Monster(sprite, y, speed))
 }
 
@@ -161,6 +162,12 @@ const animate = () => {
     then = now - (elapsed % fpsInterval)
     ctx.clearRect(0, 0, canvas.width, canvas.height)
     ctx.drawImage(background, 0, 0, canvas.width, canvas.height)
+
+    ctx.font = 'bold 36px Arial'
+    ctx.fillStyle = '#ee1c27'
+    ctx.fillText(`SCORE   ${score}`, 525, 70)
+    ctx.strokeText(`SCORE   ${score}`, 525, 70)
+
     drawSprite(
       playerSprite,
       player.width * player.frameX,
@@ -178,16 +185,18 @@ const animate = () => {
     monsters.forEach((monster, index) => {
       if (handleMonsterCollision(monster)) {
         monsters.splice(index, 1)
-        score += 1
-        if (score >= 20) console.log('You Win');
+        score += 100
+        if (score >= 2000) console.log('You Win')
       }
     })
 
     monsters.forEach((monster) => {
       handleMonsterMovement(monster)
       monster.draw()
-    });
+    })
   }
+
+
   requestAnimationFrame(animate)
 }
 
