@@ -8,6 +8,7 @@ const ctx = canvas.getContext('2d')
 canvas.width = 800
 canvas.height = 600
 let prevMonsterSpawn = 0
+let gameLevel = 1
 let lives = 5
 let score = 0
 const spawnRate = 1000
@@ -78,9 +79,10 @@ const getRandomInt = (max) => {
 }
 
 let monsters = []
+
 const createMonster = () => {
   y = getRandomInt(canvas.height - 50)
-  speed = getRandomInt(5) + 5
+  speed = getRandomInt(5) + gameLevel
   const sprite =
     monsterSprites[Math.floor(Math.random() * monsterSprites.length)]
   monsters.push(new Monster(sprite, y, speed))
@@ -182,7 +184,6 @@ const animate = () => {
 
     if (countdown > Date.now()) {
       ctx.font = 'bold 50px Arial'
-      ctx.fillStyle = '#ee1c27'
       ctx.fillText(`GET READY`, 250, 300)
       ctx.strokeText(`GET READY`, 250, 300)
     }
@@ -204,7 +205,7 @@ const animate = () => {
     monsters.forEach((monster, index) => {
       if (handleMonsterCollision(monster)) {
         monsters.splice(index, 1)
-        score += 100
+        score += monster.speed
         if (score >= 2000) console.log('You Win')
       }
     })
