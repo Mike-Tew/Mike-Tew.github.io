@@ -1,6 +1,4 @@
 // Todos
-// Increase monster speed on level up
-// Make a board reset function
 
 // ================ Canvas Setup ===============
 const canvas = document.getElementById('game-canvas')
@@ -9,6 +7,7 @@ canvas.width = 800
 canvas.height = 600
 let prevMonsterSpawn = 0
 let gameLevel = 1
+let levelScore = 0
 let lives = 5
 let score = 0
 const spawnRate = 1000
@@ -179,13 +178,18 @@ const animate = () => {
     ctx.fillStyle = '#ee1c27'
     ctx.fillText(`SCORE   ${score}`, 525, 70)
     ctx.strokeText(`SCORE   ${score}`, 525, 70)
+    ctx.fillStyle = '#2bb3ed'
     ctx.fillText(`LIVES   ${lives}`, 50, 70)
     ctx.strokeText(`LIVES   ${lives}`, 50, 70)
 
     if (countdown > Date.now()) {
       ctx.font = 'bold 50px Arial'
-      ctx.fillText(`GET READY`, 250, 300)
-      ctx.strokeText(`GET READY`, 250, 300)
+      ctx.fillStyle = '#ee1c27'
+      ctx.fillText('GET READY', 250, 300)
+      ctx.strokeText('GET READY', 250, 300)
+      ctx.fillStyle = '#fff30a'
+      ctx.fillText(`Round ${gameLevel}`, 300, 200)
+      ctx.strokeText(`Round ${gameLevel}`, 300, 200)
     }
 
     drawSprite(
@@ -206,7 +210,15 @@ const animate = () => {
       if (handleMonsterCollision(monster)) {
         monsters.splice(index, 1)
         score += monster.speed
-        if (score >= 2000) console.log('You Win')
+        levelScore++
+        console.log(levelScore)
+        if (levelScore >= 20) {
+          monsters = []
+          gameLevel += 1
+          levelScore = 0
+          lives++
+          countdown = Date.now() + 4000
+        }
       }
     })
 
