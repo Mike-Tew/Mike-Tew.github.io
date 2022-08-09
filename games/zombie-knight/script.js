@@ -1,11 +1,9 @@
 // Todos
-// Implement number of lives
-// Clear monsters array
-// Remove monsters when they exit the screen
 // Increase monster speed on level up
+// Make a board reset function
 
 // ================ Canvas Setup ===============
-const canvas = document.getElementById('canvas-1')
+const canvas = document.getElementById('game-canvas')
 const ctx = canvas.getContext('2d')
 canvas.width = 800
 canvas.height = 600
@@ -146,16 +144,24 @@ window.addEventListener('keyup', (e) => {
 
 // ============ Animation Loop =============
 let fps, fpsInterval, startTime, now, then, elapsed
+let countdown = Date.now() + 4000
 
-const startAnimating = (fps) => {
+const startAnimation = (fps) => {
   fpsInterval = 1000 / fps
   then = Date.now()
   startTime = then
   animate()
 }
 
+const resetGame = () => {
+  lives = 5
+  score = 0
+  monsters = []
+  countdown = Date.now() + 4000
+}
+
 const animate = () => {
-  if (Date.now() - prevMonsterSpawn > spawnRate) {
+  if (Date.now() - prevMonsterSpawn > spawnRate && countdown <= Date.now()) {
     createMonster()
     prevMonsterSpawn = Date.now()
   }
@@ -173,6 +179,13 @@ const animate = () => {
     ctx.strokeText(`SCORE   ${score}`, 525, 70)
     ctx.fillText(`LIVES   ${lives}`, 50, 70)
     ctx.strokeText(`LIVES   ${lives}`, 50, 70)
+
+    if (countdown > Date.now()) {
+      ctx.font = 'bold 50px Arial'
+      ctx.fillStyle = '#ee1c27'
+      ctx.fillText(`GET READY`, 250, 300)
+      ctx.strokeText(`GET READY`, 250, 300)
+    }
 
     drawSprite(
       playerSprite,
@@ -205,9 +218,13 @@ const animate = () => {
       }
     })
     monsters = monsters.filter((monster) => monster.remove != true)
+
+    if (lives <= 0) {
+      resetGame()
+    }
   }
 
   requestAnimationFrame(animate)
 }
 
-startAnimating(30)
+startAnimation(30)
