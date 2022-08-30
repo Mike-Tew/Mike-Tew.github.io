@@ -1,118 +1,151 @@
 <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="styles/main.css" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <title>Projects</title>
+  </head>
 
-<head>
-  <title>Projects</title>
-  <link rel="stylesheet" type="text/css" href="styles/main.css" />
-  <meta charset="UTF-8" />
-  <link
-    rel="stylesheet"
-    href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-    crossorigin="anonymous"
-  />
-</head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNavAltMarkup"
+        aria-controls="navbarNavAltMarkup"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <a class="nav-item nav-link" href="index.html">Home</a>
+          <a class="nav-item nav-link" href="projects.html">Projects</a>
+          <a class="nav-item nav-link" href="games.html">Games</a>
+          <a class="nav-item nav-link active" href="data-visualization.html"
+            >Data Visualization</a
+          >
+        </div>
+      </div>
+    </nav>
 
-<body>
-  <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-toggle="collapse"
-      data-target="#navbarNavAltMarkup"
-      aria-controls="navbarNavAltMarkup"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-      <div class="navbar-nav">
-        <a class="nav-item nav-link" href="index.html">Home</a>
-        <a class="nav-item nav-link" href="projects.html">Projects</a>
-        <a class="nav-item nav-link" href="games.html">Games</a>
-        <a class="nav-item nav-link active" href="data-visualization.html"
-          >Data Visualization</a
-        >
+    <!-- Data Visualization Links -->
+    <div class="container">
+      <h1 class="row d-flex justify-content-center display-3 m-3">
+        Data Visualization
+      </h1>
+      <div class="row d-flex justify-content-center">
+        <div class="col-xl-6 col-md-8 list-group">
+          <a
+            href="data-visualization/us-gdp-bar-chart/"
+            class="
+              list-group-item list-group-item-action
+              flex-row
+              d-flex
+              align-items-center
+              justify-content-between
+            "
+            ><h4>US GDP</h4>
+            <img
+              class="w-25"
+              src="images/thumbnails/us-gdp.jpg"
+              alt="US GDP Image"
+            />
+          </a>
+          <a
+            href="data-visualization/us-higher-education/"
+            class="
+              list-group-item list-group-item-action
+              flex-row
+              d-flex
+              align-items-center
+              justify-content-between
+            "
+            ><h4>US Higher Education</h4>
+            <img
+              class="w-25"
+              src="images/thumbnails/us-higher-edu.jpg"
+              alt="US Higher Education Image"
+            />
+          </a>
+          <a
+            href="data-visualization/us-heat-map/"
+            class="
+              list-group-item list-group-item-action
+              flex-row
+              d-flex
+              align-items-center
+              justify-content-between
+            "
+            ><h4>US Heat Map</h4>
+            <img
+              class="w-25"
+              src="images/thumbnails/us-heat-map.jpg"
+              alt="US Heat Map Image"
+            />
+          </a>
+          <a
+            href="data-visualization/us-movie-grosses/"
+            class="
+              list-group-item list-group-item-action
+              flex-row
+              d-flex
+              align-items-center
+              justify-content-between
+            "
+            ><h4>US Movie Grosses</h4>
+            <img
+              class="w-25"
+              src="images/thumbnails/movie-grosses.jpg"
+              alt="US Movie Grosses Image"
+            />
+          </a>
+          <a
+            href="data-visualization/doping-in-cycling/index.html"
+            class="
+              list-group-item list-group-item-action
+              flex-row
+              d-flex
+              align-items-center
+              justify-content-between
+            "
+            ><h4>Doping in Professional Cycling</h4>
+            <img
+              class="w-25"
+              src="images/thumbnails/doping-in-cycling.jpg"
+              alt="Doping In Cycling Image"
+            />
+          </a>
+        </div>
       </div>
     </div>
-  </nav>
 
-  <!-- Data Visualization Links -->
-  <div class="container">
-    <h1 class="row d-flex justify-content-center display-3 m-3">
-      Data Visualization
-    </h1>
-    <div class="row d-flex justify-content-center">
-      <div class="col-xl-6 col-md-8 list-group">
-        <a
-          href="data-visualization/us-gdp-bar-chart/"
-          class="list-group-item list-group-item-action flex-row d-flex align-items-center justify-content-between"
-          ><h4>US GDP</h4>
-          <img
-            class="w-25"
-            src="images/thumbnails/us-gdp.jpg"
-            alt="US GDP Image"
-          />
-        </a>
-        <a
-          href="data-visualization/us-higher-education/"
-          class="list-group-item list-group-item-action flex-row d-flex align-items-center justify-content-between"
-          ><h4>US Higher Education</h4>
-          <img
-            class="w-25"
-            src="images/thumbnails/us-higher-edu.jpg"
-            alt="US Higher Education Image"
-          />
-        </a>
-        <a
-          href="data-visualization/us-heat-map/"
-          class="list-group-item list-group-item-action flex-row d-flex align-items-center justify-content-between"
-          ><h4>US Heat Map</h4>
-          <img
-            class="w-25"
-            src="images/thumbnails/us-heat-map.jpg"
-            alt="US Heat Map Image"
-          />
-        </a>
-        <a
-          href="data-visualization/us-movie-grosses/"
-          class="list-group-item list-group-item-action flex-row d-flex align-items-center justify-content-between"
-          ><h4>US Movie Grosses</h4>
-          <img
-            class="w-25"
-            src="images/thumbnails/movie-grosses.jpg"
-            alt="US Movie Grosses Image"
-          />
-        </a>
-        <a
-          href="data-visualization/doping-in-cycling/index.html"
-          class="list-group-item list-group-item-action flex-row d-flex align-items-center justify-content-between"
-          ><h4>Doping in Professional Cycling</h4>
-          <img
-            class="w-25"
-            src="images/thumbnails/doping-in-cycling.jpg"
-            alt="Doping In Cycling Image"
-          />
-        </a>
-      </div>
-    </div>
-  </div>
-
-  <!-- Bootstrap Links -->
-  <script
-    src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-    crossorigin="anonymous"
-  ></script>
-  <script
-    src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-    crossorigin="anonymous"
-  ></script>
-  <script
-    src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-    crossorigin="anonymous"
-  ></script>
-</body>
+    <!-- Bootstrap Links -->
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

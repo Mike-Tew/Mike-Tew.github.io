@@ -1,4 +1,5 @@
 // Todos
+// Add a rudimentary AI system
 
 // ================ Canvas Setup ===============
 const canvas = document.getElementById('game-canvas')
@@ -88,6 +89,11 @@ const createMonster = () => {
 }
 
 const handleMonsterMovement = (monster) => {
+  if (monster.x - 100 < player.x && monster.y - 100 < player.y && monster.y + 100 > player.y) {
+    // console.log(monster.x);
+    monster.x += monster.speed
+    return
+  }
   monster.x -= monster.speed
   if (monster.frameX < 2) monster.frameX++
   else monster.frameX = 0
@@ -157,6 +163,8 @@ const startAnimation = (fps) => {
 const resetGame = () => {
   lives = 5
   score = 0
+  levelScore = 0
+  gameLevel = 1
   monsters = []
   countdown = Date.now() + 4000
 }
@@ -209,9 +217,8 @@ const animate = () => {
     monsters.forEach((monster, index) => {
       if (handleMonsterCollision(monster)) {
         monsters.splice(index, 1)
-        score += monster.speed
+        score += monster.speed + gameLevel
         levelScore++
-        console.log(levelScore)
         if (levelScore >= 20) {
           monsters = []
           gameLevel += 1
