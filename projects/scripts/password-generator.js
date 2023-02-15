@@ -29,7 +29,7 @@ const generatePassword = () => {
   if (uppercase.checked) characterList += characters.uppercase
   if (numbers.checked) characterList += characters.numbers
   if (symbols.checked) characterList += characters.symbols
-  if (!characterList) return (password.innerHTML = '(none)')
+  if (!characterList) return (password.innerHTML = 'PASSWORD')
 
   let newPassword = ''
   while (newPassword.length < slider.value) {
