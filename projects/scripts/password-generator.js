@@ -7,6 +7,7 @@ const numbers = document.getElementById('numbers-check')
 const symbols = document.getElementById('symbols-check')
 
 passwordLength.addEventListener('input', () => {
+  if (passwordLength.value > 20) passwordLength.value = 20
   slider.value = passwordLength.value
   generatePassword()
 })
