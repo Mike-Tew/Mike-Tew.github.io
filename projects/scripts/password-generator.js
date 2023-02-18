@@ -42,4 +42,8 @@ const generatePassword = () => {
   password.innerHTML = newPassword
 }
 
+const copyToClipboard = () => {
+  navigator.clipboard.writeText(password.innerHTML)
+}
+
 generatePassword()
