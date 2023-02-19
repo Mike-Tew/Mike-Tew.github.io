@@ -1,4 +1,6 @@
 const password = document.getElementById('password')
+const pwdBackground = document.getElementById('pwd-background')
+const pwdStrength = document.getElementById('pwd-strength')
 const passwordLength = document.getElementById('password-length')
 const slider = document.getElementById('length-slider')
 const uppercase = document.getElementById('upper-check')
@@ -48,35 +50,22 @@ const copyToClipboard = () => {
 }
 
 const changePwdStr = () => {
-  const pwdBackground = document.getElementById('pwd-background')
-  const pwdStrength = document.getElementById('pwd-strength')
-  pwdStrength.innerHTML = "Weak"
-  pwdStrength.style.color = "red"
   if (slider.value < 7) {
-    pwdBackground.style.backgroundColor = '#eddbdb'
-    pwdBackground.style.borderBottomColor = '#d32d27'
-    pwdStrength.style.color = '#d32d27'
-    pwdStrength.innerHTML = 'Weak'
-
+    stylePwdStr("Weak", "#eddbdb", "#d32d27")
   } else if (slider.value < 9) {
-    pwdBackground.style.backgroundColor = '#f1edd8'
-    pwdBackground.style.borderBottomColor = '#edbf0e'
-    pwdStrength.style.color = '#edbf0e'
-    pwdStrength.innerHTML = 'Average'
+    stylePwdStr("Average", "#f1edd8", "#edbf0e")
   } else if (slider.value < 12) {
-    pwdBackground.style.backgroundColor = '#d3eae5'
-    pwdBackground.style.borderBottomColor = '#00a878'
-    pwdStrength.style.color = '#00a878'
-    pwdStrength.innerHTML = 'Strong'
+    stylePwdStr("Strong", "#d3eae5", "#00a878")
   } else {
-    pwdBackground.style.backgroundColor = '#d3eae5'
-    pwdBackground.style.borderBottomColor = '#00a878'
-    pwdStrength.style.color = '#00a878'
-    pwdStrength.innerHTML = 'Very strong'
+    stylePwdStr("Very Strong", "#d3eae5", "#00a878")
   }
-  console.log(pwdBackground)
 }
 
-
+const stylePwdStr = (strText, bgColor, borderColor) => {
+  pwdBackground.style.backgroundColor = bgColor
+  pwdBackground.style.borderBottom = `3px solid ${borderColor}`
+  pwdStrength.style.color = borderColor
+  pwdStrength.innerHTML = strText
+}
 
 generatePassword()
