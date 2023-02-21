@@ -1,5 +1,6 @@
 const timer = document.getElementById('timer')
 let startTime = 0
+let timerId
 const canvas = document.getElementById('game-canvas')
 let moveCount = 0
 let board = []
@@ -111,7 +112,7 @@ const clickDetection = (clickCoords, squareCoords) => {
 
 const startTimer = () => {
   startTime = Date.now()
-  const timerId = setInterval(calculateTime, 10)
+  timerId = setInterval(calculateTime, 10)
   calculateTime()
 }
 
@@ -126,8 +127,8 @@ const calculateTime = () => {
   minutes = (minutes < 10 ? `0${minutes}` : minutes);
   display = `${minutes}:${seconds}`
   document.getElementById('timer').innerHTML = display
+  document.getElementById('modal-time').innerHTML = display
 }
-startTimer()
 
 document.addEventListener('keydown', (event) => {
   const key = event.key
@@ -143,6 +144,8 @@ document.addEventListener('keydown', (event) => {
 })
 
 canvas.addEventListener('click', (event) => {
+  if (moveCount == 0) startTimer()
+
   const offset = canvas.getBoundingClientRect()
   const clickX = event.x - offset.left
   const clickY = event.y - offset.top
@@ -186,6 +189,7 @@ const swapSquares = (direction) => {
 
   moveCount++
   document.getElementById('moves').innerHTML = `Moves: ${moveCount}`
+  document.getElementById('move-count').innerHTML = `Move Count: ${moveCount}`
   drawBoard()
   checkWin()
 }
@@ -195,8 +199,8 @@ const checkWin = () => {
   solvedBoard[0] = ' '
   solvedBoard.push(solvedBoard.shift())
   if (checkEquality(solvedBoard, board)) {
-    document.getElementById('move-count').innerHTML = `Move Count: ${moveCount}`
     const myModal = new bootstrap.Modal(document.getElementById('winModal'))
+    clearInterval(timerId)
     myModal.show()
   }
 }
@@ -219,6 +223,8 @@ const resetBoard = () => {
 
   board = createBoard(shuffledNums)
   drawBoard(board)
+  clearInterval(timerId)
+  timer.innerHTML = '00:00'
 }
 
 document.getElementById('close-modal-btn').addEventListener('click', resetBoard)
