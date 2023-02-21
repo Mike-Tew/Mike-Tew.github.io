@@ -1,3 +1,5 @@
+const timer = document.getElementById('timer')
+let startTime = 0
 const canvas = document.getElementById('game-canvas')
 let moveCount = 0
 let board = []
@@ -106,6 +108,26 @@ const clickDetection = (clickCoords, squareCoords) => {
     clickY < squareY + SQUARE_LEN
   )
 }
+
+const startTimer = () => {
+  startTime = Date.now()
+  const timerId = setInterval(calculateTime, 10)
+  calculateTime()
+}
+
+const calculateTime = () => {
+  const time = Date.now() - startTime
+  centiseconds = Math.floor(time / 10) % 100
+  seconds = Math.floor(time / 100 / 10) % 60
+  minutes = Math.floor(time / 100 / 60 / 10) % 60
+
+  // Padding numbers to 2 digits.
+  seconds = seconds < 10 ? `0${seconds}` : seconds
+  minutes = (minutes < 10 ? `0${minutes}` : minutes);
+  display = `${minutes}:${seconds}`
+  document.getElementById('timer').innerHTML = display
+}
+startTimer()
 
 document.addEventListener('keydown', (event) => {
   const key = event.key
