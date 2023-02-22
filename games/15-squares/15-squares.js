@@ -188,7 +188,7 @@ const swapSquares = (direction) => {
   }
 
   moveCount++
-  document.getElementById('moves').innerHTML = `Moves: ${moveCount}`
+  document.getElementById('moves').innerHTML = `${moveCount}`
   document.getElementById('move-count').innerHTML = `Move Count: ${moveCount}`
   drawBoard()
   checkWin()
@@ -211,7 +211,7 @@ const checkEquality = (solvedBoard, currentBoard) => {
 
 const resetBoard = () => {
   moveCount = 0
-  document.getElementById('moves').innerHTML = `Moves: ${moveCount}`
+  document.getElementById('moves').innerHTML = `${moveCount}`
 
   let squareNums = [...Array(16).keys()]
   squareNums[0] = ' '
