@@ -18,6 +18,7 @@ class Card {
     this.digit2 = digit2
     this.operation = operation
     this.solution = digit1 + digit2
+    this.isActive = false
   }
 }
 
@@ -43,4 +44,21 @@ const deck = createDeck(numberCombos)
 console.log(deck)
 
 const mainCard = document.getElementById('main-card')
-mainCard.innerHTML = deck[1].solution
+document.addEventListener('click', () => {
+  if (deck[0].isActive) {
+    showSolution(deck[0])
+    deck.shift()
+  } else {
+    showProblem(deck[0])
+    deck[0].isActive = !deck[0].isActive
+  }
+  console.log(deck)
+})
+
+const showProblem = (card) => {
+  mainCard.innerHTML = `${card.digit1} + ${card.digit2}`
+}
+
+const showSolution = (card) => {
+  mainCard.innerHTML = card.solution
+}
