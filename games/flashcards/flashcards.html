@@ -5,11 +5,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="flashcards.css" />
-    <title>Flashcards</title>
+    <title>Tailwind Practice</title>
   </head>
   <body>
-    <h1>FLASHCARDS</h1>
-    <h2 id="main-card"></h2>
-    <script src="flashcards.js"></script>
+    <div class="pt-10">
+      <h1
+        class="flex flex-col justify-center items-center h-14 w-72 m-auto bg-gray-400 text-center font-bold text-2xl"
+      >
+        FLASHCARDS
+      </h1>
+      <h2
+        id="main-card"
+        class="flex flex-col text-7xl justify-center items-center font-bold w-72 h-80 m-auto bg-cyan-300 hover:bg-cyan-400 text-center align-middle"
+      >
+        78
+      </h2>
+    </div>
+
+    <script src="./flashcards.js"></script>
   </body>
 </html>
