@@ -20,6 +20,36 @@ class Card {
     this.solution = digit1 + digit2
     this.isActive = false
   }
+
+  getProblem = () => {
+    switch (this.operation) {
+      case 'addition':
+        return `${this.digit1} + ${this.digit2}`
+      case 'subtraction':
+        return this.digit1 - this.digit2
+      case 'multiplication':
+        return `${this.digit1} x ${this.digit2}`
+      case 'division':
+        return this.digit1 / this.digit2
+      default:
+        return 'Error'
+    }
+  }
+
+  getSolution = () => {
+    switch (this.operation) {
+      case 'addition':
+        return this.digit1 + this.digit2
+      case 'subtraction':
+        return this.digit1 - this.digit2
+      case 'multiplication':
+        return this.digit1 * this.digit2
+      case 'division':
+        return this.digit1 / this.digit2
+      default:
+        return 'Error'
+    }
+  }
 }
 
 const shuffleCards = (deck) => {
@@ -34,7 +64,7 @@ const createDeck = (numberCombos) => {
   const deck = []
   for (let idx in numberCombos) {
     ;[digit1, digit2] = numberCombos[idx]
-    deck.push(new Card(digit1, digit2, 'addition'))
+    deck.push(new Card(digit1, digit2, 'multiplication'))
   }
   return shuffleCards(deck)
 }
@@ -45,20 +75,23 @@ console.log(deck)
 
 const mainCard = document.getElementById('main-card')
 document.addEventListener('click', () => {
-  if (deck[0].isActive) {
-    showSolution(deck[0])
+  const currentCard = deck[0]
+
+  if (currentCard.isActive) {
+    showSolution(currentCard)
     deck.shift()
   } else {
-    showProblem(deck[0])
-    deck[0].isActive = !deck[0].isActive
+    showProblem(currentCard)
+    currentCard.isActive = !currentCard.isActive
   }
   console.log(deck)
 })
 
 const showProblem = (card) => {
-  mainCard.innerHTML = `${card.digit1} + ${card.digit2}`
+  mainCard.innerHTML = card.getProblem()
 }
 
 const showSolution = (card) => {
-  mainCard.innerHTML = card.solution
+  card.getSolution()
+  mainCard.innerHTML = card.getSolution()
 }
