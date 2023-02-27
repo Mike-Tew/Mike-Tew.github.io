@@ -60,6 +60,12 @@ const shuffleCards = (deck) => {
   return deck
 }
 
+const checkForDivision = (digit1, digit2) => {
+  if (!digit1 || !digit2) return false
+  if (digit1 % digit2 != 0) return false
+  return true
+}
+
 const createDeck = (numberCombos) => {
   const deck = []
   for (let idx in numberCombos) {
