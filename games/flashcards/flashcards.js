@@ -1,19 +1,17 @@
 import { createDeck, generateNumberCombos } from './deck-utils.js'
 
-const nums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-const numberCombos = generateNumberCombos(nums)
-
-const checkForDivision = (digit1, digit2) => {
-  if (!digit1 || !digit2) return false
-  if (digit1 % digit2 != 0) return false
-  return true
-}
-
-const deck = createDeck(numberCombos)
-
-console.log(deck)
-
 const mainCard = document.getElementById('main-card')
+const additionCheck = document.getElementById('addition-check')
+const subtractionCheck = document.getElementById('subtraction-check')
+const multiplicationCheck = document.getElementById('multiplication-check')
+const divisionCheck = document.getElementById('division-check')
+const saveButton = document.getElementById('save-button')
+
+const nums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+let operations = []
+const numberCombos = generateNumberCombos(nums)
+let deck = createDeck(numberCombos, operations)
+
 mainCard.addEventListener('click', () => {
   const currentCard = deck[0]
 
@@ -37,13 +35,13 @@ const showSolution = (card) => {
 }
 
 // WIP: Modal Area
-const additionCheck = document.getElementById('addition-check')
-const subtractionCheck = document.getElementById('subtraction-check')
-const multiplicationCheck = document.getElementById('multiplication-check')
-const divisionCheck = document.getElementById('division-check')
-const saveButton = document.getElementById('save-button')
-
 const saveSettings = () => {
-  console.log('object')
+  operations = []
+  if (additionCheck.checked) operations.push('addition')
+  if (subtractionCheck.checked) operations.push('subtraction')
+  if (multiplicationCheck.checked) operations.push('multiplication')
+  if (divisionCheck.checked) operations.push('division')
+  console.log(operations)
+  deck = createDeck(numberCombos, operations)
 }
 saveButton.addEventListener('click', saveSettings)

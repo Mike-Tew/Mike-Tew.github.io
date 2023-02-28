@@ -11,12 +11,34 @@ const generateNumberCombos = (nums) => {
   return numberCombos
 }
 
-const createDeck = (numberCombos) => {
+const checkDivision = (digit1, digit2) => {
+  // Remove solutions with a remainder or with a zero digit.
+  if (!digit1 || !digit2) return false
+  if (digit1 % digit2 != 0) return false
+  return true
+}
+
+const checkSubtraction = (digit1, digit2) => {
+  // Remove solutions with a negative result.
+  if (digit1 - digit2 < 0) return false
+  return true
+}
+
+const createDeck = (numberCombos, operations) => {
   const deck = []
   let digit1, digit2
-  for (let idx in numberCombos) {
-    ;[digit1, digit2] = numberCombos[idx]
-    deck.push(new Card(digit1, digit2, 'multiplication'))
+
+  for (let operationIdx in operations) {
+    let operation = operations[operationIdx]
+
+    for (let idx in numberCombos) {
+      ;[digit1, digit2] = numberCombos[idx]
+      if (operation == 'division' && !checkDivision(digit1, digit2)) continue
+      if (operation == 'subtraction' && !checkSubtraction(digit1, digit2))
+        continue
+
+      deck.push(new Card(digit1, digit2, operation))
+    }
   }
   return shuffleDeck(deck)
 }
