@@ -18,39 +18,57 @@
         id="main-card"
         class="m-auto flex h-80 w-72 cursor-pointer flex-col items-center justify-center rounded-xl border-2 border-slate-500 bg-blue-300 text-center align-middle text-7xl font-bold hover:bg-blue-400"
       >
-        78
+        TAP
       </div>
     </div>
 
     <!-- Modal -->
     <div class="m-auto flex w-80 flex-col items-center rounded-lg bg-slate-200">
-      <div>
-        <fieldset>
-          <input type="checkbox" id="addition-check" name="name" />
-          <label for="addition-check"> Addition</label><br />
+      <div class="my-3 p-3 text-2xl">
+        <fieldset class="px-6 py-4">
           <input
+            class="m-2 h-5 w-5 cursor-pointer"
+            type="checkbox"
+            id="addition-check"
+            name="name"
+          />
+          <label class="cursor-pointer" for="addition-check"> Addition</label
+          ><br />
+          <input
+            class="m-2 h-5 w-5 cursor-pointer"
             type="checkbox"
             id="subtraction-check"
             name="subtraction-check"
           />
-          <label for="subtraction-check"> Subtraction</label><br />
+          <label class="cursor-pointer" for="subtraction-check">
+            Subtraction</label
+          ><br />
           <input
+            class="m-2 h-5 w-5 cursor-pointer"
             type="checkbox"
             id="multiplication-check"
             name="multiplication-check"
           />
-          <label for="multiplication-check"> Multiplication</label><br />
-          <input type="checkbox" id="division-check" name="division-check" />
-          <label for="division-check"> Division</label><br />
+          <label class="cursor-pointer" for="multiplication-check">
+            Multiplication</label
+          ><br />
+          <input
+            class="m-2 h-5 w-5 cursor-pointer"
+            type="checkbox"
+            id="division-check"
+            name="division-check"
+          />
+          <label class="cursor-pointer" for="division-check"> Division</label
+          ><br />
         </fieldset>
       </div>
-      <div class="flex gap-2">
+      <div class="flex gap-3">
         <div class="h-12 w-12 bg-blue-300"></div>
         <div class="h-12 w-12 bg-red-300"></div>
         <div class="h-12 w-12 bg-yellow-300"></div>
         <div class="h-12 w-12 bg-green-300"></div>
       </div>
-      <div><button id="save-button">SAVE</button></div>
+      <div><button class="my-5 h-12 w-20" id="save-button">SAVE</button></div>
     </div>
 
     <script src="./flashcards.js" type="module"></script>
