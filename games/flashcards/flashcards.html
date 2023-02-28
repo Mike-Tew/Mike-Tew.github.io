@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="flashcards.css" />
     <title>Tailwind Practice</title>
   </head>
-  <body>
+  <body class="bg-slate-100">
     <div class="select-none pt-10">
       <h1
         class="m-auto flex h-14 w-72 flex-col items-center justify-center rounded-lg border-2 border-slate-500 bg-gray-400 text-center text-2xl font-bold"
@@ -18,8 +18,39 @@
         id="main-card"
         class="m-auto flex h-80 w-72 cursor-pointer flex-col items-center justify-center rounded-xl border-2 border-slate-500 bg-blue-300 text-center align-middle text-7xl font-bold hover:bg-blue-400"
       >
-        TAP
+        78
       </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="m-auto flex w-80 flex-col items-center rounded-lg bg-slate-200">
+      <div>
+        <fieldset>
+          <input type="checkbox" id="addition-check" name="name" />
+          <label for="addition-check"> Addition</label><br />
+          <input
+            type="checkbox"
+            id="subtraction-check"
+            name="subtraction-check"
+          />
+          <label for="subtraction-check"> Subtraction</label><br />
+          <input
+            type="checkbox"
+            id="multiplication-check"
+            name="multiplication-check"
+          />
+          <label for="multiplication-check"> Multiplication</label><br />
+          <input type="checkbox" id="division-check" name="division-check" />
+          <label for="division-check"> Division</label><br />
+        </fieldset>
+      </div>
+      <div class="flex gap-2">
+        <div class="h-12 w-12 bg-blue-300"></div>
+        <div class="h-12 w-12 bg-red-300"></div>
+        <div class="h-12 w-12 bg-yellow-300"></div>
+        <div class="h-12 w-12 bg-green-300"></div>
+      </div>
+      <div><button>SAVE</button></div>
     </div>
 
     <script src="./flashcards.js"></script>
