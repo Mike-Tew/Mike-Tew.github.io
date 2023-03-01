@@ -34,19 +34,39 @@ const showSolution = (card) => {
   mainCard.innerHTML = card.getSolution()
 }
 
-// WIP: Modal Area
 const saveSettings = () => {
   operations = []
   if (additionCheck.checked) operations.push('addition')
   if (subtractionCheck.checked) operations.push('subtraction')
   if (multiplicationCheck.checked) operations.push('multiplication')
   if (divisionCheck.checked) operations.push('division')
-  console.log(operations)
   deck = createDeck(numberCombos, operations)
+
+  mainCard.classList.remove(
+    'bg-blue-300',
+    'bg-red-300',
+    'bg-yellow-300',
+    'bg-green-300',
+    'hover:bg-blue-200',
+    'hover:bg-red-200',
+    'hover:bg-yellow-200',
+    'hover:bg-green-200'
+  )
+
+  if (currentColor == 'blue')
+    mainCard.classList.add('bg-blue-300', 'hover:bg-blue-200')
+  if (currentColor == 'red')
+    mainCard.classList.add('bg-red-300', 'hover:bg-red-200')
+  if (currentColor == 'yellow')
+    mainCard.classList.add('bg-yellow-300', 'hover:bg-yellow-200')
+  if (currentColor == 'green')
+    mainCard.classList.add('bg-green-300', 'hover:bg-green-200')
 }
+
 saveButton.addEventListener('click', saveSettings)
 
 const deckColor = document.querySelectorAll('.deck-color div')
+let currentColor
 
 const resetColorBorders = () => {
   deckColor.forEach((color) => {
@@ -58,5 +78,6 @@ deckColor.forEach((color) => {
   color.addEventListener('click', () => {
     resetColorBorders()
     color.style.borderColor = 'rgb(100 116 139)'
+    currentColor = color.getAttribute('name')
   })
 })
