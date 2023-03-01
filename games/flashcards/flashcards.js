@@ -45,3 +45,18 @@ const saveSettings = () => {
   deck = createDeck(numberCombos, operations)
 }
 saveButton.addEventListener('click', saveSettings)
+
+const deckColor = document.querySelectorAll('.deck-color div')
+
+const resetColorBorders = () => {
+  deckColor.forEach((color) => {
+    color.style.borderColor = 'rgb(226 232 240)'
+  })
+}
+
+deckColor.forEach((color) => {
+  color.addEventListener('click', () => {
+    resetColorBorders()
+    color.style.borderColor = 'rgb(100 116 139)'
+  })
+})
