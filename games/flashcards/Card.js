@@ -7,7 +7,7 @@ export default class Card {
     this.isActive = false
   }
 
-  getProblem = () => {
+  getProblem() {
     switch (this.operation) {
       case 'addition':
         return `${this.digit1} + ${this.digit2}`
@@ -22,7 +22,7 @@ export default class Card {
     }
   }
 
-  getSolution = () => {
+  getSolution() {
     switch (this.operation) {
       case 'addition':
         return this.digit1 + this.digit2
