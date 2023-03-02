@@ -16,7 +16,7 @@ export default class Card {
       case 'multiplication':
         return `${this.digit1} x ${this.digit2}`
       case 'division':
-        return `${this.digit1} / ${this.digit2}`
+        return `${this.digit1} &#247; ${this.digit2}`
       default:
         return 'Error'
     }

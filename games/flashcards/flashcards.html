@@ -9,84 +9,97 @@
   </head>
   <body class="select-none bg-slate-100">
     <div class="pt-10">
-      <h1
-        class="m-auto flex h-14 w-72 flex-col items-center justify-center rounded-lg border-2 border-slate-500 bg-gray-400 text-center text-2xl font-bold"
-      >
-        FLASHCARDS
-      </h1>
       <div
         id="main-card"
-        class="m-auto flex h-80 w-72 cursor-pointer flex-col items-center justify-center rounded-xl border-2 border-slate-500 bg-blue-300 text-center align-middle text-7xl font-bold hover:bg-blue-400"
+        class="m-auto flex h-80 w-72 cursor-pointer flex-col items-center justify-center rounded-xl border-solid border-slate-500 bg-blue-300 text-center align-middle text-7xl font-bold hover:bg-blue-400"
       >
         TAP
+      </div>
+      <div id="modal-button" class="mx-auto flex justify-center">
+        <button
+          class="my-4 rounded bg-blue-500 py-2 px-4 font-bold text-white hover:bg-blue-700"
+        >
+          CHANGE CARDS
+        </button>
       </div>
     </div>
 
     <!-- Modal -->
-    <div class="m-auto flex w-80 flex-col items-center rounded-lg bg-slate-200">
-      <div class="my-3 p-3 text-2xl">
-        <fieldset class="px-6 py-4">
-          <input
-            class="m-2 h-5 w-5 cursor-pointer"
-            type="checkbox"
-            id="addition-check"
-            name="name"
-          />
-          <label class="cursor-pointer" for="addition-check"> Addition</label
-          ><br />
-          <input
-            class="m-2 h-5 w-5 cursor-pointer"
-            type="checkbox"
-            id="subtraction-check"
-            name="subtraction-check"
-          />
-          <label class="cursor-pointer" for="subtraction-check">
-            Subtraction</label
-          ><br />
-          <input
-            class="m-2 h-5 w-5 cursor-pointer"
-            type="checkbox"
-            id="multiplication-check"
-            name="multiplication-check"
-          />
-          <label class="cursor-pointer" for="multiplication-check">
-            Multiplication</label
-          ><br />
-          <input
-            class="m-2 h-5 w-5 cursor-pointer"
-            type="checkbox"
-            id="division-check"
-            name="division-check"
-          />
-          <label class="cursor-pointer" for="division-check"> Division</label
-          ><br />
-        </fieldset>
-      </div>
-      <div class="color-choices flex gap-3">
-        <div
-          name="blue"
-          class="border2 h-12 w-12 rounded border-solid border-slate-200 bg-blue-300"
-        ></div>
-        <div
-          name="red"
-          class="border2 h-12 w-12 rounded border-solid border-slate-200 bg-red-300"
-        ></div>
-        <div
-          name="yellow"
-          class="border2 h-12 w-12 rounded border-solid border-slate-200 bg-yellow-300"
-        ></div>
-        <div
-          name="green"
-          class="border2 h-12 w-12 rounded border-solid border-slate-200 bg-green-300"
-        ></div>
-      </div>
-      <div>
-        <button
-          class="my-4 rounded bg-blue-500 py-2 px-4 font-bold text-white hover:bg-blue-700"
-          id="save-button"
-        >
-          CREATE
-        </button>
+    <div
+      id="modal"
+      class="modal fixed top-0 left-0 z-10 hidden h-full w-full overflow-y-auto overflow-x-hidden outline-none transition-opacity duration-500 ease-in-out"
+    >
+      <div
+        class="m-auto mt-10 flex w-72 flex-col items-center rounded-lg border-solid border-slate-500 bg-slate-200"
+      >
+        <div class="my-3 p-3 text-2xl">
+          <fieldset class="px-6 py-6">
+            <input
+              class="m-2 h-5 w-5 cursor-pointer"
+              type="checkbox"
+              id="addition-check"
+              name="name"
+              checked
+            />
+            <label class="cursor-pointer" for="addition-check"> Addition</label
+            ><br />
+            <input
+              class="m-2 h-5 w-5 cursor-pointer"
+              type="checkbox"
+              id="subtraction-check"
+              name="subtraction-check"
+              checked
+            />
+            <label class="cursor-pointer" for="subtraction-check">
+              Subtraction</label
+            ><br />
+            <input
+              class="m-2 h-5 w-5 cursor-pointer"
+              type="checkbox"
+              id="multiplication-check"
+              name="multiplication-check"
+              checked
+            />
+            <label class="cursor-pointer" for="multiplication-check">
+              Multiplication</label
+            ><br />
+            <input
+              class="m-2 h-5 w-5 cursor-pointer"
+              type="checkbox"
+              id="division-check"
+              name="division-check"
+              checked
+            />
+            <label class="cursor-pointer" for="division-check"> Division</label
+            ><br />
+          </fieldset>
+        </div>
+        <div class="color-choices flex gap-3">
+          <div
+            name="blue"
+            class="border2 h-12 w-12 rounded border-solid border-slate-200 bg-blue-300"
+          ></div>
+          <div
+            name="red"
+            class="border2 h-12 w-12 rounded border-solid border-slate-200 bg-red-300"
+          ></div>
+          <div
+            name="yellow"
+            class="border2 h-12 w-12 rounded border-solid border-slate-200 bg-yellow-300"
+          ></div>
+          <div
+            name="green"
+            class="border2 h-12 w-12 rounded border-solid border-slate-200 bg-green-300"
+          ></div>
+        </div>
+        <div>
+          <button
+            class="my-6 rounded bg-blue-500 py-2 px-4 font-bold text-white hover:bg-blue-700"
+            id="save-button"
+          >
+            CREATE
+          </button>
+        </div>
       </div>
     </div>
 

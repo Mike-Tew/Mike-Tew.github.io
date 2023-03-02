@@ -10,6 +10,7 @@ export default class Settings {
     this.colorChoices = document.querySelectorAll('.color-choices div')
     this.currentColor = 'blue'
 
+    this.colorChoices[0].style.borderColor = 'rgb(100 116 139)'
     this.colorChoices.forEach((color) => {
       color.addEventListener('click', () => {
         this.updateColorBorders()
