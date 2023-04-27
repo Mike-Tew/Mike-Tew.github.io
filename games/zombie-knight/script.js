@@ -89,14 +89,27 @@ const createMonster = () => {
 }
 
 const handleMonsterMovement = (monster) => {
-  if (monster.x - 100 < player.x && monster.y - 100 < player.y && monster.y + 100 > player.y) {
-    // console.log(monster.x);
+  if (checkMonsterDistance(monster)) {
+    monster.frameY = 1
     monster.x += monster.speed
+    if (monster.frameX < 2) monster.frameX++
+    else monster.frameX = 0
     return
   }
+
+  monster.frameY = 3
   monster.x -= monster.speed
   if (monster.frameX < 2) monster.frameX++
   else monster.frameX = 0
+}
+
+const checkMonsterDistance = (monster) => {
+  return (
+    monster.x > player.x &&
+    monster.x - 100 < player.x &&
+    monster.y - 100 < player.y &&
+    monster.y + 50 > player.y
+  )
 }
 
 const drawSprite = (img, sX, sY, sW, sH, dX, dY, dW, dH) => {
@@ -133,7 +146,7 @@ const handlePlayerFrame = () => {
 
 const handleMonsterCollision = (monster) => {
   return (
-    monster.x < player.x + player.width &&
+    monster.x < player.x + player.width - 20 &&
     monster.x + monster.width > player.x + 40 &&
     monster.y < player.y + player.height &&
     monster.y + monster.height > player.y
