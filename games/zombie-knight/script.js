@@ -1,6 +1,3 @@
-// Todos
-// Add a rudimentary AI system
-
 // ================ Canvas Setup ===============
 const canvas = document.getElementById('game-canvas')
 const ctx = canvas.getContext('2d')
@@ -61,18 +58,16 @@ class Monster {
   }
 
   setDirection(direction) {
+    this.direction = direction
     switch (direction) {
       case 'down':
         this.frameY = 0
-        this.y += this.speed
         break
       case 'up':
         this.frameY = 2
-        this.y -= this.speed
         break
       default:
         this.frameY = 3
-        this.x -= this.speed
     }
     this.updateFrame()
   }
@@ -80,6 +75,18 @@ class Monster {
   updateFrame() {
     if (this.frameX < 2) this.frameX++
     else this.frameX = 0
+  }
+
+  updateLocation() {
+    if (this.y < 0 || this.y > canvas.height - this.height) {
+      this.x -= this.speed
+    } else if (this.direction == 'left') {
+      this.x -= this.speed
+    } else if (this.direction == 'down') {
+      this.y += this.speed
+    } else if (this.direction == 'up') {
+      this.y -= this.speed
+    }
   }
 
   draw() {
@@ -111,7 +118,7 @@ const createMonster = () => {
   monsters.push(new Monster(sprite, y, speed))
 }
 
-const handleMonsterMovement = (monster) => {
+const setMonsterDirection = (monster) => {
   if (isAbove(monster)) {
     monster.setDirection('up')
   } else if (isBelow(monster)) {
@@ -278,7 +285,8 @@ const animate = () => {
     })
 
     monsters.forEach((monster) => {
-      handleMonsterMovement(monster)
+      setMonsterDirection(monster)
+      monster.updateLocation()
       monster.draw()
       if (monster.x <= 50) {
         lives -= 1
