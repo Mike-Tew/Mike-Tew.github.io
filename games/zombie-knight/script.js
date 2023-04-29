@@ -57,6 +57,29 @@ class Monster {
     this.frameX = 0
     this.frameY = 3
     this.speed = speed
+    this.direction = 'left'
+  }
+
+  setDirection(direction) {
+    switch (direction) {
+      case 'down':
+        this.frameY = 0
+        this.y += this.speed
+        break
+      case 'up':
+        this.frameY = 2
+        this.y -= this.speed
+        break
+      default:
+        this.frameY = 3
+        this.x -= this.speed
+    }
+    this.updateFrame()
+  }
+
+  updateFrame() {
+    if (this.frameX < 2) this.frameX++
+    else this.frameX = 0
   }
 
   draw() {
@@ -89,26 +112,38 @@ const createMonster = () => {
 }
 
 const handleMonsterMovement = (monster) => {
-  if (checkMonsterDistance(monster)) {
-    monster.frameY = 1
-    monster.x += monster.speed
-    if (monster.frameX < 2) monster.frameX++
-    else monster.frameX = 0
-    return
+  if (isAbove(monster)) {
+    monster.setDirection('up')
+  } else if (isBelow(monster)) {
+    monster.setDirection('down')
+  } else {
+    monster.setDirection('left')
   }
-
-  monster.frameY = 3
-  monster.x -= monster.speed
-  if (monster.frameX < 2) monster.frameX++
-  else monster.frameX = 0
 }
 
-const checkMonsterDistance = (monster) => {
+const isNear = (monster) => {
+  return Math.sqrt(monster.x)
+}
+
+const isAhead = (monster) => {
+  return monster.x < player.x
+}
+
+const isAbove = (monster) => {
   return (
     monster.x > player.x &&
-    monster.x - 100 < player.x &&
-    monster.y - 100 < player.y &&
-    monster.y + 50 > player.y
+    monster.x - player.x < 100 &&
+    monster.y < player.y &&
+    player.y - monster.y < 100
+  )
+}
+
+const isBelow = (monster) => {
+  return (
+    monster.x > player.x &&
+    monster.x - player.x < 100 &&
+    monster.y > player.y &&
+    monster.y - player.y < 100
   )
 }
 
