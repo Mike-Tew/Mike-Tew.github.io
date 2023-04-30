@@ -1,5 +1,6 @@
 import Monster from './Monster.js'
 import { canvas, ctx } from './canvas.js'
+import { monsterSprites, playerSprite } from './sprites.js'
 
 // ================ Game Setup ===============
 let prevMonsterSpawn = 0
@@ -11,25 +12,6 @@ const spawnRate = 1000
 const keys = []
 const background = new Image()
 background.src = 'assests/canvas-image.jpg'
-
-// ======== Player And Monsters Sprites =========
-const playerSprite = new Image()
-playerSprite.src = 'assests/player.png'
-
-const monsterImages = [
-  'assests/zombie-0.png',
-  'assests/zombie-1.png',
-  'assests/zombie-2.png',
-  'assests/zombie-3.png',
-  'assests/zombie-4.png',
-  'assests/zombie-5.png'
-]
-const monsterSprites = []
-monsterImages.forEach((image) => {
-  const sprite = new Image()
-  sprite.src = image
-  monsterSprites.push(sprite)
-})
 
 // ========== Player And Monsters Objects =========
 const player = {
@@ -50,11 +32,11 @@ const getRandomInt = (max) => {
 let monsters = []
 
 const createMonster = () => {
-  const tttt = getRandomInt(canvas.height - 50)
+  const y = getRandomInt(canvas.height - 50)
   const speed = getRandomInt(5) + gameLevel
   const sprite =
     monsterSprites[Math.floor(Math.random() * monsterSprites.length)]
-  monsters.push(new Monster(sprite, tttt, speed))
+  monsters.push(new Monster(sprite, y, speed))
 }
 
 const setMonsterDirection = (monster) => {
