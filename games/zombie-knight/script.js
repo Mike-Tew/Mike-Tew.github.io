@@ -59,22 +59,22 @@ const isBelow = (monster) => {
 }
 
 const movePlayer = () => {
-  if (keys['w'] && player.y > 0) {
+  if ((keys['ArrowUp'] || keys['w']) && player.y > 0) {
     player.y -= player.speed
     player.frameY = 1
     player.moving = true
   }
-  if (keys['a'] && player.x > 0) {
+  if ((keys['ArrowLeft'] || keys['a']) && player.x > 0) {
     player.x -= player.speed
     player.frameY = 3
     player.moving = true
   }
-  if (keys['s'] && player.y < canvas.height - player.height) {
+  if ((keys['ArrowDown'] || keys['s']) && player.y < canvas.height - player.height) {
     player.y += player.speed
     player.frameY = 0
     player.moving = true
   }
-  if (keys['d'] && player.x < canvas.width - player.width) {
+  if ((keys['ArrowRight'] || keys['d']) && player.x < canvas.width - player.width) {
     player.x += player.speed
     player.frameY = 2
     player.moving = true
