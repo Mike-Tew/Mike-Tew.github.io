@@ -1,8 +1,7 @@
-// ================ Canvas Setup ===============
-const canvas = document.getElementById('game-canvas')
-const ctx = canvas.getContext('2d')
-canvas.width = 800
-canvas.height = 600
+import Monster from './Monster.js'
+import { canvas, ctx } from './canvas.js'
+
+// ================ Game Setup ===============
 let prevMonsterSpawn = 0
 let gameLevel = 1
 let levelScore = 0
@@ -44,66 +43,6 @@ const player = {
   speed: 10
 }
 
-class Monster {
-  constructor(sprite, y, speed) {
-    this.sprite = sprite
-    this.x = canvas.width
-    this.y = y
-    this.height = 36
-    this.width = 46
-    this.frameX = 0
-    this.frameY = 3
-    this.speed = speed
-    this.direction = 'left'
-  }
-
-  setDirection(direction) {
-    this.direction = direction
-    switch (direction) {
-      case 'down':
-        this.frameY = 0
-        break
-      case 'up':
-        this.frameY = 2
-        break
-      default:
-        this.frameY = 3
-    }
-    this.updateFrame()
-  }
-
-  updateFrame() {
-    if (this.frameX < 2) this.frameX++
-    else this.frameX = 0
-  }
-
-  updateLocation() {
-    if (this.y < 0 || this.y > canvas.height - this.height) {
-      this.x -= this.speed
-    } else if (this.direction == 'left') {
-      this.x -= this.speed
-    } else if (this.direction == 'down') {
-      this.y += this.speed
-    } else if (this.direction == 'up') {
-      this.y -= this.speed
-    }
-  }
-
-  draw() {
-    drawSprite(
-      this.sprite,
-      this.width * this.frameX,
-      this.height * this.frameY,
-      this.width,
-      this.height,
-      this.x,
-      this.y,
-      this.width,
-      this.height
-    )
-  }
-}
-
 const getRandomInt = (max) => {
   return Math.floor(Math.random() * max)
 }
@@ -111,11 +50,11 @@ const getRandomInt = (max) => {
 let monsters = []
 
 const createMonster = () => {
-  y = getRandomInt(canvas.height - 50)
-  speed = getRandomInt(5) + gameLevel
+  const tttt = getRandomInt(canvas.height - 50)
+  const speed = getRandomInt(5) + gameLevel
   const sprite =
     monsterSprites[Math.floor(Math.random() * monsterSprites.length)]
-  monsters.push(new Monster(sprite, y, speed))
+  monsters.push(new Monster(sprite, tttt, speed))
 }
 
 const setMonsterDirection = (monster) => {
@@ -126,14 +65,6 @@ const setMonsterDirection = (monster) => {
   } else {
     monster.setDirection('left')
   }
-}
-
-const isNear = (monster) => {
-  return Math.sqrt(monster.x)
-}
-
-const isAhead = (monster) => {
-  return monster.x < player.x
 }
 
 const isAbove = (monster) => {
@@ -152,10 +83,6 @@ const isBelow = (monster) => {
     monster.y > player.y &&
     monster.y - player.y < 100
   )
-}
-
-const drawSprite = (img, sX, sY, sW, sH, dX, dY, dW, dH) => {
-  ctx.drawImage(img, sX, sY, sW, sH, dX, dY, dW, dH)
 }
 
 const movePlayer = () => {
@@ -255,7 +182,7 @@ const animate = () => {
       ctx.strokeText(`Round ${gameLevel}`, 300, 200)
     }
 
-    drawSprite(
+    ctx.drawImage(
       playerSprite,
       player.width * player.frameX,
       player.height * player.frameY,
