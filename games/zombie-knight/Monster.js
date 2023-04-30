@@ -15,16 +15,9 @@ export default class Monster {
 
   setDirection(direction) {
     this.direction = direction
-    switch (direction) {
-      case 'down':
-        this.frameY = 0
-        break
-      case 'up':
-        this.frameY = 2
-        break
-      default:
-        this.frameY = 3
-    }
+    if (direction == 'left') this.frameY = 3
+    if (direction == 'down') this.frameY = 0
+    if (direction == 'up') this.frameY = 2
     this.updateFrame()
   }
 

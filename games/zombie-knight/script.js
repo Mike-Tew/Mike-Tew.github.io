@@ -1,6 +1,7 @@
 import Monster from './Monster.js'
+import Player from './Player.js'
 import { canvas, ctx } from './canvas.js'
-import { monsterSprites, playerSprite } from './sprites.js'
+import { monsterSprites } from './sprites.js'
 
 // ================ Game Setup ===============
 let prevMonsterSpawn = 0
@@ -13,17 +14,7 @@ const keys = []
 const background = new Image()
 background.src = 'assests/canvas-image.jpg'
 
-// ========== Player And Monsters Objects =========
-const player = {
-  x: canvas.width / 2,
-  y: canvas.height / 2,
-  width: 64,
-  height: 64,
-  frameX: 0,
-  frameY: 0,
-  moving: false,
-  speed: 10
-}
+const player = new Player()
 
 const getRandomInt = (max) => {
   return Math.floor(Math.random() * max)
@@ -88,11 +79,6 @@ const movePlayer = () => {
     player.frameY = 2
     player.moving = true
   }
-}
-
-const handlePlayerFrame = () => {
-  if (player.frameX < 4 && player.moving) player.frameX++
-  else player.frameX = 0
 }
 
 const handleMonsterCollision = (monster) => {
@@ -165,7 +151,7 @@ const animate = () => {
     }
 
     ctx.drawImage(
-      playerSprite,
+      player.sprite,
       player.width * player.frameX,
       player.height * player.frameY,
       player.width,
@@ -176,7 +162,7 @@ const animate = () => {
       player.height
     )
     movePlayer()
-    handlePlayerFrame()
+    player.updateFrame()
 
     monsters.forEach((monster, index) => {
       if (handleMonsterCollision(monster)) {
