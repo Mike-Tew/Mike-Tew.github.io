@@ -1,8 +1,8 @@
 import { canvas } from './canvas.js'
-import settings from './game-settings.js'
+import game from './Game.js'
 import { playerSprite } from './sprites.js'
 
-export default class Player {
+class Player {
   constructor() {
     this.sprite = playerSprite
     this.x =  canvas.width / 2,
@@ -21,18 +21,18 @@ export default class Player {
   }
 
   updateLocation() {
-    if ((settings.keys['ArrowUp'] || settings.keys['w']) && this.y > 0) {
+    if ((game.keys['ArrowUp'] || game.keys['w']) && this.y > 0) {
       this.y -= this.speed
       this.frameY = 1
       this.moving = true
     }
-    if ((settings.keys['ArrowLeft'] || settings.keys['a']) && this.x > 0) {
+    if ((game.keys['ArrowLeft'] || game.keys['a']) && this.x > 0) {
       this.x -= this.speed
       this.frameY = 3
       this.moving = true
     }
     if (
-      (settings.keys['ArrowDown'] || settings.keys['s']) &&
+      (game.keys['ArrowDown'] || game.keys['s']) &&
       this.y < canvas.height - this.height
     ) {
       this.y += this.speed
@@ -40,7 +40,7 @@ export default class Player {
       this.moving = true
     }
     if (
-      (settings.keys['ArrowRight'] || settings.keys['d']) &&
+      (game.keys['ArrowRight'] || game.keys['d']) &&
       this.x < canvas.width - this.width
     ) {
       this.x += this.speed
@@ -49,3 +49,7 @@ export default class Player {
     }
   }
 }
+
+const player = new Player()
+
+export default player

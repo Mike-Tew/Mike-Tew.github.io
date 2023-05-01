@@ -1,43 +1,11 @@
+import game from './Game.js'
 import Monster from './Monster.js'
-import Player from './Player.js'
+import monsterAi from './MonsterAi.js'
+import player from './Player.js'
 import { canvas, ctx } from './canvas.js'
-import settings from './game-settings.js'
-import MonsterAi from './monsterAi.js'
 
-// ================ Game Setup ===============
 const background = new Image()
 background.src = 'assests/canvas-image.jpg'
-let monsters = []
-const player = new Player()
-const monsterAi = new MonsterAi()
-
-const setMonsterDirection = (monster) => {
-  if (isAbove(monster)) {
-    monster.setDirection('up')
-  } else if (isBelow(monster)) {
-    monster.setDirection('down')
-  } else {
-    monster.setDirection('left')
-  }
-}
-
-const isAbove = (monster) => {
-  return (
-    monster.x > player.x &&
-    monster.x - player.x < 100 &&
-    monster.y < player.y &&
-    player.y - monster.y < 100
-  )
-}
-
-const isBelow = (monster) => {
-  return (
-    monster.x > player.x &&
-    monster.x - player.x < 100 &&
-    monster.y > player.y &&
-    monster.y - player.y < 100
-  )
-}
 
 const handleMonsterCollision = (monster) => {
   return (
@@ -49,11 +17,11 @@ const handleMonsterCollision = (monster) => {
 }
 
 window.addEventListener('keydown', (e) => {
-  settings.keys[e.key] = true
+  game.keys[e.key] = true
 })
 
 window.addEventListener('keyup', (e) => {
-  delete settings.keys[e.key]
+  delete game.keys[e.key]
   player.moving = false
 })
 
@@ -69,21 +37,18 @@ const startAnimation = (fps) => {
 }
 
 const resetGame = () => {
-  settings.lives = 5
-  settings.score = 0
-  settings.levelScore = 0
-  settings.gameLevel = 1
-  monsters = []
+  game.lives = 5
+  game.score = 0
+  game.roundScore = 0
+  game.round = 1
+  game.monsters = []
   countdown = Date.now() + 4000
 }
 
 const animate = () => {
-  if (
-    Date.now() - settings.prevSpawn > settings.spawnRate &&
-    countdown <= Date.now()
-  ) {
-    monsters.push(new Monster())
-    settings.prevSpawn = Date.now()
+  if (Date.now() - game.prevSpawn > game.spawnRate && countdown <= Date.now()) {
+    game.monsters.push(new Monster())
+    game.prevSpawn = Date.now()
   }
 
   now = Date.now()
@@ -95,11 +60,11 @@ const animate = () => {
 
     ctx.font = 'bold 36px Arial'
     ctx.fillStyle = '#ee1c27'
-    ctx.fillText(`SCORE   ${settings.score}`, 525, 70)
-    ctx.strokeText(`SCORE   ${settings.score}`, 525, 70)
+    ctx.fillText(`SCORE   ${game.score}`, 525, 70)
+    ctx.strokeText(`SCORE   ${game.score}`, 525, 70)
     ctx.fillStyle = '#2bb3ed'
-    ctx.fillText(`LIVES   ${settings.lives}`, 50, 70)
-    ctx.strokeText(`LIVES   ${settings.lives}`, 50, 70)
+    ctx.fillText(`LIVES   ${game.lives}`, 50, 70)
+    ctx.strokeText(`LIVES   ${game.lives}`, 50, 70)
 
     if (countdown > Date.now()) {
       ctx.font = 'bold 50px Arial'
@@ -107,8 +72,8 @@ const animate = () => {
       ctx.fillText('GET READY', 250, 300)
       ctx.strokeText('GET READY', 250, 300)
       ctx.fillStyle = '#fff30a'
-      ctx.fillText(`Round ${settings.gameLevel}`, 300, 200)
-      ctx.strokeText(`Round ${settings.gameLevel}`, 300, 200)
+      ctx.fillText(`Round ${game.round}`, 300, 200)
+      ctx.strokeText(`Round ${game.round}`, 300, 200)
     }
 
     ctx.drawImage(
@@ -126,41 +91,40 @@ const animate = () => {
     player.updateLocation()
     player.updateFrame()
 
-    monsters.forEach((monster, index) => {
+    game.monsters.forEach((monster, index) => {
       if (handleMonsterCollision(monster)) {
-        monsters.splice(index, 1)
-        settings.score += monster.speed + settings.gameLevel
-        settings.levelScore++
-        if (settings.levelScore >= 20) {
-          monsters = []
-          settings.gameLevel += 1
-          settings.levelScore = 0
-          settings.lives++
+        game.monsters.splice(index, 1)
+        game.score += monster.speed + game.round
+        game.roundScore++
+        if (game.roundScore >= 20) {
+          game.monsters = []
+          game.round += 1
+          game.roundScore = 0
+          game.lives++
           countdown = Date.now() + 4000
         }
       }
     })
 
-    monsters.forEach((monster) => {
-      // setMonsterDirection(monster)
+    game.monsters.forEach((monster) => {
       const direction = monsterAi.calculateAi(
         monster.x,
         monster.y,
         player.x,
         player.y
       )
-      // console.log(direction);
+
       monster.setDirection(direction)
       monster.updateLocation()
       monster.draw()
       if (monster.x <= 50) {
-        settings.lives -= 1
+        game.lives -= 1
         monster.remove = true
       }
     })
-    monsters = monsters.filter((monster) => monster.remove != true)
+    game.monsters = game.monsters.filter((monster) => monster.remove != true)
 
-    if (settings.lives <= 0) {
+    if (game.lives <= 0) {
       resetGame()
     }
   }

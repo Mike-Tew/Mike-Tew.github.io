@@ -1,4 +1,4 @@
-export default class MonsterAi {
+class MonsterAi {
   constructor() {
     this.proximity = 100
   }
@@ -28,3 +28,7 @@ export default class MonsterAi {
     return monsterY > playerY
   }
 }
+
+const monsterAi = new MonsterAi()
+
+export default monsterAi
