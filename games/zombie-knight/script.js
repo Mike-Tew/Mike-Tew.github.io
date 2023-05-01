@@ -2,13 +2,14 @@ import Monster from './Monster.js'
 import Player from './Player.js'
 import { canvas, ctx } from './canvas.js'
 import settings from './game-settings.js'
+import MonsterAi from './monsterAi.js'
 
 // ================ Game Setup ===============
 const background = new Image()
 background.src = 'assests/canvas-image.jpg'
-const keys = []
 let monsters = []
 const player = new Player()
+const monsterAi = new MonsterAi()
 
 const setMonsterDirection = (monster) => {
   if (isAbove(monster)) {
@@ -47,41 +48,12 @@ const handleMonsterCollision = (monster) => {
   )
 }
 
-const movePlayer = () => {
-  if ((keys['ArrowUp'] || keys['w']) && player.y > 0) {
-    player.y -= player.speed
-    player.frameY = 1
-    player.moving = true
-  }
-  if ((keys['ArrowLeft'] || keys['a']) && player.x > 0) {
-    player.x -= player.speed
-    player.frameY = 3
-    player.moving = true
-  }
-  if (
-    (keys['ArrowDown'] || keys['s']) &&
-    player.y < canvas.height - player.height
-  ) {
-    player.y += player.speed
-    player.frameY = 0
-    player.moving = true
-  }
-  if (
-    (keys['ArrowRight'] || keys['d']) &&
-    player.x < canvas.width - player.width
-  ) {
-    player.x += player.speed
-    player.frameY = 2
-    player.moving = true
-  }
-}
-
 window.addEventListener('keydown', (e) => {
-  keys[e.key] = true
+  settings.keys[e.key] = true
 })
 
 window.addEventListener('keyup', (e) => {
-  delete keys[e.key]
+  delete settings.keys[e.key]
   player.moving = false
 })
 
@@ -150,7 +122,8 @@ const animate = () => {
       player.width,
       player.height
     )
-    movePlayer()
+
+    player.updateLocation()
     player.updateFrame()
 
     monsters.forEach((monster, index) => {
@@ -169,7 +142,15 @@ const animate = () => {
     })
 
     monsters.forEach((monster) => {
-      setMonsterDirection(monster)
+      // setMonsterDirection(monster)
+      const direction = monsterAi.calculateAi(
+        monster.x,
+        monster.y,
+        player.x,
+        player.y
+      )
+      // console.log(direction);
+      monster.setDirection(direction)
       monster.updateLocation()
       monster.draw()
       if (monster.x <= 50) {
