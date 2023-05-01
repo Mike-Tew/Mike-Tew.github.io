@@ -3,18 +3,8 @@ import Monster from './Monster.js'
 import monsterAi from './MonsterAi.js'
 import player from './Player.js'
 import { canvas, ctx } from './canvas.js'
-
-const background = new Image()
-background.src = 'assests/canvas-image.jpg'
-
-const handleMonsterCollision = (monster) => {
-  return (
-    monster.x < player.x + player.width - 20 &&
-    monster.x + monster.width > player.x + 40 &&
-    monster.y < player.y + player.height &&
-    monster.y + monster.height > player.y
-  )
-}
+import { canvasImg } from './sprites.js'
+import { drawSprite, handleMonsterCollision } from './utils.js'
 
 window.addEventListener('keydown', (e) => {
   game.keys[e.key] = true
@@ -27,7 +17,6 @@ window.addEventListener('keyup', (e) => {
 
 // ============ Animation Loop =============
 let fps, fpsInterval, startTime, now, then, elapsed
-let countdown = Date.now() + 4000
 
 const startAnimation = (fps) => {
   fpsInterval = 1000 / fps
@@ -36,17 +25,11 @@ const startAnimation = (fps) => {
   animate()
 }
 
-const resetGame = () => {
-  game.lives = 5
-  game.score = 0
-  game.roundScore = 0
-  game.round = 1
-  game.monsters = []
-  countdown = Date.now() + 4000
-}
-
 const animate = () => {
-  if (Date.now() - game.prevSpawn > game.spawnRate && countdown <= Date.now()) {
+  if (
+    Date.now() - game.prevSpawn > game.spawnRate &&
+    game.countdown <= Date.now()
+  ) {
     game.monsters.push(new Monster())
     game.prevSpawn = Date.now()
   }
@@ -56,7 +39,7 @@ const animate = () => {
   if (elapsed > fpsInterval) {
     then = now - (elapsed % fpsInterval)
     ctx.clearRect(0, 0, canvas.width, canvas.height)
-    ctx.drawImage(background, 0, 0, canvas.width, canvas.height)
+    ctx.drawImage(canvasImg, 0, 0, canvas.width, canvas.height)
 
     ctx.font = 'bold 36px Arial'
     ctx.fillStyle = '#ee1c27'
@@ -66,7 +49,7 @@ const animate = () => {
     ctx.fillText(`LIVES   ${game.lives}`, 50, 70)
     ctx.strokeText(`LIVES   ${game.lives}`, 50, 70)
 
-    if (countdown > Date.now()) {
+    if (game.countdown > Date.now()) {
       ctx.font = 'bold 50px Arial'
       ctx.fillStyle = '#ee1c27'
       ctx.fillText('GET READY', 250, 300)
@@ -76,24 +59,13 @@ const animate = () => {
       ctx.strokeText(`Round ${game.round}`, 300, 200)
     }
 
-    ctx.drawImage(
-      player.sprite,
-      player.width * player.frameX,
-      player.height * player.frameY,
-      player.width,
-      player.height,
-      player.x,
-      player.y,
-      player.width,
-      player.height
-    )
-
     player.updateLocation()
     player.updateFrame()
+    drawSprite(player)
 
-    game.monsters.forEach((monster, index) => {
-      if (handleMonsterCollision(monster)) {
-        game.monsters.splice(index, 1)
+    game.monsters.forEach((monster) => {
+      if (handleMonsterCollision(monster, player)) {
+        monster.remove = true
         game.score += monster.speed + game.round
         game.roundScore++
         if (game.roundScore >= 20) {
@@ -101,7 +73,7 @@ const animate = () => {
           game.round += 1
           game.roundScore = 0
           game.lives++
-          countdown = Date.now() + 4000
+          game.countdown = Date.now() + 4000
         }
       }
     })
@@ -116,8 +88,9 @@ const animate = () => {
 
       monster.setDirection(direction)
       monster.updateLocation()
-      monster.draw()
-      if (monster.x <= 50) {
+      drawSprite(monster)
+
+      if (monster.x < 0) {
         game.lives -= 1
         monster.remove = true
       }
@@ -125,7 +98,7 @@ const animate = () => {
     game.monsters = game.monsters.filter((monster) => monster.remove != true)
 
     if (game.lives <= 0) {
-      resetGame()
+      game.reset()
     }
   }
 

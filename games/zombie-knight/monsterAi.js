@@ -3,7 +3,7 @@ class MonsterAi {
     this.proximity = 100
   }
 
-  calculateAi = (monsterX, monsterY, playerX, playerY) => {
+  calculateAi(monsterX, monsterY, playerX, playerY) {
     if (this.isAhead(monsterX, playerX)) return 'left'
     if (!this.isNear(monsterX, monsterY, playerX, playerY)) return 'left'
     if (this.isAbove(monsterY, playerY)) return 'up'
@@ -11,20 +11,20 @@ class MonsterAi {
     return 'left'
   }
 
-  isAhead = (monsterX, playerX) => {
+  isAhead(monsterX, playerX) {
     return monsterX < playerX
   }
 
-  isNear = (monsterX, monsterY, playerX, playerY) => {
+  isNear(monsterX, monsterY, playerX, playerY) {
     const monsterDist = Math.hypot(playerX - monsterX, playerY - monsterY)
     return monsterDist < this.proximity
   }
 
-  isAbove = (monsterY, playerY) => {
+  isAbove(monsterY, playerY) {
     return monsterY < playerY
   }
 
-  isBelow = (monsterY, playerY) => {
+  isBelow(monsterY, playerY) {
     return monsterY > playerY
   }
 }

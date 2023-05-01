@@ -1,3 +1,6 @@
+const canvasImg = new Image()
+canvasImg.src = 'assests/canvas-image.jpg'
+
 const playerSprite = new Image()
 playerSprite.src = 'assests/player.png'
 
@@ -17,5 +20,4 @@ monsterImages.forEach((image) => {
   monsterSprites.push(sprite)
 })
 
-export { monsterSprites, playerSprite }
-
+export { canvasImg, monsterSprites, playerSprite }

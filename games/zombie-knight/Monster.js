@@ -1,4 +1,5 @@
-import { canvas, ctx } from './canvas.js'
+import game from './Game.js'
+import { canvas } from './canvas.js'
 import { monsterSprites } from './sprites.js'
 
 export default class Monster {
@@ -10,7 +11,7 @@ export default class Monster {
     this.width = 46
     this.frameX = 0
     this.frameY = 3
-    this.speed = this.getRandomInt(5) + 1
+    this.speed = this.getRandomInt(5) + game.round
     this.direction = 'left'
   }
 
@@ -47,19 +48,5 @@ export default class Monster {
     } else if (this.direction == 'up') {
       this.y -= this.speed
     }
-  }
-
-  draw() {
-    ctx.drawImage(
-      this.sprite,
-      this.width * this.frameX,
-      this.height * this.frameY,
-      this.width,
-      this.height,
-      this.x,
-      this.y,
-      this.width,
-      this.height
-    )
   }
 }
