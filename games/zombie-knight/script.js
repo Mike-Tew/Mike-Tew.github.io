@@ -1,34 +1,14 @@
 import Monster from './Monster.js'
 import Player from './Player.js'
 import { canvas, ctx } from './canvas.js'
-import { monsterSprites } from './sprites.js'
+import settings from './game-settings.js'
 
 // ================ Game Setup ===============
-let prevMonsterSpawn = 0
-let gameLevel = 1
-let levelScore = 0
-let lives = 5
-let score = 0
-const spawnRate = 1000
-const keys = []
 const background = new Image()
 background.src = 'assests/canvas-image.jpg'
-
-const player = new Player()
-
-const getRandomInt = (max) => {
-  return Math.floor(Math.random() * max)
-}
-
+const keys = []
 let monsters = []
-
-const createMonster = () => {
-  const y = getRandomInt(canvas.height - 50)
-  const speed = getRandomInt(5) + gameLevel
-  const sprite =
-    monsterSprites[Math.floor(Math.random() * monsterSprites.length)]
-  monsters.push(new Monster(sprite, y, speed))
-}
+const player = new Player()
 
 const setMonsterDirection = (monster) => {
   if (isAbove(monster)) {
@@ -58,6 +38,15 @@ const isBelow = (monster) => {
   )
 }
 
+const handleMonsterCollision = (monster) => {
+  return (
+    monster.x < player.x + player.width - 20 &&
+    monster.x + monster.width > player.x + 40 &&
+    monster.y < player.y + player.height &&
+    monster.y + monster.height > player.y
+  )
+}
+
 const movePlayer = () => {
   if ((keys['ArrowUp'] || keys['w']) && player.y > 0) {
     player.y -= player.speed
@@ -69,25 +58,22 @@ const movePlayer = () => {
     player.frameY = 3
     player.moving = true
   }
-  if ((keys['ArrowDown'] || keys['s']) && player.y < canvas.height - player.height) {
+  if (
+    (keys['ArrowDown'] || keys['s']) &&
+    player.y < canvas.height - player.height
+  ) {
     player.y += player.speed
     player.frameY = 0
     player.moving = true
   }
-  if ((keys['ArrowRight'] || keys['d']) && player.x < canvas.width - player.width) {
+  if (
+    (keys['ArrowRight'] || keys['d']) &&
+    player.x < canvas.width - player.width
+  ) {
     player.x += player.speed
     player.frameY = 2
     player.moving = true
   }
-}
-
-const handleMonsterCollision = (monster) => {
-  return (
-    monster.x < player.x + player.width - 20 &&
-    monster.x + monster.width > player.x + 40 &&
-    monster.y < player.y + player.height &&
-    monster.y + monster.height > player.y
-  )
 }
 
 window.addEventListener('keydown', (e) => {
@@ -111,18 +97,21 @@ const startAnimation = (fps) => {
 }
 
 const resetGame = () => {
-  lives = 5
-  score = 0
-  levelScore = 0
-  gameLevel = 1
+  settings.lives = 5
+  settings.score = 0
+  settings.levelScore = 0
+  settings.gameLevel = 1
   monsters = []
   countdown = Date.now() + 4000
 }
 
 const animate = () => {
-  if (Date.now() - prevMonsterSpawn > spawnRate && countdown <= Date.now()) {
-    createMonster()
-    prevMonsterSpawn = Date.now()
+  if (
+    Date.now() - settings.prevSpawn > settings.spawnRate &&
+    countdown <= Date.now()
+  ) {
+    monsters.push(new Monster())
+    settings.prevSpawn = Date.now()
   }
 
   now = Date.now()
@@ -134,11 +123,11 @@ const animate = () => {
 
     ctx.font = 'bold 36px Arial'
     ctx.fillStyle = '#ee1c27'
-    ctx.fillText(`SCORE   ${score}`, 525, 70)
-    ctx.strokeText(`SCORE   ${score}`, 525, 70)
+    ctx.fillText(`SCORE   ${settings.score}`, 525, 70)
+    ctx.strokeText(`SCORE   ${settings.score}`, 525, 70)
     ctx.fillStyle = '#2bb3ed'
-    ctx.fillText(`LIVES   ${lives}`, 50, 70)
-    ctx.strokeText(`LIVES   ${lives}`, 50, 70)
+    ctx.fillText(`LIVES   ${settings.lives}`, 50, 70)
+    ctx.strokeText(`LIVES   ${settings.lives}`, 50, 70)
 
     if (countdown > Date.now()) {
       ctx.font = 'bold 50px Arial'
@@ -146,8 +135,8 @@ const animate = () => {
       ctx.fillText('GET READY', 250, 300)
       ctx.strokeText('GET READY', 250, 300)
       ctx.fillStyle = '#fff30a'
-      ctx.fillText(`Round ${gameLevel}`, 300, 200)
-      ctx.strokeText(`Round ${gameLevel}`, 300, 200)
+      ctx.fillText(`Round ${settings.gameLevel}`, 300, 200)
+      ctx.strokeText(`Round ${settings.gameLevel}`, 300, 200)
     }
 
     ctx.drawImage(
@@ -167,13 +156,13 @@ const animate = () => {
     monsters.forEach((monster, index) => {
       if (handleMonsterCollision(monster)) {
         monsters.splice(index, 1)
-        score += monster.speed + gameLevel
-        levelScore++
-        if (levelScore >= 20) {
+        settings.score += monster.speed + settings.gameLevel
+        settings.levelScore++
+        if (settings.levelScore >= 20) {
           monsters = []
-          gameLevel += 1
-          levelScore = 0
-          lives++
+          settings.gameLevel += 1
+          settings.levelScore = 0
+          settings.lives++
           countdown = Date.now() + 4000
         }
       }
@@ -184,13 +173,13 @@ const animate = () => {
       monster.updateLocation()
       monster.draw()
       if (monster.x <= 50) {
-        lives -= 1
+        settings.lives -= 1
         monster.remove = true
       }
     })
     monsters = monsters.filter((monster) => monster.remove != true)
 
-    if (lives <= 0) {
+    if (settings.lives <= 0) {
       resetGame()
     }
   }
