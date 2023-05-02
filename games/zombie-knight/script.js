@@ -2,9 +2,7 @@ import game from './Game.js'
 import Monster from './Monster.js'
 import monsterAi from './MonsterAi.js'
 import player from './Player.js'
-import { canvas, ctx } from './canvas.js'
-import { canvasImg } from './sprites.js'
-import { drawSprite, handleMonsterCollision } from './utils.js'
+import { drawNewRound, drawScore, drawSprite, resetCanvas } from './canvasUtils.js'
 
 window.addEventListener('keydown', (e) => {
   game.keys[e.key] = true
@@ -38,45 +36,17 @@ const animate = () => {
   elapsed = now - then
   if (elapsed > fpsInterval) {
     then = now - (elapsed % fpsInterval)
-    ctx.clearRect(0, 0, canvas.width, canvas.height)
-    ctx.drawImage(canvasImg, 0, 0, canvas.width, canvas.height)
-
-    ctx.font = 'bold 36px Arial'
-    ctx.fillStyle = '#ee1c27'
-    ctx.fillText(`SCORE   ${game.score}`, 525, 70)
-    ctx.strokeText(`SCORE   ${game.score}`, 525, 70)
-    ctx.fillStyle = '#2bb3ed'
-    ctx.fillText(`LIVES   ${game.lives}`, 50, 70)
-    ctx.strokeText(`LIVES   ${game.lives}`, 50, 70)
+    resetCanvas()
 
     if (game.countdown > Date.now()) {
-      ctx.font = 'bold 50px Arial'
-      ctx.fillStyle = '#ee1c27'
-      ctx.fillText('GET READY', 250, 300)
-      ctx.strokeText('GET READY', 250, 300)
-      ctx.fillStyle = '#fff30a'
-      ctx.fillText(`Round ${game.round}`, 300, 200)
-      ctx.strokeText(`Round ${game.round}`, 300, 200)
+      drawNewRound()
     }
-
+    drawScore()
     player.updateLocation()
     player.updateFrame()
     drawSprite(player)
 
-    game.monsters.forEach((monster) => {
-      if (handleMonsterCollision(monster, player)) {
-        monster.remove = true
-        game.score += monster.speed + game.round
-        game.roundScore++
-        if (game.roundScore >= 20) {
-          game.monsters = []
-          game.round += 1
-          game.roundScore = 0
-          game.lives++
-          game.countdown = Date.now() + 4000
-        }
-      }
-    })
+    game.checkMonsterStatus()
 
     game.monsters.forEach((monster) => {
       const direction = monsterAi.calculateAi(
@@ -95,7 +65,8 @@ const animate = () => {
         monster.remove = true
       }
     })
-    game.monsters = game.monsters.filter((monster) => monster.remove != true)
+
+    game.removeDeadMonsters()
 
     if (game.lives <= 0) {
       game.reset()
