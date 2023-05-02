@@ -1,3 +1,5 @@
+import Monster from './Monster.js'
+import monsterAi from './MonsterAi.js'
 import player from './Player.js'
 
 class Game {
@@ -11,6 +13,35 @@ class Game {
     this.keys = []
     this.monsters = []
     this.countdown = Date.now() + 4000
+  }
+
+  spawnMonster() {
+    if (
+      Date.now() - this.prevSpawn > this.spawnRate &&
+      this.countdown <= Date.now()
+    ) {
+      this.monsters.push(new Monster())
+      this.prevSpawn = Date.now()
+    }
+  }
+
+  handleMonsterMovement() {
+    this.monsters.forEach((monster) => {
+      const direction = monsterAi.calculateAi(
+        monster.x,
+        monster.y,
+        player.x,
+        player.y
+      )
+
+      monster.setDirection(direction)
+      monster.updateLocation()
+
+      if (monster.x < 0) {
+        this.lives -= 1
+        monster.remove = true
+      }
+    })
   }
 
   checkMonsterStatus() {

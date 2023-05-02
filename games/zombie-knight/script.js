@@ -1,8 +1,11 @@
 import game from './Game.js'
-import Monster from './Monster.js'
-import monsterAi from './MonsterAi.js'
 import player from './Player.js'
-import { drawNewRound, drawScore, drawSprite, resetCanvas } from './canvasUtils.js'
+import {
+  drawNewRound,
+  drawScore,
+  drawSprite,
+  resetCanvas
+} from './canvasUtils.js'
 
 window.addEventListener('keydown', (e) => {
   game.keys[e.key] = true
@@ -24,13 +27,7 @@ const startAnimation = (fps) => {
 }
 
 const animate = () => {
-  if (
-    Date.now() - game.prevSpawn > game.spawnRate &&
-    game.countdown <= Date.now()
-  ) {
-    game.monsters.push(new Monster())
-    game.prevSpawn = Date.now()
-  }
+  game.spawnMonster()
 
   now = Date.now()
   elapsed = now - then
@@ -47,26 +44,9 @@ const animate = () => {
     drawSprite(player)
 
     game.checkMonsterStatus()
-
-    game.monsters.forEach((monster) => {
-      const direction = monsterAi.calculateAi(
-        monster.x,
-        monster.y,
-        player.x,
-        player.y
-      )
-
-      monster.setDirection(direction)
-      monster.updateLocation()
-      drawSprite(monster)
-
-      if (monster.x < 0) {
-        game.lives -= 1
-        monster.remove = true
-      }
-    })
-
+    game.handleMonsterMovement()
     game.removeDeadMonsters()
+    game.monsters.forEach((monster) => drawSprite(monster))
 
     if (game.lives <= 0) {
       game.reset()
