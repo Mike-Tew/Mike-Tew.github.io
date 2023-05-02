@@ -1,5 +1,5 @@
+import canvas from './Canvas.js'
 import game from './Game.js'
-import { canvas } from './canvas.js'
 import { monsterSprites } from './sprites.js'
 
 export default class Monster {

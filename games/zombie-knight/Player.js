@@ -1,12 +1,12 @@
-import { canvas } from './canvas.js'
+import canvas from './Canvas.js'
 import game from './Game.js'
 import { playerSprite } from './sprites.js'
 
 class Player {
   constructor() {
     this.sprite = playerSprite
-    this.x =  canvas.width / 2,
-    this.y = canvas.height / 2,
+    this.x = 800 / 2,
+    this.y = 600 / 2,
     this.width = 64,
     this.height = 64,
     this.frameX = 0,

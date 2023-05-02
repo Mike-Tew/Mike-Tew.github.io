@@ -21,3 +21,4 @@ monsterImages.forEach((image) => {
 })
 
 export { canvasImg, monsterSprites, playerSprite }
+

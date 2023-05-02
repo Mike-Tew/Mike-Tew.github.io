@@ -1,11 +1,6 @@
+import canvas from './Canvas.js'
 import game from './Game.js'
 import player from './Player.js'
-import {
-  drawNewRound,
-  drawScore,
-  drawSprite,
-  resetCanvas
-} from './canvasUtils.js'
 
 window.addEventListener('keydown', (e) => {
   game.keys[e.key] = true
@@ -33,20 +28,20 @@ const animate = () => {
   elapsed = now - then
   if (elapsed > fpsInterval) {
     then = now - (elapsed % fpsInterval)
-    resetCanvas()
+    canvas.resetCanvas()
 
     if (game.countdown > Date.now()) {
-      drawNewRound()
+      canvas.drawNewRound()
     }
-    drawScore()
+    canvas.drawScore()
     player.updateLocation()
     player.updateFrame()
-    drawSprite(player)
+    canvas.drawSprite(player)
 
     game.checkMonsterStatus()
     game.handleMonsterMovement()
     game.removeDeadMonsters()
-    game.monsters.forEach((monster) => drawSprite(monster))
+    game.monsters.forEach((monster) => canvas.drawSprite(monster))
 
     if (game.lives <= 0) {
       game.reset()
