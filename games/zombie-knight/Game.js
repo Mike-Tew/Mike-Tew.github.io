@@ -1,3 +1,4 @@
+import canvas from './Canvas.js'
 import Monster from './Monster.js'
 import monsterAi from './MonsterAi.js'
 import player from './Player.js'
@@ -10,11 +11,27 @@ class Game {
     this.reset()
   }
 
+  gameLoop() {
+    canvas.resetCanvas()
+    canvas.drawScore()
+    canvas.drawSprite(player)
+    if (this.countdown) {
+      canvas.drawNewRound()
+    }
+
+    player.updateLocation()
+    player.updateFrame()
+
+    this.spawnMonster()
+    this.checkMonsterStatus()
+    this.handleMonsterMovement()
+    this.monsters.forEach((monster) => canvas.drawSprite(monster))
+
+    this.update()
+  }
+
   spawnMonster() {
-    if (
-      Date.now() - this.prevSpawn > this.spawnRate &&
-      this.countdown <= Date.now()
-    ) {
+    if (Date.now() - this.prevSpawn > this.spawnRate && !this.countdown) {
       this.monsters.push(new Monster())
       this.prevSpawn = Date.now()
     }
@@ -61,27 +78,32 @@ class Game {
     )
   }
 
-  removeDeadMonsters() {
-    this.monsters = this.monsters.filter((monster) => monster.remove != true)
-  }
-
   nextRound() {
-    this.monsters = []
+    this.lives++
     this.round += 1
     this.roundScore = 0
-    this.lives++
-    this.countdown = Date.now() + 4000
+    this.monsters = []
+    this.countdown = true
+    this.countdownTimer = Date.now() + 4000
+  }
+
+  update() {
+    this.monsters = this.monsters.filter((monster) => monster.remove != true)
+    if (this.countdownTimer < Date.now()) this.countdown = false
+    if (this.lives <= 0) this.reset()
   }
 
   reset() {
     this.lives = 5
     this.score = 0
-    this.roundScore = 0
     this.round = 1
+    this.roundScore = 0
     this.monsters = []
-    this.countdown = Date.now() + 4000
+    this.countdown = true
+    this.countdownTimer = Date.now() + 4000
   }
 }
 
 const game = new Game()
+
 export default game
