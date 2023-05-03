@@ -15,6 +15,21 @@ class Player {
     this.speed = 10
   }
 
+  clickLoc(clickX, clickY) {
+    if (this.x > clickX) {
+      this.x -= this.speed
+    }
+    if (this.x < clickX) {
+      this.x += this.speed
+    }
+    if (this.y > clickY) {
+      this.y -= this.speed
+    }
+    if (this.y < clickY) {
+      this.y += this.speed
+    }
+  }
+
   updateFrame() {
     if (this.frameX < 4 && this.moving) this.frameX++
     else this.frameX = 0

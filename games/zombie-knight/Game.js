@@ -39,6 +39,11 @@ class Game {
 
   handleMonsterMovement() {
     this.monsters.forEach((monster) => {
+      if (monster.x < 0) {
+        this.lives -= 1
+        monster.remove = true
+      }
+
       const direction = monsterAi.calculateAi(
         monster.x,
         monster.y,
@@ -48,24 +53,16 @@ class Game {
 
       monster.setDirection(direction)
       monster.updateLocation()
-
-      if (monster.x < 0) {
-        this.lives -= 1
-        monster.remove = true
-      }
     })
   }
 
   checkMonsterStatus() {
     this.monsters.forEach((monster) => {
-      if (this.handleMonsterCollision(monster, player)) {
-        monster.remove = true
-        this.score += monster.speed + this.round
-        this.roundScore++
-        if (this.roundScore >= 20) {
-          this.nextRound()
-        }
-      }
+      if (!this.handleMonsterCollision(monster, player)) return
+
+      monster.remove = true
+      this.score += monster.speed + this.round
+      this.roundScore++
     })
   }
 
@@ -88,6 +85,7 @@ class Game {
   }
 
   update() {
+    if (this.roundScore >= 20) this.nextRound()
     this.monsters = this.monsters.filter((monster) => monster.remove != true)
     if (this.countdownTimer < Date.now()) this.countdown = false
     if (this.lives <= 0) this.reset()

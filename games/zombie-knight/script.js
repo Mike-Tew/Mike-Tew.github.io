@@ -10,6 +10,16 @@ window.addEventListener('keyup', (e) => {
   player.moving = false
 })
 
+const canvas = document.getElementById('game-canvas')
+canvas.addEventListener('click', (e) => {
+  const canvasOffset = canvas.getBoundingClientRect()
+  const clickX = e.x - canvasOffset.left
+  const clickY = e.y - canvasOffset.top
+
+  player.clickLoc(clickX, clickY)
+
+})
+
 // ============ Animation Loop =============
 let fps, fpsInterval, startTime, now, then, elapsed
 
