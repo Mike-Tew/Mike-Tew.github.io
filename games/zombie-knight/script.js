@@ -1,5 +1,5 @@
-import game from './Game.js';
-import player from './Player.js';
+import game from './Game.js'
+import player from './Player.js'
 
 window.addEventListener('keydown', (e) => {
   game.keys[e.key] = true
@@ -19,7 +19,6 @@ canvas.addEventListener('click', (e) => {
   player.clickMove = true
   player.clickX = clickX
   player.clickY = clickY
-  player.clickLoc()
 })
 
 // ============ Animation Loop =============

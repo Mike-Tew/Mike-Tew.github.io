@@ -1,4 +1,3 @@
-import canvas from './Canvas.js'
 import game from './Game.js'
 import { playerSprite } from './sprites.js'
 
@@ -27,29 +26,26 @@ class Player {
   }
 
   keyboardMove() {
-    if ((game.keys['ArrowUp'] || game.keys['w']) && this.y > 0) {
+    if ((game.keys['ArrowUp'] || game.keys['w'])) {
       this.updatePlayer(0, -this.speed)
     }
     if ((game.keys['ArrowLeft'] || game.keys['a']) && this.x > 0) {
       this.updatePlayer(-this.speed, 0)
     }
     if (
-      (game.keys['ArrowDown'] || game.keys['s']) &&
-      this.y < canvas.height - this.height
-    ) {
+      (game.keys['ArrowDown'] || game.keys['s'])) {
       this.updatePlayer(0, this.speed)
     }
     if (
-      (game.keys['ArrowRight'] || game.keys['d']) &&
-      this.x < canvas.width - this.width
-    ) {
+      (game.keys['ArrowRight'] || game.keys['d'])) {
       this.updatePlayer(this.speed, 0)
     }
   }
 
   clickLoc() {
-    const targetX = this.clickX - this.x
-    const targetY = this.clickY - this.y
+    // Calculate the distance between the player and the loc of the click
+    const targetX = this.clickX - this.centerX()
+    const targetY = this.clickY - this.centerY()
     const dist = Math.sqrt(targetX * targetX + targetY * targetY)
 
     if (dist >= this.speed) {
@@ -59,6 +55,9 @@ class Player {
     }
   }
 
+  centerX = () => this.x + this.width / 2
+  centerY = () => this.y + this.height / 2
+
   updatePlayer(x, y) {
     this.updateLocation(x, y)
     this.setDirection(x, y)
@@ -66,8 +65,9 @@ class Player {
   }
 
   updateLocation(x, y) {
-    this.x += x
-    this.y += y
+    // Move player if x and y coordinates are inside the canvas area
+    if (this.x + x >= 0 && this.x + x <= 800 - this.width) this.x += x
+    if (this.y + y >= 0 && this.y + y <= 600 - this.height) this.y += y
   }
 
   updateFrame() {
