@@ -19,8 +19,7 @@ class Game {
       canvas.drawNewRound()
     }
 
-    player.updateLocation()
-    player.updateFrame()
+    player.move()
 
     this.spawnMonster()
     this.checkMonsterStatus()

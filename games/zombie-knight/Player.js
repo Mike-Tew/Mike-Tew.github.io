@@ -11,56 +11,83 @@ class Player {
     this.height = 64,
     this.frameX = 0,
     this.frameY = 0,
-    this.moving = false,
     this.speed = 10
+
+    this.clickMove = false
+    this.clickX = 0
+    this.clickY = 0
   }
 
-  clickLoc(clickX, clickY) {
-    if (this.x > clickX) {
-      this.x -= this.speed
-    }
-    if (this.x < clickX) {
-      this.x += this.speed
-    }
-    if (this.y > clickY) {
-      this.y -= this.speed
-    }
-    if (this.y < clickY) {
-      this.y += this.speed
+  move() {
+    if (this.clickMove) {
+      this.clickLoc()
+    } else {
+      this.keyboardMove()
     }
   }
 
-  updateFrame() {
-    if (this.frameX < 4 && this.moving) this.frameX++
-    else this.frameX = 0
-  }
-
-  updateLocation() {
+  keyboardMove() {
     if ((game.keys['ArrowUp'] || game.keys['w']) && this.y > 0) {
-      this.y -= this.speed
-      this.frameY = 1
-      this.moving = true
+      this.updatePlayer(0, -this.speed)
     }
     if ((game.keys['ArrowLeft'] || game.keys['a']) && this.x > 0) {
-      this.x -= this.speed
-      this.frameY = 3
-      this.moving = true
+      this.updatePlayer(-this.speed, 0)
     }
     if (
       (game.keys['ArrowDown'] || game.keys['s']) &&
       this.y < canvas.height - this.height
     ) {
-      this.y += this.speed
-      this.frameY = 0
-      this.moving = true
+      this.updatePlayer(0, this.speed)
     }
     if (
       (game.keys['ArrowRight'] || game.keys['d']) &&
       this.x < canvas.width - this.width
     ) {
-      this.x += this.speed
-      this.frameY = 2
-      this.moving = true
+      this.updatePlayer(this.speed, 0)
+    }
+  }
+
+  clickLoc() {
+    const targetX = this.clickX - this.x
+    const targetY = this.clickY - this.y
+    const dist = Math.sqrt(targetX * targetX + targetY * targetY)
+
+    if (dist >= this.speed) {
+      const velocityX = (targetX / dist) * this.speed
+      const velocityY = (targetY / dist) * this.speed
+      this.updatePlayer(velocityX, velocityY)
+    }
+  }
+
+  updatePlayer(x, y) {
+    this.updateLocation(x, y)
+    this.setDirection(x, y)
+    this.updateFrame()
+  }
+
+  updateLocation(x, y) {
+    this.x += x
+    this.y += y
+  }
+
+  updateFrame() {
+    if (this.frameX < 4) this.frameX++
+    else this.frameX = 0
+  }
+
+  setDirection(x, y) {
+    if (Math.abs(y) > Math.abs(x)) {
+      if (y < 0) {
+        this.frameY = 1
+      } else {
+        this.frameY = 0
+      }
+    } else {
+      if (x < 0) {
+        this.frameY = 3
+      } else {
+        this.frameY = 2
+      }
     }
   }
 }
