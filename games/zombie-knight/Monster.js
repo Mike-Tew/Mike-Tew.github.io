@@ -12,8 +12,15 @@ export default class Monster {
     this.frameX = 0
     this.frameY = 3
     this.speed = this.getRandomInt(5) + game.round
+    this.frame = {
+      up: 2,
+      down: 0,
+      left: 3
+    }
   }
 
+  centerX = () => this.x + this.width / 2
+  centerY = () => this.y + this.height / 2
   getRandomInt = (maxInt) => Math.floor(Math.random() * maxInt)
 
   getRandomSprite() {
@@ -27,9 +34,9 @@ export default class Monster {
   }
 
   setDirection(x, y) {
-    if (x < 0) this.frameY = 3
-    if (y < 0) this.frameY = 2
-    if (y > 0) this.frameY = 0
+    if (x < 0) this.frameY = this.frame.left
+    if (y < 0) this.frameY = this.frame.up
+    if (y > 0) this.frameY = this.frame.down
   }
 
   updateLocation(x, y) {

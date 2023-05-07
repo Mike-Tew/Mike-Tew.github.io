@@ -15,6 +15,13 @@ class Player {
     this.clickMove = false
     this.clickX = 0
     this.clickY = 0
+
+    this.frame = {
+      up: 1,
+      down: 0,
+      right: 2,
+      left: 3
+    }
   }
 
   centerX = () => this.x + this.width / 2
@@ -76,15 +83,15 @@ class Player {
   setDirection(x, y) {
     if (Math.abs(y) > Math.abs(x)) {
       if (y < 0) {
-        this.frameY = 1
+        this.frameY = this.frame.down
       } else {
-        this.frameY = 0
+        this.frameY = this.frame.up
       }
     } else {
       if (x < 0) {
-        this.frameY = 3
+        this.frameY = this.frame.left
       } else {
-        this.frameY = 2
+        this.frameY = this.frame.right
       }
     }
   }

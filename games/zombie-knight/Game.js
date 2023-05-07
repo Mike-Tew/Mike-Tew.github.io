@@ -43,14 +43,13 @@ class Game {
         monster.remove = true
       }
 
-      const direction = monsterAi.calculateAi(
-        monster.x,
-        monster.y,
-        player.x,
-        player.y
+      const coords = monsterAi.calcAi(
+        monster.centerX(),
+        monster.centerY(),
+        player.centerX(),
+        player.centerY()
       )
-
-      monster.update(...direction)
+      monster.update(...coords)
     })
   }
 
