@@ -50,8 +50,7 @@ class Game {
         player.y
       )
 
-      monster.setDirection(direction)
-      monster.updateLocation()
+      monster.update(...direction)
     })
   }
 

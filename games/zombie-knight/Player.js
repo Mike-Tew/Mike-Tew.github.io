@@ -4,18 +4,21 @@ import { playerSprite } from './sprites.js'
 class Player {
   constructor() {
     this.sprite = playerSprite
-    this.x = 800 / 2,
-    this.y = 600 / 2,
-    this.width = 64,
-    this.height = 64,
-    this.frameX = 0,
-    this.frameY = 0,
+    this.x = 800 / 2
+    this.y = 600 / 2
+    this.width = 64
+    this.height = 64
+    this.frameX = 0
+    this.frameY = 0
     this.speed = 10
 
     this.clickMove = false
     this.clickX = 0
     this.clickY = 0
   }
+
+  centerX = () => this.x + this.width / 2
+  centerY = () => this.y + this.height / 2
 
   move() {
     if (this.clickMove) {
@@ -26,19 +29,17 @@ class Player {
   }
 
   keyboardMove() {
-    if ((game.keys['ArrowUp'] || game.keys['w'])) {
-      this.updatePlayer(0, -this.speed)
+    if (game.keys['ArrowUp'] || game.keys['w']) {
+      this.update(0, -this.speed)
     }
     if ((game.keys['ArrowLeft'] || game.keys['a']) && this.x > 0) {
-      this.updatePlayer(-this.speed, 0)
+      this.update(-this.speed, 0)
     }
-    if (
-      (game.keys['ArrowDown'] || game.keys['s'])) {
-      this.updatePlayer(0, this.speed)
+    if (game.keys['ArrowDown'] || game.keys['s']) {
+      this.update(0, this.speed)
     }
-    if (
-      (game.keys['ArrowRight'] || game.keys['d'])) {
-      this.updatePlayer(this.speed, 0)
+    if (game.keys['ArrowRight'] || game.keys['d']) {
+      this.update(this.speed, 0)
     }
   }
 
@@ -51,14 +52,11 @@ class Player {
     if (dist >= this.speed) {
       const velocityX = (targetX / dist) * this.speed
       const velocityY = (targetY / dist) * this.speed
-      this.updatePlayer(velocityX, velocityY)
+      this.update(velocityX, velocityY)
     }
   }
 
-  centerX = () => this.x + this.width / 2
-  centerY = () => this.y + this.height / 2
-
-  updatePlayer(x, y) {
+  update(x, y) {
     this.updateLocation(x, y)
     this.setDirection(x, y)
     this.updateFrame()
