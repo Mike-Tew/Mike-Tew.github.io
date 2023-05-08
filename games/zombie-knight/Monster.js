@@ -1,9 +1,8 @@
 import canvas from './Canvas.js'
-import game from './Game.js'
 import { monsterSprites } from './sprites.js'
 
 export default class Monster {
-  constructor() {
+  constructor(speed) {
     this.sprite = this.getRandomSprite()
     this.height = 36
     this.width = 46
@@ -11,7 +10,7 @@ export default class Monster {
     this.y = this.getRandomInt(canvas.height - this.height)
     this.frameX = 0
     this.frameY = 3
-    this.speed = this.getRandomInt(5) + game.round
+    this.speed = this.getRandomInt(5) + speed
     this.frame = {
       up: 2,
       down: 0,

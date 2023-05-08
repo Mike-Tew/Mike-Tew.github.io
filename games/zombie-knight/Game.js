@@ -31,7 +31,7 @@ class Game {
 
   spawnMonster() {
     if (Date.now() - this.prevSpawn > this.spawnRate && !this.countdown) {
-      this.monsters.push(new Monster())
+      this.monsters.push(new Monster(this.monsterSpeed))
       this.prevSpawn = Date.now()
     }
   }
@@ -72,22 +72,29 @@ class Game {
     )
   }
 
-  nextRound() {
-    this.lives++
-    this.round += 1
-    this.roundScore = 0
-    this.monsters = []
-    this.countdown = true
-    this.countdownTimer = Date.now() + 4000
-    if (this.round == 3) monsterAi.aiLevel = 'advanced'
-    if (this.round == 5) monsterAi.aiLevel = 'expert'
-  }
-
   update() {
     if (this.roundScore >= 20) this.nextRound()
     this.monsters = this.monsters.filter((monster) => monster.remove != true)
     if (this.countdownTimer < Date.now()) this.countdown = false
     if (this.lives <= 0) this.reset()
+  }
+
+  nextRound() {
+    this.lives++
+    this.round += 1
+    this.roundScore = 0
+    this.monsters = []
+    this.monsterSpeed += 1
+    this.countdown = true
+    this.countdownTimer = Date.now() + 4000
+    if (this.round == 3) {
+      monsterAi.aiLevel = 'advanced'
+      this.monsterSpeed = 1
+    }
+    if (this.round == 5) {
+      monsterAi.aiLevel = 'expert'
+      this.monsterSpeed = 1
+    }
   }
 
   reset() {
@@ -96,6 +103,7 @@ class Game {
     this.round = 1
     this.roundScore = 0
     this.monsters = []
+    this.monsterSpeed = 1
     this.countdown = true
     this.countdownTimer = Date.now() + 4000
     monsterAi.aiLevel = 'beginner'
