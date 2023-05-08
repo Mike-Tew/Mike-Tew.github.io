@@ -79,6 +79,8 @@ class Game {
     this.monsters = []
     this.countdown = true
     this.countdownTimer = Date.now() + 4000
+    if (this.round == 3) monsterAi.aiLevel = 'advanced'
+    if (this.round == 5) monsterAi.aiLevel = 'expert'
   }
 
   update() {
@@ -96,6 +98,7 @@ class Game {
     this.monsters = []
     this.countdown = true
     this.countdownTimer = Date.now() + 4000
+    monsterAi.aiLevel = 'beginner'
   }
 }
 

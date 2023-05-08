@@ -1,7 +1,7 @@
 class MonsterAi {
   constructor() {
     this.proximity = 100
-    this.aiLevel = 1
+    this.aiLevel = 'expert'
     this.directions = {
       n: [0, -1],
       s: [0, 1],
@@ -12,33 +12,26 @@ class MonsterAi {
   }
 
   calcAi(monsterX, monsterY, playerX, playerY) {
-    if (this.aiLevel == 1) {
-      return this.advancedAi(monsterX, monsterY, playerX, playerY)
-    }
-    if (this.aiLevel == 2) {
-      return this.expertAi(monsterX, monsterY, playerX, playerY)
-    }
-    return this.beginnerAi()
-  }
-
-  beginnerAi() {
-    return this.directions.w
-  }
-
-  advancedAi(monsterX, monsterY, playerX, playerY) {
-    if (!this.isInRange(monsterX, monsterY, playerX, playerY))
+    if (!this.isInRange(monsterX, monsterY, playerX, playerY)) {
       return this.directions.w
-    if (this.isAbove(monsterY, playerY)) return this.directions.nw
-    if (this.isBelow(monsterY, playerY)) return this.directions.sw
-    return this.directions.w
+    }
+    if (monsterY < playerY) {
+      return this.isAbove()
+    } else {
+      return this.isBelow()
+    }
   }
 
-  expertAi(monsterX, monsterY, playerX, playerY) {
-    if (!this.isInRange(monsterX, monsterY, playerX, playerY))
-      return this.directions.w
-    if (this.isAbove(monsterY, playerY)) return this.directions.n
-    if (this.isBelow(monsterY, playerY)) return this.directions.s
-    return this.directions.w
+  isAbove() {
+    if (this.aiLevel == 'beginner') return this.directions.w
+    if (this.aiLevel == 'advanced') return this.directions.nw
+    if (this.aiLevel == 'expert') return this.directions.n
+  }
+
+  isBelow() {
+    if (this.aiLevel == 'beginner') return this.directions.w
+    if (this.aiLevel == 'advanced') return this.directions.sw
+    if (this.aiLevel == 'expert') return this.directions.s
   }
 
   isInRange(monsterX, monsterY, playerX, playerY) {
@@ -50,14 +43,6 @@ class MonsterAi {
     ) {
       return true
     }
-  }
-
-  isAbove(monsterY, playerY) {
-    return monsterY < playerY
-  }
-
-  isBelow(monsterY, playerY) {
-    return monsterY > playerY
   }
 }
 
