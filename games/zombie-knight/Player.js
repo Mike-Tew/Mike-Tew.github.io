@@ -1,16 +1,23 @@
 import game from './Game.js'
+import {
+  CANVAS_HEIGHT,
+  CANVAS_WIDTH,
+  PLAYER_HEIGHT,
+  PLAYER_SPEED,
+  PLAYER_WIDTH
+} from './game_vars.js'
 import { playerSprite } from './sprites.js'
 
 class Player {
   constructor() {
     this.sprite = playerSprite
-    this.x = 800 / 2
-    this.y = 600 / 2
-    this.width = 64
-    this.height = 64
+    this.x = CANVAS_WIDTH / 2
+    this.y = CANVAS_HEIGHT / 2
+    this.width = PLAYER_WIDTH
+    this.height = PLAYER_HEIGHT
     this.frameX = 0
     this.frameY = 0
-    this.speed = 10
+    this.speed = PLAYER_SPEED
 
     this.clickMove = false
     this.clickX = 0
@@ -71,8 +78,9 @@ class Player {
 
   updateLocation(x, y) {
     // Move player if x and y coordinates are inside the canvas area
-    if (this.x + x >= 0 && this.x + x <= 800 - this.width) this.x += x
-    if (this.y + y >= 0 && this.y + y <= 600 - this.height) this.y += y
+    if (this.x + x >= 0 && this.x + x <= CANVAS_WIDTH - this.width) this.x += x
+    if (this.y + y >= 0 && this.y + y <= CANVAS_HEIGHT - this.height)
+      this.y += y
   }
 
   updateFrame() {

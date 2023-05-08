@@ -1,13 +1,18 @@
-import canvas from './Canvas.js'
+import {
+  CANVAS_HEIGHT,
+  CANVAS_WIDTH,
+  MONSTER_HEIGHT,
+  MONSTER_WIDTH
+} from './game_vars.js'
 import { monsterSprites } from './sprites.js'
 
 export default class Monster {
   constructor(speed) {
     this.sprite = this.getRandomSprite()
-    this.height = 36
-    this.width = 46
-    this.x = canvas.width
-    this.y = this.getRandomInt(canvas.height - this.height)
+    this.height = MONSTER_HEIGHT
+    this.width = MONSTER_WIDTH
+    this.x = CANVAS_WIDTH
+    this.y = this.getRandomInt(CANVAS_HEIGHT - this.height)
     this.frameX = 0
     this.frameY = 3
     this.speed = this.getRandomInt(5) + speed
@@ -39,7 +44,7 @@ export default class Monster {
   }
 
   updateLocation(x, y) {
-    if (this.y <= 0 || this.y >= canvas.height - this.height) {
+    if (this.y <= 0 || this.y >= CANVAS_HEIGHT - this.height) {
       this.x -= this.speed
     } else {
       this.x += x * this.speed

@@ -1,12 +1,13 @@
 import game from './Game.js'
+import { CANVAS_HEIGHT, CANVAS_WIDTH } from './game_vars.js'
 
 class Canvas {
   constructor() {
     const canvasEl = document.getElementById('game-canvas')
-    this.width = 800
-    this.height = 600
-    canvasEl.width = this.width
-    canvasEl.height = this.height
+    this.width = CANVAS_WIDTH
+    this.height = CANVAS_HEIGHT
+    canvasEl.width = CANVAS_WIDTH
+    canvasEl.height = CANVAS_HEIGHT
 
     this.ctx = canvasEl.getContext('2d')
     this.canvas = canvasEl

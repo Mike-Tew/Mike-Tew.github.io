@@ -1,7 +1,7 @@
 class MonsterAi {
   constructor() {
     this.proximity = 100
-    this.aiLevel = 'expert'
+    this.aiLevel = 'beginner'
     this.directions = {
       n: [0, -1],
       s: [0, 1],
