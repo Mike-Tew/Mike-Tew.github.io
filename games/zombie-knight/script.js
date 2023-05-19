@@ -21,25 +21,34 @@ canvas.addEventListener('click', (e) => {
   player.clickY = clickY
 })
 
+canvas.addEventListener('touchstart', (e) => {
+  const canvasOffset = canvas.getBoundingClientRect()
+  const clickX = e.changedTouches[0].clientX - canvasOffset.left
+  const clickY = e.changedTouches[0].clientY - canvasOffset.top
+
+  player.clickMove = true
+  player.clickX = clickX
+  player.clickY = clickY
+})
+
 // ============ Animation Loop =============
-let fps, fpsInterval, startTime, now, then, elapsed
+let msPrev = window.performance.now()
+const fps = 30
+const msPerFrame = 1000 / fps
 
-const animate = () => {
-  now = Date.now()
-  elapsed = now - then
-  if (elapsed > fpsInterval) {
-    then = now - (elapsed % fpsInterval)
-    game.gameLoop()
-  }
+function animate() {
+  window.requestAnimationFrame(animate)
 
-  requestAnimationFrame(animate)
+  const msNow = window.performance.now()
+  const msPassed = msNow - msPrev
+
+  if (msPassed < msPerFrame) return
+
+  const excessTime = msPassed % msPerFrame
+  msPrev = msNow - excessTime
+
+  game.gameLoop()
+  frames++
 }
 
-const startAnimation = (fps) => {
-  fpsInterval = 1000 / fps
-  then = Date.now()
-  startTime = then
-  animate()
-}
-
-startAnimation(30)
+animate()

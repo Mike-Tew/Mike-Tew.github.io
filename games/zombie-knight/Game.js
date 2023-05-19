@@ -2,12 +2,13 @@ import canvas from './Canvas.js'
 import Monster from './Monster.js'
 import monsterAi from './MonsterAi.js'
 import player from './Player.js'
+import { COUNTDOWN_IN_MS, SPAWN_RATE_IN_MS } from './game_vars.js'
 
 class Game {
   constructor() {
     this.keys = []
     this.prevSpawn = 0
-    this.spawnRate = 1000
+    this.spawnRate = SPAWN_RATE_IN_MS
     this.reset()
   }
 
@@ -86,7 +87,7 @@ class Game {
     this.monsters = []
     this.monsterSpeed += 1
     this.countdown = true
-    this.countdownTimer = Date.now() + 4000
+    this.countdownTimer = Date.now() + COUNTDOWN_IN_MS
     if (this.round == 3) {
       monsterAi.aiLevel = 'advanced'
       this.monsterSpeed = 1
@@ -105,7 +106,7 @@ class Game {
     this.monsters = []
     this.monsterSpeed = 1
     this.countdown = true
-    this.countdownTimer = Date.now() + 4000
+    this.countdownTimer = Date.now() + COUNTDOWN_IN_MS
     monsterAi.aiLevel = 'beginner'
   }
 }

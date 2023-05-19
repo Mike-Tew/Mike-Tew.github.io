@@ -46,11 +46,11 @@ class Player {
     if (game.keys['ArrowUp'] || game.keys['w']) {
       this.update(0, -this.speed)
     }
-    if ((game.keys['ArrowLeft'] || game.keys['a']) && this.x > 0) {
-      this.update(-this.speed, 0)
-    }
     if (game.keys['ArrowDown'] || game.keys['s']) {
       this.update(0, this.speed)
+    }
+    if ((game.keys['ArrowLeft'] || game.keys['a']) && this.x > 0) {
+      this.update(-this.speed, 0)
     }
     if (game.keys['ArrowRight'] || game.keys['d']) {
       this.update(this.speed, 0)
