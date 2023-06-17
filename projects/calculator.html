@@ -1,28 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="../images/favicon.png" type="image/png" />
     <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
       rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="styles/calculator.css">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="styles/calculator.css" />
     <title>Calculator</title>
-</head>
+  </head>
 
-<body>
-    <!-- Navbar -->
+  <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <button
         class="navbar-toggler"
         type="button"
-        data-toggle="collapse"
-        data-target="#navbarNavAltMarkup"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarNavAltMarkup"
         aria-controls="navbarNavAltMarkup"
         aria-expanded="false"
         aria-label="Toggle navigation"
@@ -31,39 +29,47 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
-          <a class="nav-item nav-link" href="../index.html">Home</a>
-          <a class="nav-item nav-link active" href="../projects.html">Projects</a>
-          <a class="nav-item nav-link" href="../games.html">Games</a>
-          <a class="nav-item nav-link" href="../data-visualization.html">Data Visualization</a>
+          <a class="nav-item nav-link" href="../../index.html">Home</a>
+          <a class="nav-item nav-link active" href="../../projects.html"
+            >Projects</a
+          >
+          <a class="nav-item nav-link" href="../../games.html">Games</a>
+          <a class="nav-item nav-link" href="../../data-visualization.html"
+            >Data Visualization</a
+          >
         </div>
       </div>
     </nav>
 
     <div id="calculator">
-        <div id="display">0</div>
-        <div id="button-panel">
-            <button class="light-button" onclick="input('7')">7</button>
-            <button class="light-button" onclick="input('8')">8</button>
-            <button class="light-button" onclick="input('9')">9</button>
-            <button class="dark-button" onclick="opFunction('/')">/</button>
-            <button class="light-button" onclick="input('4')">4</button>
-            <button class="light-button" onclick="input('5')">5</button>
-            <button class="light-button" onclick="input('6')">6</button>
-            <button class="dark-button" onclick="opFunction('*')">*</button>
-            <button class="light-button" onclick="input('1')">1</button>
-            <button class="light-button" onclick="input('2')">2</button>
-            <button class="light-button" onclick="input('3')">3</button>
-            <button class="dark-button" onclick="opFunction('-')">-</button>
-            <button id="zero" class="light-button" onclick="input('0')">0</button>
-            <button class="light-button" onclick="decimal()">.</button>
-            <button class="dark-button" onclick="opFunction('+')">+</button>
-            <button id="equal" class="light-button" onclick="equals()">=</button>
-            <button class="dark-button" onclick="negative()">+/-</button>
-            <button class="dark-button" onclick="reset()">AC</button>
-        </div>
+      <div id="display">0</div>
+      <div id="button-panel">
+        <button class="light-button" onclick="input('7')">7</button>
+        <button class="light-button" onclick="input('8')">8</button>
+        <button class="light-button" onclick="input('9')">9</button>
+        <button class="dark-button" onclick="opFunction('/')">/</button>
+        <button class="light-button" onclick="input('4')">4</button>
+        <button class="light-button" onclick="input('5')">5</button>
+        <button class="light-button" onclick="input('6')">6</button>
+        <button class="dark-button" onclick="opFunction('*')">*</button>
+        <button class="light-button" onclick="input('1')">1</button>
+        <button class="light-button" onclick="input('2')">2</button>
+        <button class="light-button" onclick="input('3')">3</button>
+        <button class="dark-button" onclick="opFunction('-')">-</button>
+        <button id="zero" class="light-button" onclick="input('0')">0</button>
+        <button class="light-button" onclick="decimal()">.</button>
+        <button class="dark-button" onclick="opFunction('+')">+</button>
+        <button id="equal" class="light-button" onclick="equals()">=</button>
+        <button class="dark-button" onclick="negative()">+/-</button>
+        <button class="dark-button" onclick="reset()">AC</button>
+      </div>
     </div>
 
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+      crossorigin="anonymous"
+    ></script>
     <script src="scripts/calculator.js"></script>
-</body>
-
+  </body>
 </html>
