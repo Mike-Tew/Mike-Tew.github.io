@@ -1,8 +1,11 @@
 <!DOCTYPE html>
-
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="styles/reaction-time.css">
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="../images/favicon.png" type="image/png" />
+    <link rel="stylesheet" href="styles/reaction-time.css" />
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -10,9 +13,9 @@
       crossorigin="anonymous"
     />
     <title>Reaction Time</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <button
@@ -29,23 +32,26 @@
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
           <a class="nav-item nav-link" href="../index.html">Home</a>
-          <a class="nav-item nav-link active" href="../projects.html">Projects</a>
+          <a class="nav-item nav-link active" href="../projects.html"
+            >Projects</a
+          >
           <a class="nav-item nav-link" href="../games.html">Games</a>
-          <a class="nav-item nav-link" href="../data-visualization.html">Data Visualization</a>
+          <a class="nav-item nav-link" href="../data-visualization.html"
+            >Data Visualization</a
+          >
         </div>
       </div>
     </nav>
 
     <div>
-        <h2>Test your reaction time</h2>
+      <h2>Test your reaction time</h2>
     </div>
     <div id="container">
-        <h1>Click To Start</h1>
+      <h1>Click To Start</h1>
     </div>
     <button id="reset" onclick="reset()">RESET</button>
     <h2>Your reaction time was:</h2>
     <h2 id="reaction-time"></h2>
     <script src="scripts/reaction-time.js"></script>
-</body>
-
+  </body>
 </html>
