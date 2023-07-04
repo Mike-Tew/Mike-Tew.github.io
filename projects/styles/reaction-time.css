@@ -1,19 +1,22 @@
-h2 {
-    text-align: center;
+.container {
+  text-align: center;
+  margin-top: 2rem;
 }
 
-#container {
-    text-align: center;
-    display: block;
-    line-height: 10rem;
-    height: 10rem;
-    width: 20rem;
-    background-color: rgb(228, 228, 228);
-    margin: auto;
-    border-radius: 2rem;
+#click-container {
+  height: 10rem;
+  width: 20rem;
+  background-color: rgb(228, 228, 228);
+  margin: 2rem auto;
+  border-radius: 2rem;
 }
 
-#reset {
-    display: block;
-    margin: 1rem auto;
+#click-text {
+  line-height: 10rem;
+}
+
+#reset-button {
+  margin-bottom: 1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
 }

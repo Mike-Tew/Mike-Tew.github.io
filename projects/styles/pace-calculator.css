@@ -1,28 +1,44 @@
+.button-container {
+  background-color: #2c333a;
+  width: 10rem;
+  height: 3rem;
+  line-height: 3rem;
+  margin: auto;
+  text-align: center;
+  font-size: x-large;
+  border-radius: 1rem;
+}
+
+.back-button {
+  text-decoration: none;
+  color: #f1f1f1;
+}
+
 .container {
-    width: 30rem;
-    text-align: center;
-    margin: auto;
-    margin-top: 4rem;
-    border: 2px solid black;
-    border-radius: 0.5rem;
+  width: 30rem;
+  text-align: center;
+  margin: auto;
+  margin-top: 1rem;
+  border: 2px solid black;
+  border-radius: 0.5rem;
 }
 
 .time-container h2 {
-    display: inline-block;
+  display: inline-block;
 }
 
 .time-container input {
-    width: 3rem;
+  width: 3rem;
 }
 
 .distance-container h2 {
-    display: inline-block;
+  display: inline-block;
 }
 
 .pace-container h2 {
-    display: inline-block;
+  display: inline-block;
 }
 
 .pace-container input {
-    width: 3rem;
+  width: 3rem;
 }
