@@ -1,7 +1,12 @@
 const clickSquare = document.getElementById('click-container')
-const clickText = document.getElementById('click-text')
-const DEFAULT_COLOR = 'rgb(228, 228, 228)'
-clickSquare.style.backgroundColor = 'green'
+const resultText = document.getElementById('result-text')
+const COLORS = {
+  DEFAULT: 'rgb(228, 228, 228)',
+  FAIL: 'red',
+  SUCCESS: 'blue',
+  ACTIVE: 'yellow'
+}
+clickSquare.style.backgroundColor = COLORS.DEFAULT
 
 let startTime
 let delay
@@ -10,17 +15,20 @@ let activeTime
 let isRunning = false
 
 const start = () => {
-  console.log('Start')
-  setColor('red')
+  clickSquare.style.backgroundColor = COLORS.ACTIVE
   setClickTime()
 }
 
 const clickFail = () => {
-  console.log('Stop')
+  resultText.innerHTML = 'Too Soon'
+  clickSquare.style.backgroundColor = COLORS.FAIL
+  gameReset()
 }
 
 const clickSuccess = () => {
-  clickText.innerHTML = new Date().getTime() - activeTime
+  resultText.innerHTML = new Date().getTime() - activeTime
+  clickSquare.style.backgroundColor = COLORS.SUCCESS
+  gameReset()
 }
 
 const setClickTime = () => {
@@ -28,13 +36,9 @@ const setClickTime = () => {
   delay = (Math.random() * (5 - 3) + 3) * 1000
   clickTime = startTime + delay
   setTimeout(() => {
-    clickSquare.style.backgroundColor = 'green'
     activeTime = new Date().getTime()
+    clickSquare.style.backgroundColor = 'green'
   }, delay)
-}
-
-const setColor = (color) => {
-  clickSquare.style.backgroundColor = color
 }
 
 clickSquare.addEventListener('click', () => {
@@ -42,9 +46,7 @@ clickSquare.addEventListener('click', () => {
     clickSuccess()
     isRunning = false
     activeTime = 0
-  }
-
-  if (!isRunning) {
+  } else if (!isRunning) {
     start()
     isRunning = true
   } else {
@@ -52,3 +54,11 @@ clickSquare.addEventListener('click', () => {
     isRunning = false
   }
 })
+
+const gameReset = () => {
+  let startTime
+  let delay
+  let clickTime
+  let activeTime
+  let isRunning = false
+}
