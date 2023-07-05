@@ -6,13 +6,6 @@ const COLORS = {
   SUCCESS: 'blue',
   ACTIVE: 'yellow'
 }
-clickSquare.style.backgroundColor = COLORS.DEFAULT
-
-let startTime
-let delay
-let clickTime
-let activeTime
-let isRunning = false
 
 const start = () => {
   clickSquare.style.backgroundColor = COLORS.ACTIVE
@@ -35,7 +28,7 @@ const setClickTime = () => {
   startTime = new Date().getTime()
   delay = (Math.random() * (5 - 3) + 3) * 1000
   clickTime = startTime + delay
-  setTimeout(() => {
+  timeoutID = setTimeout(() => {
     activeTime = new Date().getTime()
     clickSquare.style.backgroundColor = 'green'
   }, delay)
@@ -56,9 +49,12 @@ clickSquare.addEventListener('click', () => {
 })
 
 const gameReset = () => {
-  let startTime
-  let delay
-  let clickTime
-  let activeTime
-  let isRunning = false
+  startTime = 0
+  delay = 0
+  clickTime = 0
+  activeTime = 0
+  isRunning = false
+  if (typeof(timeoutID) !== 'undefined') clearTimeout(timeoutID)
 }
+
+gameReset()

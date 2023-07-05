@@ -10,13 +10,3 @@
   margin: 2rem auto;
   border-radius: 2rem;
 }
-
-#click-text {
-  line-height: 10rem;
-}
-
-#reset-button {
-  margin-bottom: 1rem;
-  padding: 0.5rem 1rem;
-  border-radius: 0.5rem;
-}
