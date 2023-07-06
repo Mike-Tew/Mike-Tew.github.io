@@ -1,8 +1,26 @@
+.button-container {
+  background-color: #2c333a;
+  width: 10rem;
+  height: 3rem;
+  line-height: 3rem;
+  margin: auto;
+  text-align: center;
+  font-size: x-large;
+  border-radius: 1rem;
+}
+
+.back-button {
+  display: block;
+  text-decoration: none;
+  color: #f1f1f1;
+}
+
 .box {
     width: 30rem;
     border: 2px solid black;
     border-radius: 2rem;
     margin: auto;
+    margin-top: 2rem;
 }
 
 h1 {

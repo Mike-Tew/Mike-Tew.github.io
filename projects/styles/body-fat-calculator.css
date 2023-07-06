@@ -1,24 +1,42 @@
+.button-container {
+  background-color: #2c333a;
+  width: 10rem;
+  height: 3rem;
+  line-height: 3rem;
+  margin: 1rem auto;
+  text-align: center;
+  font-size: x-large;
+  border-radius: 1rem;
+}
+
+.back-button {
+  display: block;
+  text-decoration: none;
+  color: #f1f1f1;
+}
+
 .box {
-    width: 20rem;
-    border: 1px solid black;
-    border-radius: 0.4rem;
-    margin: 3rem auto;
+  width: 20rem;
+  border: 1px solid black;
+  border-radius: 0.4rem;
+  margin: auto;
 }
 
 h1 {
-    text-align: center;
-    margin: 0%;
-    background-color: lightgray;
-    border-top: 1px solid grey;
+  text-align: center;
+  margin: 0%;
+  background-color: lightgray;
+  border-top: 1px solid grey;
 }
 
-input, label {
-    display: block;
+input,
+label {
+  display: block;
 }
 
 h2 {
-    text-align: center;
-    background-color: lightgray;
-    border-top: 1px solid grey;
-    border-bottom: 1px solid grey;
+  text-align: center;
+  background-color: lightgray;
+  border-top: 1px solid grey;
+  border-bottom: 1px solid grey;
 }

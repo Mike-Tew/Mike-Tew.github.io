@@ -1,69 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
       integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="styles/body-fat-calculator.css">
+    <link rel="stylesheet" href="styles/body-fat-calculator.css" />
     <title>Body Fat Calculator</title>
-</head>
+  </head>
 
-<body>
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbarNavAltMarkup"
-        aria-controls="navbarNavAltMarkup"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav">
-          <a class="nav-item nav-link" href="../index.html">Home</a>
-          <a class="nav-item nav-link active" href="../projects.html">Projects</a>
-          <a class="nav-item nav-link" href="../games.html">Games</a>
-          <a class="nav-item nav-link" href="../data-visualization.html">Data Visualization</a>
-        </div>
-      </div>
-    </nav>
+  <body>
+    <div class="button-container">
+      <a href="../projects.html" class="back-button">&#8592; Go Back</a>
+    </div>
 
     <div class="box p-0">
-        <h2>Body Fat Calculator</h2>
-        <div class="input">
-            <form id="input">
-                <label>AGE</label>
-                <input type="text" name="age" id="age" placeholder="age">
-                <label>WEIGHT</label>
-                <input type="text" name="weight" id="weight" placeholder="weight">
-                <label>CHEST SKINFOLD</label>
-                <input type="text" name="chest" id="chest" placeholder="mm">
-                <label>ABDOMINAL SKINFOLD</label>
-                <input type="text" name="abdominal" id="abdominal" placeholder="mm">
-                <label>THIGH SKINFOLD</label>
-                <input type="text" name="thigh" id="thigh" placeholder="mm">
-                <button id="calculate" type="button">Calculate</button>
-            </form>
-        </div>
-        <h2>Results</h2>
-        <div class="results">
-            <h4>Your body fat is: <span id="percentage"></span></h4>
-            <h4>Your fat mass is: <span id="fat-mass"></span></h4>
-            <h4>Your lean mass is: <span id="lean-mass"></span></h4>
-        </div>
+      <h2>Body Fat Calculator</h2>
+      <div class="input">
+        <form id="input">
+          <label>AGE</label>
+          <input type="text" name="age" id="age" placeholder="age" />
+          <label>WEIGHT</label>
+          <input type="text" name="weight" id="weight" placeholder="weight" />
+          <label>CHEST SKINFOLD</label>
+          <input type="text" name="chest" id="chest" placeholder="mm" />
+          <label>ABDOMINAL SKINFOLD</label>
+          <input type="text" name="abdominal" id="abdominal" placeholder="mm" />
+          <label>THIGH SKINFOLD</label>
+          <input type="text" name="thigh" id="thigh" placeholder="mm" />
+          <button id="calculate" type="button">Calculate</button>
+        </form>
+      </div>
+      <h2>Results</h2>
+      <div class="results">
+        <h4>Your body fat is: <span id="percentage"></span></h4>
+        <h4>Your fat mass is: <span id="fat-mass"></span></h4>
+        <h4>Your lean mass is: <span id="lean-mass"></span></h4>
+      </div>
     </div>
     <script src="scripts/body-fat-calculator.js"></script>
-
-</body>
-
+  </body>
 </html>
