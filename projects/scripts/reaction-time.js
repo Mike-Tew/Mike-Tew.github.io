@@ -12,18 +12,6 @@ const start = () => {
   setClickTime()
 }
 
-const clickFail = () => {
-  resultText.innerHTML = 'Too Soon'
-  clickSquare.style.backgroundColor = COLORS.FAIL
-  gameReset()
-}
-
-const clickSuccess = () => {
-  resultText.innerHTML = new Date().getTime() - activeTime
-  clickSquare.style.backgroundColor = COLORS.SUCCESS
-  gameReset()
-}
-
 const setClickTime = () => {
   startTime = new Date().getTime()
   delay = (Math.random() * (5 - 3) + 3) * 1000
@@ -34,7 +22,19 @@ const setClickTime = () => {
   }, delay)
 }
 
-clickSquare.addEventListener('click', () => {
+const clickFail = () => {
+  resultText.innerHTML = 'Too Soon'
+  clickSquare.style.backgroundColor = COLORS.FAIL
+  gameReset()
+}
+
+const clickSuccess = () => {
+  resultText.innerHTML = `${(new Date().getTime() - activeTime) / 1000} Seconds`
+  clickSquare.style.backgroundColor = COLORS.SUCCESS
+  gameReset()
+}
+
+const registerClick = () => {
   if (isRunning && activeTime) {
     clickSuccess()
     isRunning = false
@@ -46,7 +46,9 @@ clickSquare.addEventListener('click', () => {
     clickFail()
     isRunning = false
   }
-})
+}
+
+clickSquare.addEventListener('mousedown', registerClick)
 
 const gameReset = () => {
   startTime = 0
@@ -54,7 +56,7 @@ const gameReset = () => {
   clickTime = 0
   activeTime = 0
   isRunning = false
-  if (typeof(timeoutID) !== 'undefined') clearTimeout(timeoutID)
+  if (typeof timeoutID !== 'undefined') clearTimeout(timeoutID)
 }
 
 gameReset()
