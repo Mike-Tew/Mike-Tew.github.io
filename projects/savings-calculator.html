@@ -1,65 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="styles/savings-calculator.css">
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-      crossorigin="anonymous"
-    />
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="../images/favicon.png" type="image/png" />
+    <link rel="stylesheet" href="styles/savings-calculator.css" />
     <title>Savings Calculator</title>
-</head>
+  </head>
 
-<body>
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbarNavAltMarkup"
-        aria-controls="navbarNavAltMarkup"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav">
-          <a class="nav-item nav-link" href="../index.html">Home</a>
-          <a class="nav-item nav-link active" href="../projects.html">Projects</a>
-          <a class="nav-item nav-link" href="../games.html">Games</a>
-          <a class="nav-item nav-link" href="../data-visualization.html">Data Visualization</a>
-        </div>
-      </div>
-    </nav>
+  <body>
+    <div class="button-container">
+      <a href="../projects.html" class="back-button">&#8592; Go Back</a>
+    </div>
 
     <div class="box">
-        <h1 id="title">Savings Calculator</h1>
-        <div class="block">
-            <label for="balance">Starting Balance</label><br>
-            <input id="balance" type="text"><br>
-        </div>
-        <div class="block">
-            <label for="monthly">Monthly Deposit</label><br>
-            <input id="monthly" type="text"><br>
-        </div>
-        <div class="block">
-            <label for="intervals">Years to Grow</label><br>
-            <input id="intervals" type="text"><br>
-        </div>
-        <div class="block">
-            <label for="interest">Annual Interest Rate</label><br>
-            <input id="interest" type="text"><br>
-        </div>
-        <button id="calculate">Calculate</button>
-        <hr>
-        <h3>END BALANCE: $<span id="total"></span></h3>
+      <h1 id="title">Savings Calculator</h1>
+      <div class="block">
+        <label for="balance">Starting Balance</label><br />
+        <input id="balance" type="text" /><br />
+      </div>
+      <div class="block">
+        <label for="monthly">Monthly Deposit</label><br />
+        <input id="monthly" type="text" /><br />
+      </div>
+      <div class="block">
+        <label for="intervals">Years to Grow</label><br />
+        <input id="intervals" type="text" /><br />
+      </div>
+      <div class="block">
+        <label for="interest">Annual Interest Rate</label><br />
+        <input id="interest" type="text" /><br />
+      </div>
+      <button id="calculate">Calculate</button>
+      <hr />
+      <h3>END BALANCE: $<span id="total"></span></h3>
     </div>
     <script src="scripts/savings-calculator.js"></script>
-</body>
-
+  </body>
 </html>
