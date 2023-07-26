@@ -1,11 +1,18 @@
-document.getElementById('calculate').addEventListener('click', () => {
-  bill = parseFloat(document.getElementById('bill').value) * 1.2;
-  document.getElementById('bill-total').innerHTML = '$' + bill.toFixed(2);
-  const e = document.getElementById('service');
-  const test = e.options[e.selectedIndex].text;
-  document.getElementById('report').innerHTML = test;
-  const people = document.getElementById('people').value;
-  console.log(people);
-  document.getElementById('person').innerHTML = people;
-  document.getElementById('per-person').innerHTML =        '$' + (bill / people).toFixed(2);
-});
+const calculateTip = () => {
+  const bill = +document.getElementById('bill').value
+  const tipPercent = 0.2
+  const total = bill + bill * tipPercent
+  document.getElementById('bill-total').innerHTML = `$${total.toFixed(2)}`
+
+  const service = document.getElementById('service')
+  const serviceOption = service.options[service.selectedIndex].text
+  document.getElementById('report').innerHTML = serviceOption
+
+  const personCount = document.getElementById('people').value
+  document.getElementById('person').innerHTML = personCount
+  document.getElementById('per-person').innerHTML = `$${(
+    total / personCount
+  ).toFixed(2)}`
+}
+
+document.getElementById('calculate').addEventListener('click', calculateTip)
