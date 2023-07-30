@@ -1,6 +1,3 @@
-/*
-A function that calculates a person's BMI and displays it.
-*/
 function calculate() {
   const weight = +(document.getElementById('weight').value);
   const feet = +(document.getElementById('feet').value);

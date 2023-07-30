@@ -55,8 +55,6 @@ legend.append('g').call(legendAxis).select('.domain').remove();
 Promise.all([countyPromise, eduPromise]).then((values) => {
   const countyData = values[0].data;
   const eduData = values[1].data;
-  console.log(countyData);
-  console.log(eduData);
 
   const findData = (data) =>
     eduData.filter((edu) => (data.id == edu.fips ? edu : 0))[0];

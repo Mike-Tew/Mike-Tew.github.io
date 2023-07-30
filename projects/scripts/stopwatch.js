@@ -9,7 +9,6 @@ let now = 0;
 let interval = 0;
 let difference = 0;
 
-// Function that stops the timer.
 function stopTimer() {
   if (timer) clearInterval(timer);
   timer = null;
@@ -31,14 +30,12 @@ function start() {
   document.getElementById('timer').innerHTML = display;
 }
 
-// Function that starts the timer.
 function startTimer() {
   now = Date.now() - difference;
   stopTimer();
   timer = setInterval(start, 10);
 }
 
-// Function that resets the timer.
 function reset() {
   clearInterval(timer);
   document.getElementById('timer').innerHTML = '0:00:00:00';
