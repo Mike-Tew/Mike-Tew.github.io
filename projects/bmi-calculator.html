@@ -5,12 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/png" href="/favicon.png" />
     <link rel="stylesheet" href="styles/bmi-calculator.css" />
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-      crossorigin="anonymous"
-    />
     <title>BMI Calculator</title>
   </head>
 
@@ -19,17 +13,17 @@
       <a href="../projects.html" class="back-button">&#8592; Go Back</a>
     </div>
 
-    <div class="container w-25 p-0">
+    <div class="container">
       <div id="title">
         <h3>Body Mass Index (BMI)</h3>
       </div>
       <div id="input">
         <label for="weight">Weight</label><br />
-        <input id="weight" type="text" oninput="calculate()" /><span>lb</span
+        <input id="weight" type="number" oninput="calculateBmi()" /><span>lb</span
         ><br />
         <label for="feet">Height</label><br />
-        <input id="feet" type="text" oninput="calculate()" /><span>ft</span>
-        <input id="inches" type="text" oninput="calculate()" /><span>in</span>
+        <input id="feet" type="number" oninput="calculateBmi()" /><span>ft</span>
+        <input id="inches" type="number" oninput="calculateBmi()" /><span>in</span>
       </div>
       <div id="results">
         <span id="bmi">--.-</span>
