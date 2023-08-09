@@ -34,6 +34,7 @@
 .row {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   text-decoration: none;
   color: black;
   vertical-align: middle;
@@ -53,6 +54,10 @@
   color: #999999;
   font-style: italic;
   font-weight: 600;
+}
+
+img {
+  width: 10rem;
 }
 
 @media (max-width: 600px) {
