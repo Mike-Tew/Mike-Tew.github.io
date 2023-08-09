@@ -54,3 +54,9 @@
   font-style: italic;
   font-weight: 600;
 }
+
+@media (max-width: 600px) {
+  .container {
+    width: 20rem;
+  }
+}
