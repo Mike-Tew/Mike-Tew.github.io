@@ -1,4 +1,3 @@
-// Declaring variables
 const letters = Array.from(document.getElementsByClassName('letter'));
 let randomWord;
 let guessCount;
