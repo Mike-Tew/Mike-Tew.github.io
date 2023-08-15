@@ -9,29 +9,36 @@
   </head>
 
   <body>
-    <div class="header">
-      <h1>Tic-Tac-Toe</h1>
+    <div class="button-container">
+      <a href="../../games.html" class="back-button">&#8592; Go Back</a>
     </div>
-    <div id="players">
-      <h2>Player 1</h2>
-      <h2>Player 2</h2>
-      <h2 id="score-1">0</h2>
-      <h2 id="score-2">0</h2>
-    </div>
-    <div class="gameboard">
-      <div class="squares" id="square-1" onclick="takeTurn()"></div>
-      <div class="squares" id="square-2" onclick="takeTurn()"></div>
-      <div class="squares" id="square-3" onclick="takeTurn()"></div>
-      <div class="squares" id="square-4" onclick="takeTurn()"></div>
-      <div class="squares" id="square-5" onclick="takeTurn()"></div>
-      <div class="squares" id="square-6" onclick="takeTurn()"></div>
-      <div class="squares" id="square-7" onclick="takeTurn()"></div>
-      <div class="squares" id="square-8" onclick="takeTurn()"></div>
-      <div class="squares" id="square-9" onclick="takeTurn()"></div>
-    </div>
+
     <div class="container">
-      <button id="reset" onclick="resetGame()">RESET BOARD</button>
+      <div class="header">
+        <h1>Tic-Tac-Toe</h1>
+      </div>
+      <div id="players">
+        <h2>Player 1</h2>
+        <h2>Player 2</h2>
+        <h2 id="score-1">0</h2>
+        <h2 id="score-2">0</h2>
+      </div>
+      <div class="gameboard">
+        <div class="squares" id="square-1" onclick="takeTurn()"></div>
+        <div class="squares" id="square-2" onclick="takeTurn()"></div>
+        <div class="squares" id="square-3" onclick="takeTurn()"></div>
+        <div class="squares" id="square-4" onclick="takeTurn()"></div>
+        <div class="squares" id="square-5" onclick="takeTurn()"></div>
+        <div class="squares" id="square-6" onclick="takeTurn()"></div>
+        <div class="squares" id="square-7" onclick="takeTurn()"></div>
+        <div class="squares" id="square-8" onclick="takeTurn()"></div>
+        <div class="squares" id="square-9" onclick="takeTurn()"></div>
+      </div>
+      <div>
+        <button id="reset" onclick="resetGame()">RESET BOARD</button>
+      </div>
     </div>
+
     <script src="tic-tac-toe.js"></script>
   </body>
 </html>
