@@ -14,7 +14,10 @@ modalButton.addEventListener('click', () => {
 })
 
 mainCard.addEventListener('click', () => {
+  if (settings.operations.length == 0) return
   if (deck.cardStack.length == 0) {
+    console.log(settings.operations);
+
     deck.createDeck(settings.getOperations())
   }
   const currentCard = deck.cardStack[0]
