@@ -1,0 +1,19 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card {
+  margin: 1rem;
+  width: 450px;
+  height: 450px;
+  background-color: #f8f9fa;
+  border: 1px solid #5c636a;
+}
+
+@media (max-width: 1500px) {
+  .container {
+    flex-direction: column;
+  }
+}
