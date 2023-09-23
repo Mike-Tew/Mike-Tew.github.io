@@ -5,11 +5,31 @@
 }
 
 .card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   margin: 1rem;
   width: 450px;
-  height: 450px;
+  /* height: 450px; */
   background-color: #f8f9fa;
-  border: 1px solid #5c636a;
+  border: 1px solid #bcb3ba;
+  border-radius: 0.5rem;
+}
+
+button {
+  /* display: inline-block; */
+  background-color: #6c757d;
+  color: #fff;
+  font-size: 1.5rem;
+  border-radius: 0.5rem;
+  height: 3rem;
+  width: 15rem;
+}
+
+button:hover {
+  color: #fff;
+  background-color: #5c636a;
+  border-color: #5c636a;
 }
 
 @media (max-width: 1500px) {
