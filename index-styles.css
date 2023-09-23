@@ -9,21 +9,26 @@
   flex-direction: column;
   align-items: center;
   margin: 1rem;
-  width: 450px;
-  /* height: 450px; */
+  width: 375px;
   background-color: #f8f9fa;
   border: 1px solid #bcb3ba;
   border-radius: 0.5rem;
 }
 
+img {
+  width: 350px;
+  height: 300px;
+}
+
 button {
-  /* display: inline-block; */
   background-color: #6c757d;
   color: #fff;
-  font-size: 1.5rem;
-  border-radius: 0.5rem;
+  font-size: 1.3rem;
+  cursor: pointer;
+  margin: 2rem;
+  border-radius: 0.4rem;
   height: 3rem;
-  width: 15rem;
+  width: 12rem;
 }
 
 button:hover {
@@ -32,7 +37,7 @@ button:hover {
   border-color: #5c636a;
 }
 
-@media (max-width: 1500px) {
+@media (max-width: 1300px) {
   .container {
     flex-direction: column;
   }
