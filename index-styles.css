@@ -13,6 +13,7 @@
   background-color: #f8f9fa;
   border: 1px solid #bcb3ba;
   border-radius: 0.5rem;
+  color: black;
 }
 
 a {
@@ -22,14 +23,17 @@ a {
 img {
   width: 350px;
   height: 300px;
-  /* padding: 1rem; */
   margin: 1rem;
   border: 1px solid #ece3ea;
 }
 
 h3 {
-  color: black;
   width: 100%;
+}
+
+h4 {
+  margin: 1rem 2rem;
+  font-weight: 100;
 }
 
 button {
@@ -37,7 +41,7 @@ button {
   color: #fff;
   font-size: 1.3rem;
   cursor: pointer;
-  margin: 2rem;
+  margin: 1rem;
   border-radius: 0.4rem;
   height: 3rem;
   width: 11rem;
