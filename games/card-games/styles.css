@@ -1,0 +1,18 @@
+.container {
+  display: flex;
+  align-items: center;
+  background-color: grey;
+  width: 60rem;
+  height: 45rem;
+  margin: auto;
+  border: 1px solid black;
+}
+
+.board {
+  display: block;
+  background-color: green;
+  width: 55rem;
+  height: 35rem;
+  margin: auto;
+  border: 1px solid grey;
+}
