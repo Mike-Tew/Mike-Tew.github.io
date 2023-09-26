@@ -6,6 +6,7 @@
   height: 45rem;
   margin: auto;
   border: 1px solid black;
+  border-radius: 0.5rem;
 }
 
 .board {
@@ -15,4 +16,5 @@
   height: 35rem;
   margin: auto;
   border: 1px solid grey;
+  border-radius: 0.5rem;
 }
