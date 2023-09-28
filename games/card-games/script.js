@@ -1,37 +1,38 @@
-class Card {
-  constructor(suit, value) {
-    this.suit = suit
-    this.value = value
-  }
-}
+import Deck from './Deck/Deck.js'
 
-class Deck {
-  cardValues = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K']
-  cardSuits = ['hearts', 'spades', 'diamonds', 'clubs']
-  cards = []
-
-  constructor() {
-    this.cards = this.buildDeck(this.cardSuits, this.cardValues)
-    this.shuffleDeck()
-  }
-
-  buildDeck(cardSuits, cardValues) {
-    const cards = []
-    for (const suit of cardSuits) {
-      for (const value of cardValues) {
-        cards.push(new Card(suit, value))
-      }
-    }
-
-    return cards
-  }
-
-  shuffleDeck() {
-    for (let i = 1; i < 4; i++) {
-      this.cards.sort(() => Math.random() - 0.5)
-    }
-  }
-}
+const playerArea = document.getElementById('player-area')
+const dealerArea = document.getElementById('dealer-area')
 
 const deck = new Deck()
-console.log(deck.cards);
+const playerHand = []
+const dealerHand = []
+
+const showCard = (area, card) => {
+  const img = document.createElement('img')
+  img.classList.add('card')
+  img.src = card.imgName
+  area.appendChild(img)
+}
+
+const dealCard = (hand, area) => {
+  const card = deck.cards.shift()
+  hand.push(card)
+  showCard(area, card)
+}
+
+const gameStart = () => {
+  dealCard(playerHand, playerArea)
+  dealCard(dealerHand, dealerArea)
+  dealCard(playerHand, playerArea)
+  dealCard(dealerHand, dealerArea)
+}
+
+gameStart()
+
+document.getElementById('next').addEventListener('click', () => {
+  const card = deck.cards.shift()
+  console.log(card);
+  playerHand.push(card)
+  showCard(playerArea, card)
+  console.log(playerHand);
+})

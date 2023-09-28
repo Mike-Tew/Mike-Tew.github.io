@@ -9,7 +9,7 @@
   border-radius: 0.5rem;
 }
 
-.board {
+#board {
   display: block;
   background-color: green;
   width: 55rem;
@@ -17,4 +17,9 @@
   margin: auto;
   border: 1px solid grey;
   border-radius: 0.5rem;
+}
+
+.card {
+  height: 15rem;
+  border-radius: 0.4rem;
 }
