@@ -25,14 +25,45 @@ const gameStart = () => {
   dealCard(dealerHand, dealerArea)
   dealCard(playerHand, playerArea)
   dealCard(dealerHand, dealerArea)
+  checkScores()
+}
+
+const getHandScore = (hand) => {
+  let score = 0
+  let aceCount = 0
+
+  hand.forEach((card) => {
+    if (card.value == 'A') {
+      score += 11
+      aceCount += 1
+    } else if (['J', 'Q', 'K'].includes(card.value)) {
+      score += 10
+    } else {
+      score += +card.value
+    }
+  })
+
+  while (aceCount) {
+    if (score > 21) score -= 10
+    aceCount -= 1
+  }
+
+  return score
+}
+
+const checkScores = () => {
+  let playerScore = getHandScore(playerHand)
+  let dealerScore = getHandScore(dealerHand)
+  console.log(playerScore, dealerScore);
 }
 
 gameStart()
 
 document.getElementById('next').addEventListener('click', () => {
   const card = deck.cards.shift()
-  console.log(card);
+  console.log(card)
   playerHand.push(card)
   showCard(playerArea, card)
-  console.log(playerHand);
+  console.log(playerHand)
+  checkScores()
 })
