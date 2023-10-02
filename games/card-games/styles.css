@@ -1,25 +1,54 @@
 .container {
   display: flex;
-  align-items: center;
   background-color: grey;
-  width: 60rem;
-  height: 45rem;
   margin: auto;
+  width: 95vw;
+  height: 95vh;
   border: 1px solid black;
   border-radius: 0.5rem;
+  user-select: none;
 }
 
 #board {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
   background-color: green;
-  width: 55rem;
-  height: 35rem;
+  width: 80vw;
+  height: 80vh;
   margin: auto;
   border: 1px solid grey;
   border-radius: 0.5rem;
 }
 
+#dealer-area {
+
+}
+
+#player-area {
+
+}
+
+#play-container {
+  display: flex;
+  /* justify-content: space-around; */
+}
+
+.btn {
+  background-color: aqua;
+  width: 10rem;
+  height: 3rem;
+  line-height: 3rem;
+  margin: 0 2rem;
+  text-align: center;
+  border-radius: 1rem;
+  cursor: pointer;
+}
+
 .card {
-  height: 15rem;
+  /* height: 20vh; */
+  width: 10vw;
+  margin: 0 1rem;
   border-radius: 0.4rem;
 }
