@@ -3,7 +3,7 @@ import Deck from './Deck/Deck.js'
 const playerArea = document.getElementById('player-area')
 const dealerArea = document.getElementById('dealer-area')
 
-const deck = new Deck()
+let deck = new Deck()
 const playerHand = []
 const dealerHand = []
 let playerScore = 0
@@ -24,6 +24,20 @@ const dealCard = (hand, area) => {
 }
 
 const gameStart = () => {
+  deck = new Deck()
+  playerHand.length = 0
+  dealerHand.length = 0
+  playerScore = 0
+  dealerScore = 0
+  playerFinished = false
+
+  while (playerArea.hasChildNodes()) {
+    playerArea.removeChild(playerArea.lastChild)
+  }
+  while (dealerArea.hasChildNodes()) {
+    dealerArea.removeChild(dealerArea.lastChild)
+  }
+
   dealCard(playerHand, playerArea)
   dealCard(dealerHand, dealerArea)
   dealCard(playerHand, playerArea)
@@ -78,12 +92,12 @@ const dealerPlay = () => {
 }
 
 const playerWin = () => {
-  console.log('You Win!');
+  console.log('You Win!')
 }
 
 const playerLose = () => {
   playerFinished = true
-  console.log('Bust!');
+  console.log('Bust!')
 }
 
 gameStart()
@@ -94,3 +108,4 @@ document.getElementById('hit-button').addEventListener('click', () => {
   hit(playerHand, playerArea)
 })
 document.getElementById('stay-button').addEventListener('click', dealerPlay)
+document.getElementById('restart-button').addEventListener('click', gameStart)
