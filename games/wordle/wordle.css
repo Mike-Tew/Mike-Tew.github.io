@@ -1,0 +1,22 @@
+body {
+  text-align: center;
+  background-color: #121213;
+}
+
+h1 {
+  color: #f8f8f8;
+}
+
+.guess-container {
+  width: 25rem;
+  height: 30rem;
+  margin: auto;
+}
+
+.square {
+  display: inline-block;
+  width: 3rem;
+  height: 3rem;
+  margin: 0.1rem;
+  border: 1px solid gray;
+}
