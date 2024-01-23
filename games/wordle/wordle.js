@@ -1,12 +1,15 @@
 const keyboard = document.getElementById('keyboard')
-const LETTERS = 'QWERTYUIOPASDFGHJKLZXCVBNM'
+const LETTERS = ['QWERTYUIOP', 'ASDFGHJKL', 'ZXCVBNM']
 
-const createEle = () => {
-  LETTERS.split('').forEach((letter) => {
-    keyboard.innerHTML += `
-    <div class="key">${letter}</div>
-    `
+const createKeyboard = () => {
+  LETTERS.forEach((row) => {
+    const keyRow = document.createElement('div')
+    keyRow.classList.add('row')
+    keyboard.appendChild(keyRow)
+    row.split('').forEach((letter) => {
+        keyRow.innerHTML += `<div class="key">${letter}</div>`
+    })
   })
 }
 
-document.body.onload = createEle
+document.body.onload = createKeyboard
