@@ -11,7 +11,7 @@ hr {
   color: #3a3a3c;
 }
 
-.guess-container {
+#guess-container {
   width: 24rem;
   height: 23rem;
   margin: auto;

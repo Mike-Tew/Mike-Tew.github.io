@@ -1,8 +1,22 @@
 const keyboard = document.getElementById('keyboard')
+const guessContainer = document.getElementById('guess-container')
 const LETTERS = ['QWERTYUIOP', 'ASDFGHJKL', '1ZXCVBNM0']
 let turn = 1
 let currentGuess = []
 let word = 'PARTY'
+
+const createBoard = () => {
+  for (let i = 1; i < 7; i++) {
+    const guessRow = document.createElement('div')
+    guessRow.classList.add('row')
+    guessContainer.appendChild(guessRow)
+    for (let j = 1; j < 6; j++) {
+      const square = document.createElement('div')
+      square.classList.add('square')
+      guessRow.appendChild(square)
+    }
+  }
+}
 
 const createKeyboard = () => {
   LETTERS.forEach((row) => {
@@ -38,4 +52,9 @@ const checkGuess = () => {
   }
 }
 
-document.body.onload = createKeyboard
+const resetGame = () => {
+  createKeyboard()
+  createBoard()
+}
+
+document.body.onload = resetGame
