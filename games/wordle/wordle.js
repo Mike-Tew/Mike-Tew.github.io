@@ -36,20 +36,30 @@ const createKeyboard = () => {
 const chooseLetter = (e) => {
   const letter = e.target.textContent
   if (letter === '0') {
-    currentGuess.pop()
+    removeLetter()
   } else if (letter === '1') {
     checkGuess()
-  } else if (currentGuess.length < 6) {
-    currentGuess.push(letter)
+  } else if (currentGuess.length < 5) {
+    displayLetter(letter)
   }
-  console.log(currentGuess, currentGuess.length)
 }
 
 const checkGuess = () => {
-  console.log(currentGuess.join(''), word)
   if (currentGuess.join('') === word) {
     console.log('You Win!')
   }
+}
+
+const removeLetter = () => {
+  currentGuess.pop()
+  const rows = document.querySelectorAll('.row')
+  rows[turn - 1].childNodes[currentGuess.length].textContent = ""
+}
+
+const displayLetter = (letter) => {
+  currentGuess.push(letter)
+  const rows = document.querySelectorAll('.row')
+  rows[turn - 1].childNodes[currentGuess.length - 1].textContent = letter
 }
 
 const resetGame = () => {
