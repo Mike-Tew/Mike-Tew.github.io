@@ -54,3 +54,15 @@ hr {
   border-radius: 4px;
   cursor: pointer;
 }
+
+.bg-yellow {
+  background-color: #b59f3b;
+}
+
+.bg-green {
+  background-color: #538d4e;
+}
+
+.bg-gray {
+  background-color: #3a3a3c;
+}

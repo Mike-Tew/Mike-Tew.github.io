@@ -1,7 +1,9 @@
 const keyboard = document.getElementById('keyboard')
 const guessContainer = document.getElementById('guess-container')
 const LETTERS = ['QWERTYUIOP', 'ASDFGHJKL', '1ZXCVBNM0']
-let turn = 1
+let turn = 0
+let currentRow
+let keyNodes
 let currentGuess = []
 let word = 'PARTY'
 
@@ -45,6 +47,23 @@ const chooseLetter = (e) => {
 }
 
 const checkGuess = () => {
+  currentGuess.forEach((letter) => {
+    if (word.includes(letter)) {
+      for (const keyNode of keyNodes) {
+        if (keyNode.innerText !== letter) {
+          continue
+        }
+        if (keyNode.innerText === letter) {
+          keyNode.classList.add('bg-green')
+        } else if (keyNode.innerText === letter) {
+          keyNode.classList.add('bg-yellow')
+        } else {
+          keyNode.classList.add('bg-gray')
+
+        }
+      }
+    }
+  })
   if (currentGuess.join('') === word) {
     console.log('You Win!')
   }
@@ -52,19 +71,21 @@ const checkGuess = () => {
 
 const removeLetter = () => {
   currentGuess.pop()
-  const rows = document.querySelectorAll('.row')
-  rows[turn - 1].childNodes[currentGuess.length].textContent = ""
+  currentRow[currentGuess.length].textContent = ""
 }
 
 const displayLetter = (letter) => {
   currentGuess.push(letter)
-  const rows = document.querySelectorAll('.row')
-  rows[turn - 1].childNodes[currentGuess.length - 1].textContent = letter
+  currentRow[currentGuess.length - 1].textContent = letter
+  console.log(keyNodes[0].innerText);
+  console.log(keyNodes[0].childNodes[0].data);
 }
 
 const resetGame = () => {
   createKeyboard()
   createBoard()
+  currentRow = document.querySelectorAll('.row')[turn].childNodes
+  keyNodes = document.querySelectorAll('.key')
 }
 
 document.body.onload = resetGame
