@@ -1,6 +1,9 @@
 const keyboard = document.getElementById('keyboard')
 const guessContainer = document.getElementById('guess-container')
 const LETTERS = ['QWERTYUIOP', 'ASDFGHJKL', '1ZXCVBNM0']
+const grayKeys = new Set()
+const greenKeys = new Set()
+const yellowKeys = new Set()
 let turn = 0
 let currentRow
 let keyNodes
@@ -40,33 +43,40 @@ const chooseLetter = (e) => {
   if (letter === '0') {
     removeLetter()
   } else if (letter === '1') {
-    checkGuess()
+    // checkGuess()
+    chageKeyColors()
   } else if (currentGuess.length < 5) {
     displayLetter(letter)
   }
 }
 
 const checkGuess = () => {
-  currentGuess.forEach((letter) => {
-    if (word.includes(letter)) {
-      for (const keyNode of keyNodes) {
-        if (keyNode.innerText !== letter) {
-          continue
-        }
-        if (keyNode.innerText === letter) {
-          keyNode.classList.add('bg-green')
-        } else if (keyNode.innerText === letter) {
-          keyNode.classList.add('bg-yellow')
-        } else {
-          keyNode.classList.add('bg-gray')
-
-        }
-      }
-    }
-  })
   if (currentGuess.join('') === word) {
     console.log('You Win!')
   }
+}
+
+const chageKeyColors = () => {
+  if (currentGuess.length !== 5) return
+  currentGuess.forEach((letter) => {
+    if (!word.includes(letter)) {
+      grayKeys.add(letter)
+    } else if (word.indexOf(letter) === currentGuess.indexOf(letter)) {
+      greenKeys.add(letter)
+    } else {
+      yellowKeys.add(letter)
+    }
+  })
+
+  keyNodes.forEach((keyNode) => {
+    if (greenKeys.has(keyNode.innerText)) {
+      keyNode.classList.add('bg-green')
+    } else if (yellowKeys.has(keyNode.innerText)) {
+      keyNode.classList.add('bg-yellow')
+    } else if (grayKeys.has(keyNode.innerText)) {
+      keyNode.classList.add('bg-gray')
+    }
+  })
 }
 
 const removeLetter = () => {
@@ -77,8 +87,6 @@ const removeLetter = () => {
 const displayLetter = (letter) => {
   currentGuess.push(letter)
   currentRow[currentGuess.length - 1].textContent = letter
-  console.log(keyNodes[0].innerText);
-  console.log(keyNodes[0].childNodes[0].data);
 }
 
 const resetGame = () => {
