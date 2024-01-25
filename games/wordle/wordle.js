@@ -39,12 +39,17 @@ const createKeyboard = () => {
 }
 
 const chooseLetter = (e) => {
-  const letter = e.target.textContent
+  const letter = e.type == "keydown" ? e.key.toUpperCase() : e.target.textContent
+
   if (letter === '0') {
     removeLetter()
   } else if (letter === '1') {
+    if (currentGuess.length !== 5) return
     // checkGuess()
     chageKeyColors()
+    turn++
+    currentRow = document.querySelectorAll('.row')[turn].childNodes
+    currentGuess = []
   } else if (currentGuess.length < 5) {
     displayLetter(letter)
   }
@@ -96,4 +101,9 @@ const resetGame = () => {
   keyNodes = document.querySelectorAll('.key')
 }
 
+const keyPress = (e) => {
+  console.log(e);
+}
+
 document.body.onload = resetGame
+document.onkeydown = chooseLetter
