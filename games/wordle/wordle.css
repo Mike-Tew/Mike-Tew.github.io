@@ -55,6 +55,11 @@ hr {
   cursor: pointer;
 }
 
+.wide {
+  width: 70px;
+  font-size: 0.8rem;
+}
+
 .bg-yellow {
   background-color: #b59f3b;
 }

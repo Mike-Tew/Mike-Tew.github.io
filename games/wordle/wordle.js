@@ -33,25 +33,34 @@ const createKeyboard = () => {
       keyEl.classList.add('key')
       keyEl.innerText = letter
       keyEl.onclick = chooseLetter
+      if (letter === '1') {
+        keyEl.innerText = 'ENTER'
+        keyEl.classList.add('wide')
+      }
+      if (letter === '0') {
+        keyEl.innerText = 'BACK'
+        keyEl.classList.add('wide')
+      }
       keyRow.appendChild(keyEl)
     })
   })
 }
 
 const chooseLetter = (e) => {
-  const letter = e.type == "keydown" ? e.key.toUpperCase() : e.target.textContent
+  const letter = e.type == 'keydown' ? e.key.toUpperCase() : e.target.textContent
 
-  if (letter === '0') {
+  if (currentGuess.length < 5 && 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.includes(letter)) {
+    displayLetter(letter)
+  } else if (letter === 'BACKSPACE' || letter === 'BACK') {
     removeLetter()
-  } else if (letter === '1') {
+  } else if (letter === 'ENTER') {
     if (currentGuess.length !== 5) return
     // checkGuess()
     chageKeyColors()
+    changeBoxColors()
     turn++
     currentRow = document.querySelectorAll('.row')[turn].childNodes
     currentGuess = []
-  } else if (currentGuess.length < 5) {
-    displayLetter(letter)
   }
 }
 
@@ -84,9 +93,19 @@ const chageKeyColors = () => {
   })
 }
 
+const changeBoxColors = () => {
+  currentGuess.forEach((letter, idx) => {
+    if (letter === word[idx]) {
+      currentRow[idx].classList.add('bg-green')
+    } else if (word.includes(letter)) {
+      currentRow[idx].classList.add('bg-yellow')
+    }
+  })
+}
+
 const removeLetter = () => {
   currentGuess.pop()
-  currentRow[currentGuess.length].textContent = ""
+  currentRow[currentGuess.length].textContent = ''
 }
 
 const displayLetter = (letter) => {
@@ -99,10 +118,6 @@ const resetGame = () => {
   createBoard()
   currentRow = document.querySelectorAll('.row')[turn].childNodes
   keyNodes = document.querySelectorAll('.key')
-}
-
-const keyPress = (e) => {
-  console.log(e);
 }
 
 document.body.onload = resetGame
