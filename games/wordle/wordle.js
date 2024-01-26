@@ -53,18 +53,17 @@ const chooseLetter = (e) => {
     displayLetter(letter)
   } else if (letter === 'BACKSPACE' || letter === 'BACK') {
     removeLetter()
-  } else if (letter === 'ENTER') {
-    if (currentGuess.length !== 5) return
-    // checkGuess()
-    chageKeyColors()
-    changeBoxColors()
-    turn++
-    currentRow = document.querySelectorAll('.row')[turn].childNodes
-    currentGuess = []
+  } else if (letter === 'ENTER' && currentGuess.length === 5) {
+    checkGuess()
   }
 }
 
 const checkGuess = () => {
+  chageKeyColors()
+  changeBoxColors()
+  turn++
+  currentRow = document.querySelectorAll('.row')[turn].childNodes
+  currentGuess = []
   if (currentGuess.join('') === word) {
     console.log('You Win!')
   }
