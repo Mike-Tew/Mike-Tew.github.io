@@ -5,6 +5,8 @@ body {
 
 h1 {
   color: #f8f8f8;
+  font-family: 'Fira Code', Courier, monospace;
+  font-weight: bold;
 }
 
 hr {
@@ -25,8 +27,9 @@ hr {
   border: 2px solid #3a3a3c;
   color: #f8f8f8;
   line-height: 3rem;
-  font-size: 2.4rem;
+  font-family: 'Fira Code', Courier, monospace;
   font-weight: bold;
+  font-size: 2rem;
 }
 
 #keyboard {
@@ -49,8 +52,9 @@ hr {
   margin: 4px 4px;
   background-color: #818384;
   color: #f9f9f9;
-  font-size: 1.25rem;
+  font-family: 'Fira Code', Courier, monospace;
   font-weight: bold;
+  font-size: 1.25rem;
   border-radius: 4px;
   cursor: pointer;
 }
