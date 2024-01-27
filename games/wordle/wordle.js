@@ -1,10 +1,16 @@
-// import { wordList } from './words.js'
+import { wordList } from './words.js'
 
 const guessContainer = document.getElementById('guess-container')
 const keyboard = document.getElementById('keyboard')
 const LETTERS = ['QWERTYUIOP', 'ASDFGHJKL', '1ZXCVBNM0']
-let word = 'PARTY'
-let turn, currentGuess, grayKeys, greenKeys, yellowKeys, currentRow, keyNodes
+let turn,
+  currentGuess,
+  grayKeys,
+  greenKeys,
+  yellowKeys,
+  currentRow,
+  keyNodes,
+  word
 
 const createBoard = () => {
   for (let i = 1; i < 7; i++) {
@@ -121,6 +127,7 @@ const resetGame = () => {
   grayKeys = new Set()
   greenKeys = new Set()
   yellowKeys = new Set()
+  word = wordList[Math.floor(Math.random() * wordList.length)].toUpperCase()
 
   currentRow = document.querySelectorAll('.row')[turn].childNodes
   keyNodes = document.querySelectorAll('.key')
