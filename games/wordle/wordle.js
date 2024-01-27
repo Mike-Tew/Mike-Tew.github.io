@@ -1,13 +1,6 @@
-const keyboard = document.getElementById('keyboard')
 const guessContainer = document.getElementById('guess-container')
+const keyboard = document.getElementById('keyboard')
 const LETTERS = ['QWERTYUIOP', 'ASDFGHJKL', '1ZXCVBNM0']
-const grayKeys = new Set()
-const greenKeys = new Set()
-const yellowKeys = new Set()
-let turn = 0
-let currentRow
-let keyNodes
-let currentGuess = []
 let word = 'PARTY'
 
 const createBoard = () => {
@@ -64,6 +57,8 @@ const checkGuess = () => {
   if (currentGuess.join('') === word) {
     console.log('You Win!')
     modal.showModal()
+    resetGame()
+    return
   }
   turn++
   currentRow = document.querySelectorAll('.row')[turn].childNodes
@@ -114,8 +109,16 @@ const displayLetter = (letter) => {
 }
 
 const resetGame = () => {
-  createKeyboard()
+  keyboard.innerHTML = ''
+  guessContainer.innerHTML = ''
   createBoard()
+  createKeyboard()
+  turn = 0
+  currentGuess = []
+  grayKeys = new Set()
+  greenKeys = new Set()
+  yellowKeys = new Set()
+
   currentRow = document.querySelectorAll('.row')[turn].childNodes
   keyNodes = document.querySelectorAll('.key')
 }
