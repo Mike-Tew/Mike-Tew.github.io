@@ -32,7 +32,7 @@ const createKeyboard = () => {
       const keyEl = document.createElement('div')
       keyEl.classList.add('key')
       keyEl.innerText = letter
-      keyEl.onclick = chooseLetter
+      keyEl.onclick = keyPress
       if (letter === '1') {
         keyEl.innerText = 'ENTER'
         keyEl.classList.add('wide')
@@ -46,7 +46,7 @@ const createKeyboard = () => {
   })
 }
 
-const chooseLetter = (e) => {
+const keyPress = (e) => {
   const letter = e.type == 'keydown' ? e.key.toUpperCase() : e.target.textContent
 
   if (currentGuess.length < 5 && 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.includes(letter)) {
@@ -61,12 +61,13 @@ const chooseLetter = (e) => {
 const checkGuess = () => {
   chageKeyColors()
   changeBoxColors()
+  if (currentGuess.join('') === word) {
+    console.log('You Win!')
+    modal.showModal()
+  }
   turn++
   currentRow = document.querySelectorAll('.row')[turn].childNodes
   currentGuess = []
-  if (currentGuess.join('') === word) {
-    console.log('You Win!')
-  }
 }
 
 const chageKeyColors = () => {
@@ -119,5 +120,6 @@ const resetGame = () => {
   keyNodes = document.querySelectorAll('.key')
 }
 
+document.getElementById('modal').onclick = modal.close
+document.onkeydown = keyPress
 document.body.onload = resetGame
-document.onkeydown = chooseLetter
