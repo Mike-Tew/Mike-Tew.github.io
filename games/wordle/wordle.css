@@ -25,6 +25,7 @@ hr {
   height: 3rem;
   margin: 0.15rem;
   border: 2px solid #3a3a3c;
+  border-radius: 2px;
   color: #f8f8f8;
   line-height: 3rem;
   font-size: 2rem;
@@ -78,14 +79,41 @@ hr {
   height: 100%;
 }
 
+.show-letter {
+  border-color: #565758;
+  animation: display-letter .1s;
+}
+
 .shake {
   animation: row-shake 0.2s 2;
 }
 
+@keyframes display-letter {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
 @keyframes row-shake {
-  0% { transform: translateX(0);}
-  25% { transform: translateX(4px);}
-  50% { transform: translateX(-4px);}
-  75% { transform: translateX(4px);}
-  100% { transform: translateX(0);}
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(4px);
+  }
+  50% {
+    transform: translateX(-4px);
+  }
+  75% {
+    transform: translateX(4px);
+  }
+  100% {
+    transform: translateX(0);
+  }
 }

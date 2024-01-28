@@ -125,6 +125,7 @@ const removeLetter = () => {
 
 const displayLetter = (letter) => {
   currentGuess.push(letter)
+  currentRow[currentGuess.length - 1].classList.add('show-letter')
   currentRow[currentGuess.length - 1].textContent = letter
 }
 
