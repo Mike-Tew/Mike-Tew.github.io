@@ -55,8 +55,12 @@ const keyPress = (e) => {
     displayLetter(letter)
   } else if (letter === 'BACKSPACE' || letter === 'BACK') {
     removeLetter()
-  } else if (letter === 'ENTER' && currentGuess.length === 5) {
-    checkGuess()
+  } else if (letter === 'ENTER') {
+    if (currentGuess.length === 5) {
+      checkGuess()
+    } else {
+      shortGuess()
+    }
   }
 }
 
@@ -72,6 +76,13 @@ const checkGuess = () => {
   turn++
   currentRow = document.querySelectorAll('.row')[turn].childNodes
   currentGuess = []
+}
+
+const shortGuess = () => {
+  const row = document.querySelectorAll('.row')[turn]
+  row.classList.remove('shake')
+  row.offsetWidth
+  row.classList.add('shake')
 }
 
 const chageKeyColors = () => {
