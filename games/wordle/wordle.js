@@ -120,6 +120,7 @@ const changeBoxColors = () => {
 
 const removeLetter = () => {
   currentGuess.pop()
+  currentRow[currentGuess.length].classList.remove('show-letter')
   currentRow[currentGuess.length].textContent = ''
 }
 

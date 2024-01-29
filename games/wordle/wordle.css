@@ -13,6 +13,20 @@ hr {
   color: #3a3a3c;
 }
 
+#toast-message {
+  display: none;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 0);
+  width: 11rem;
+  margin: auto;
+  padding: 0.8rem 0.5rem;
+  background-color: #f8f8f8;
+  color: #121213;
+  font-size: 0.9rem;
+  border-radius: 0.2rem;
+}
+
 #guess-container {
   width: 24rem;
   height: 23rem;
