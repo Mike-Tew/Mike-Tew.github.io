@@ -50,10 +50,14 @@ const createKeyboard = () => {
 
 const toastPopup = (msg) => {
   console.log(msg);
-  const toast = document.getElementById('toast-message')
+  const toastContainer = document.getElementById('toast-container')
+  const toast = document.createElement('div')
   toast.textContent = msg
-  // toast.style.display = 'block'
-  toast.classList.add('show-toast')
+  toast.classList.add('toast-message')
+  toastContainer.prepend(toast)
+  setTimeout(() => {
+    toast.remove()
+  }, 1500);
 }
 
 const keyPress = (e) => {

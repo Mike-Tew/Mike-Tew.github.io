@@ -14,19 +14,23 @@ hr {
   color: #3a3a3c;
 }
 
-#toast-message {
-  opacity: 0;
+#toast-container {
   position: absolute;
   left: 50%;
   transform: translate(-50%, 0);
+  z-index: 98;
+}
+
+.toast-message {
+  opacity: 0;
   width: 11rem;
-  margin: auto;
+  margin-bottom: 1rem;
   padding: 0.8rem 0.5rem;
   background-color: #f8f8f8;
   color: #121213;
   font-size: 0.9rem;
   border-radius: 0.2rem;
-  z-index: 99;
+  animation: fade-out 1.5s 1;
 }
 
 #guess-container {
@@ -102,10 +106,6 @@ hr {
 
 .shake {
   animation: row-shake 0.2s 2;
-}
-
-.show-toast {
-  animation: fade-out 1.5s 1;
 }
 
 @keyframes fade-out {
