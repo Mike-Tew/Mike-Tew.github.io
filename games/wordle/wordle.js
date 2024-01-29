@@ -48,6 +48,14 @@ const createKeyboard = () => {
   })
 }
 
+const toastPopup = (msg) => {
+  console.log(msg);
+  const toast = document.getElementById('toast-message')
+  toast.textContent = msg
+  // toast.style.display = 'block'
+  toast.classList.add('show-toast')
+}
+
 const keyPress = (e) => {
   const letter = e.type == 'keydown' ? e.key.toUpperCase() : e.target.textContent
 
@@ -58,8 +66,10 @@ const keyPress = (e) => {
   } else if (letter === 'ENTER') {
     if (currentGuess.length === 5) {
       checkGuess()
+      toastPopup('Not in word list')
     } else {
       shortGuess()
+      toastPopup('Not enough letters')
     }
   }
 }
