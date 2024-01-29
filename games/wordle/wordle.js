@@ -49,7 +49,6 @@ const createKeyboard = () => {
 }
 
 const toastPopup = (msg) => {
-  console.log(msg);
   const toastContainer = document.getElementById('toast-container')
   const toast = document.createElement('div')
   toast.textContent = msg
@@ -57,7 +56,7 @@ const toastPopup = (msg) => {
   toastContainer.prepend(toast)
   setTimeout(() => {
     toast.remove()
-  }, 1500);
+  }, 1500)
 }
 
 const keyPress = (e) => {
@@ -70,15 +69,20 @@ const keyPress = (e) => {
   } else if (letter === 'ENTER') {
     if (currentGuess.length === 5) {
       checkGuess()
-      toastPopup('Not in word list')
     } else {
-      shortGuess()
+      wrongGuess()
       toastPopup('Not enough letters')
     }
   }
 }
 
 const checkGuess = () => {
+  if (!wordList.includes(currentGuess.join('').toLowerCase())) {
+    wrongGuess()
+    toastPopup('Not in word list')
+    return
+  }
+
   chageKeyColors()
   changeBoxColors()
   if (currentGuess.join('') === word) {
@@ -87,12 +91,13 @@ const checkGuess = () => {
     resetGame()
     return
   }
+
   turn++
   currentRow = document.querySelectorAll('.row')[turn].childNodes
   currentGuess = []
 }
 
-const shortGuess = () => {
+const wrongGuess = () => {
   const row = document.querySelectorAll('.row')[turn]
   row.classList.remove('shake')
   row.offsetWidth
