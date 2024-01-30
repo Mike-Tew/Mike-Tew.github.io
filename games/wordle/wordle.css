@@ -108,6 +108,19 @@ hr {
   animation: row-shake 0.2s 2;
 }
 
+.flip {
+  animation: square-flip 0.4s forwards;
+}
+
+@keyframes square-flip {
+  50% {
+    transform: rotateX(90deg);
+  }
+  100% {
+    background-color: #565758;
+  }
+}
+
 @keyframes fade-out {
   0% {
     opacity: 1;
