@@ -129,7 +129,6 @@ const chageKeyColors = () => {
 
 const changeBoxColors = () => {
   currentGuess.forEach((letter, idx) => {
-    currentRow[idx].style.animationDelay = `${idx * 0.4}s`
     if (letter === word[idx]) {
       currentRow[idx].style.animation = `0.4s flip-green ${idx * 0.4}s forwards`
     } else if (word.includes(letter)) {
