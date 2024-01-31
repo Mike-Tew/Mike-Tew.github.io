@@ -1,3 +1,9 @@
+:root {
+  --gray: #3a3a3c;
+  --yellow: #b59f3b;
+  --green: #538d4e;
+}
+
 body {
   text-align: center;
   background-color: #121213;
@@ -49,6 +55,9 @@ hr {
   color: #f8f8f8;
   line-height: 3rem;
   font-size: 2rem;
+
+  animation-duration: 0.4s;
+  animation-fill-mode: forwards;
 }
 
 #keyboard {
@@ -108,16 +117,42 @@ hr {
   animation: row-shake 0.2s 2;
 }
 
-.flip {
-  animation: square-flip 0.4s forwards;
+.gray-flip {
+  animation: flip-gray 0.4s forwards;
 }
 
-@keyframes square-flip {
+.yellow-flip {
+  animation: flip-yellow 0.4s forwards;
+}
+
+.green-flip {
+  animation: flip-green 0.4s forwards;
+}
+
+@keyframes flip-gray {
   50% {
     transform: rotateX(90deg);
   }
   100% {
-    background-color: #565758;
+    background-color: var(--gray);
+  }
+}
+
+@keyframes flip-yellow {
+  50% {
+    transform: rotateX(90deg);
+  }
+  100% {
+    background-color: var(--yellow);
+  }
+}
+
+@keyframes flip-green {
+  50% {
+    transform: rotateX(90deg);
+  }
+  100% {
+    background-color: var(--green);
   }
 }
 
