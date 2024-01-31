@@ -118,11 +118,11 @@ const chageKeyColors = () => {
 
   keyNodes.forEach((keyNode) => {
     if (greenKeys.has(keyNode.innerText)) {
-      keyNode.classList.add('bg-green')
+      keyNode.style.backgroundColor = 'var(--green)'
     } else if (yellowKeys.has(keyNode.innerText)) {
-      keyNode.classList.add('bg-yellow')
+      keyNode.style.backgroundColor = 'var(--yellow)'
     } else if (grayKeys.has(keyNode.innerText)) {
-      keyNode.classList.add('bg-gray')
+      keyNode.style.backgroundColor = 'var(--gray)'
     }
   })
 }
