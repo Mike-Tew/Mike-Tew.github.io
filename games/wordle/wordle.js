@@ -1,5 +1,5 @@
-import { allWords } from './allWords.js';
-import { wordList } from './words.js';
+import { allWords } from './allWords.js'
+import { wordList } from './words.js'
 
 const guessContainer = document.getElementById('guess-container')
 const keyboard = document.getElementById('keyboard')
@@ -11,7 +11,8 @@ let turn,
   yellowKeys,
   currentRow,
   keyNodes,
-  word
+  word,
+  animationRunning
 
 const createBoard = () => {
   for (let i = 1; i < 7; i++) {
@@ -55,12 +56,12 @@ const toastPopup = (msg) => {
   toast.textContent = msg
   toast.classList.add('toast-message')
   toastContainer.prepend(toast)
-  setTimeout(() => {
-    toast.remove()
-  }, 1500)
+  setTimeout(() => toast.remove(), 1500)
 }
 
 const keyPress = (e) => {
+  if (animationRunning) return
+
   const letter = e.type == 'keydown' ? e.key.toUpperCase() : e.target.textContent
 
   if (currentGuess.length < 5 && 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.includes(letter)) {
@@ -84,8 +85,6 @@ const checkGuess = () => {
     return
   }
 
-  chageKeyColors()
-  changeBoxColors()
   if (currentGuess.join('') === word) {
     console.log('You Win!')
     modal.showModal()
@@ -93,9 +92,16 @@ const checkGuess = () => {
     return
   }
 
+  changeBoxColors()
+  animationRunning = true
   turn++
   currentRow = document.querySelectorAll('.row')[turn].childNodes
-  currentGuess = []
+
+  setTimeout(() => {
+    chageKeyColors()
+    animationRunning = false
+    currentGuess = []
+  }, 2000);
 }
 
 const wrongGuess = () => {
