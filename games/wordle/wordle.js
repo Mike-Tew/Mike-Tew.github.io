@@ -1,4 +1,5 @@
-import { wordList } from './words.js'
+import { allWords } from './allWords.js';
+import { wordList } from './words.js';
 
 const guessContainer = document.getElementById('guess-container')
 const keyboard = document.getElementById('keyboard')
@@ -77,7 +78,7 @@ const keyPress = (e) => {
 }
 
 const checkGuess = () => {
-  if (!wordList.includes(currentGuess.join('').toLowerCase())) {
+  if (!allWords.has(currentGuess.join('').toLowerCase())) {
     wrongGuess()
     toastPopup('Not in word list')
     return
