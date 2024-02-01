@@ -98,7 +98,7 @@ hr {
 
 .show-letter {
   border-color: #565758;
-  animation: display-letter .1s;
+  animation: display-letter 0.1s;
 }
 
 .shake {
@@ -174,5 +174,23 @@ hr {
   }
   100% {
     transform: translateX(0);
+  }
+}
+
+@keyframes row-win {
+  0% {
+    transform: translateY(0%);
+  }
+  25% {
+    transform: translateY(-50%);
+  }
+  50% {
+    transform: translateY(0%);
+  }
+  75% {
+    transform: translateY(-25%);
+  }
+  100% {
+    transform: translateY(0%);
   }
 }

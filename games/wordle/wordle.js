@@ -79,16 +79,10 @@ const keyPress = (e) => {
 }
 
 const checkGuess = () => {
+
   if (!allWords.has(currentGuess.join('').toLowerCase())) {
     wrongGuess()
     toastPopup('Not in word list')
-    return
-  }
-
-  if (currentGuess.join('') === word) {
-    console.log('You Win!')
-    modal.showModal()
-    resetGame()
     return
   }
 
@@ -98,10 +92,18 @@ const checkGuess = () => {
   currentRow = document.querySelectorAll('.row')[turn].childNodes
 
   setTimeout(() => {
+    if (currentGuess.join('') === word) {
+      winAnimation()
+      console.log('You Win!')
+      // modal.showModal()
+      // resetGame()
+      return
+    }
+
     chageKeyColors()
     animationRunning = false
     currentGuess = []
-  }, 2000);
+  }, 2000)
 }
 
 const wrongGuess = () => {
@@ -109,6 +111,12 @@ const wrongGuess = () => {
   row.classList.remove('shake')
   row.offsetWidth
   row.classList.add('shake')
+}
+
+const winAnimation = () => {
+  currentRow.forEach((square, idx) => {
+    square.style.animation = `0.6s row-win ${idx * 0.1}s`
+  })
 }
 
 const chageKeyColors = () => {
