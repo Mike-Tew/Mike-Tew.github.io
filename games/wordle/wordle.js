@@ -4,6 +4,7 @@ import { allWords } from './allWords.js'
 const guessContainer = document.getElementById('guess-container')
 const keyboard = document.getElementById('keyboard')
 const LETTERS = ['QWERTYUIOP', 'ASDFGHJKL', '1ZXCVBNM0']
+const toastMsgs = ['Genius', 'Magnificent', 'Impressive', 'Splendid', 'Great', 'Phew']
 let turn,
   currentGuess,
   grayKeys,
@@ -79,7 +80,6 @@ const keyPress = (e) => {
 }
 
 const checkGuess = () => {
-
   if (!allWords.has(currentGuess.join('').toLowerCase())) {
     wrongGuess()
     toastPopup('Not in word list')
@@ -92,6 +92,7 @@ const checkGuess = () => {
   setTimeout(() => {
     if (currentGuess.join('') === word) {
       winAnimation()
+      toastPopup(toastMsgs[turn])
       // modal.showModal()
       // resetGame()
       return
