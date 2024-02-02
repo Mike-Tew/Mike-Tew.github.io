@@ -1,5 +1,5 @@
 import { allWords } from './allWords.js'
-import { wordList } from './words.js'
+// import { wordList } from './words.js'
 
 const guessContainer = document.getElementById('guess-container')
 const keyboard = document.getElementById('keyboard')
@@ -88,19 +88,18 @@ const checkGuess = () => {
 
   changeBoxColors()
   animationRunning = true
-  turn++
-  currentRow = document.querySelectorAll('.row')[turn].childNodes
 
   setTimeout(() => {
     if (currentGuess.join('') === word) {
       winAnimation()
-      console.log('You Win!')
       // modal.showModal()
       // resetGame()
       return
     }
 
     chageKeyColors()
+    turn++
+    currentRow = document.querySelectorAll('.row')[turn].childNodes
     animationRunning = false
     currentGuess = []
   }, 2000)
@@ -115,7 +114,9 @@ const wrongGuess = () => {
 
 const winAnimation = () => {
   currentRow.forEach((square, idx) => {
-    square.style.animation = `0.6s row-win ${idx * 0.1}s`
+    square.style.backgroundColor = 'var(--green)'
+    square.style.border = 'none'
+    square.style.animation = `0.6s row-win ${idx * 0.1}s forwards`
   })
 }
 
@@ -176,7 +177,8 @@ const resetGame = () => {
   grayKeys = new Set()
   greenKeys = new Set()
   yellowKeys = new Set()
-  word = wordList[Math.floor(Math.random() * wordList.length)].toUpperCase()
+  // word = wordList[Math.floor(Math.random() * wordList.length)].toUpperCase()
+  word = 'PARTY'
 
   currentRow = document.querySelectorAll('.row')[turn].childNodes
   keyNodes = document.querySelectorAll('.key')
