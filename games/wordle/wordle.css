@@ -33,6 +33,11 @@ body {
   );
 }
 
+#menu:after {
+  content: '';
+  padding: 2rem;
+}
+
 h1 {
   color: var(--text-color);
 }

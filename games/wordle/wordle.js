@@ -3,6 +3,7 @@ import { allWords } from './allWords.js'
 
 const guessContainer = document.getElementById('guess-container')
 const keyboard = document.getElementById('keyboard')
+const menu = document.getElementById('menu')
 const LETTERS = ['QWERTYUIOP', 'ASDFGHJKL', '1ZXCVBNM0']
 const toastMsgs = ['Genius', 'Magnificent', 'Impressive', 'Splendid', 'Great', 'Phew']
 let turn,
@@ -93,7 +94,7 @@ const checkGuess = () => {
     if (currentGuess.join('') === word) {
       winAnimation()
       toastPopup(toastMsgs[turn])
-      // modal.showModal()
+      modal.showModal()
       // resetGame()
       return
     }
@@ -169,15 +170,17 @@ const displayLetter = (letter) => {
 }
 
 const resetGame = () => {
+  modal.close()
   keyboard.innerHTML = ''
   guessContainer.innerHTML = ''
   createBoard()
   createKeyboard()
-  turn = 0
-  currentGuess = []
   grayKeys = new Set()
   greenKeys = new Set()
   yellowKeys = new Set()
+  turn = 0
+  currentGuess = []
+  animationRunning = false
   // word = wordList[Math.floor(Math.random() * wordList.length)].toUpperCase()
   word = 'PARTY'
 
@@ -185,6 +188,11 @@ const resetGame = () => {
   keyNodes = document.querySelectorAll('.key')
 }
 
-document.getElementById('modal').onclick = modal.close
+const openMenu = () => {
+  modal.showModal()
+}
+
+menu.onclick = openMenu
+document.getElementById('play-again').onclick = resetGame
 document.onkeydown = keyPress
 document.body.onload = resetGame
