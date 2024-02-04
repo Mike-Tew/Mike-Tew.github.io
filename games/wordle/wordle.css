@@ -15,28 +15,30 @@ body {
 }
 
 #menu {
-  position: fixed;
-  width: 1.2rem;
-  height: 1.1rem;
-  border-radius: 2px;
-  background: linear-gradient(
-    var(--text-color) 15%,
-    var(--bg-color) 15%,
-    var(--bg-color) 40%,
-    var(--text-color) 40%,
-    var(--text-color) 55%,
-    var(--bg-color) 55%,
-    var(--bg-color) 80%,
-    var(--text-color) 80%,
-    var(--text-color) 95%,
-    var(--bg-color)
-  );
+  display: inline-block;
+  width: 3rem;
+  height: 3rem;
+  border-top: 4px solid var(--gray);
+  border-left: 4px solid var(--gray);
+  cursor: pointer;
+  transform: rotate(45deg) translate(2rem, 2rem);
 }
 
 #menu:after {
   content: '';
-  padding: 2rem;
+  padding: 5rem;
 }
+
+dialog {
+  transform: translateY(100vh) scale(1, 1);
+  transition: transform 300ms ease;
+}
+
+.active {
+  transform: translateY(0) scale(1, 1);
+}
+
+
 
 h1 {
   color: var(--text-color);

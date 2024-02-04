@@ -94,8 +94,9 @@ const checkGuess = () => {
     if (currentGuess.join('') === word) {
       winAnimation()
       toastPopup(toastMsgs[turn])
-      modal.showModal()
-      // resetGame()
+      setTimeout(() => {
+        modal.showModal()
+      }, 2000);
       return
     }
 
@@ -171,6 +172,8 @@ const displayLetter = (letter) => {
 
 const resetGame = () => {
   modal.close()
+  modal.classList.remove('active')
+
   keyboard.innerHTML = ''
   guessContainer.innerHTML = ''
   createBoard()
@@ -189,7 +192,9 @@ const resetGame = () => {
 }
 
 const openMenu = () => {
+  console.log(modal);
   modal.showModal()
+  modal.classList.add('active')
 }
 
 menu.onclick = openMenu
