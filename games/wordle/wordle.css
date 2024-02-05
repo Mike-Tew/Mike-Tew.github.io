@@ -26,7 +26,7 @@ body {
 
 #menu:after {
   content: '';
-  padding: 5rem;
+  /* padding: 5rem; */
 }
 
 dialog {
@@ -38,7 +38,15 @@ dialog {
   transform: translateY(0) scale(1, 1);
 }
 
-
+#modal-close {
+  display: inline-block;
+  width: 3rem;
+  height: 3rem;
+  border-bottom: 4px solid var(--gray);
+  border-right: 4px solid var(--gray);
+  cursor: pointer;
+  transform: rotate(45deg);
+}
 
 h1 {
   color: var(--text-color);

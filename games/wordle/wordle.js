@@ -96,7 +96,7 @@ const checkGuess = () => {
       toastPopup(toastMsgs[turn])
       setTimeout(() => {
         modal.showModal()
-      }, 2000);
+      }, 2000)
       return
     }
 
@@ -171,8 +171,7 @@ const displayLetter = (letter) => {
 }
 
 const resetGame = () => {
-  modal.close()
-  modal.classList.remove('active')
+  closeMenu()
 
   keyboard.innerHTML = ''
   guessContainer.innerHTML = ''
@@ -192,12 +191,17 @@ const resetGame = () => {
 }
 
 const openMenu = () => {
-  console.log(modal);
   modal.showModal()
   modal.classList.add('active')
 }
 
+const closeMenu = () => {
+  modal.close()
+  modal.classList.remove('active')
+}
+
 menu.onclick = openMenu
+document.getElementById('modal-close').addEventListener('click', closeMenu)
 document.getElementById('play-again').onclick = resetGame
 document.onkeydown = keyPress
 document.body.onload = resetGame
