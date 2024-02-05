@@ -3,7 +3,6 @@ import { allWords } from './allWords.js'
 
 const guessContainer = document.getElementById('guess-container')
 const keyboard = document.getElementById('keyboard')
-const menu = document.getElementById('menu')
 const LETTERS = ['QWERTYUIOP', 'ASDFGHJKL', '1ZXCVBNM0']
 const toastMsgs = ['Genius', 'Magnificent', 'Impressive', 'Splendid', 'Great', 'Phew']
 let turn,
@@ -92,11 +91,7 @@ const checkGuess = () => {
 
   setTimeout(() => {
     if (currentGuess.join('') === word) {
-      winAnimation()
-      toastPopup(toastMsgs[turn])
-      setTimeout(() => {
-        modal.showModal()
-      }, 2000)
+      gameWin()
       return
     }
 
@@ -105,7 +100,20 @@ const checkGuess = () => {
     currentRow = document.querySelectorAll('.row')[turn].childNodes
     animationRunning = false
     currentGuess = []
+
+    if (turn === 6) gameLoss()
   }, 2000)
+}
+
+const gameWin = () => {
+  winAnimation()
+  toastPopup(toastMsgs[turn])
+  setTimeout(() => openMenu(), 2000)
+}
+
+const gameLoss = () => {
+  toastPopup(word)
+  setTimeout(() => openMenu(), 2000)
 }
 
 const wrongGuess = () => {
@@ -193,15 +201,17 @@ const resetGame = () => {
 const openMenu = () => {
   modal.showModal()
   modal.classList.add('active')
+  animationRunning = true
 }
 
 const closeMenu = () => {
   modal.close()
   modal.classList.remove('active')
+  animationRunning = false
 }
 
-menu.onclick = openMenu
-document.getElementById('modal-close').addEventListener('click', closeMenu)
+document.getElementById('menu').onclick = openMenu
+document.getElementById('modal-close').onclick = closeMenu
 document.getElementById('play-again').onclick = resetGame
 document.onkeydown = keyPress
 document.body.onload = resetGame
