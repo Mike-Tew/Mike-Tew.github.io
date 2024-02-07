@@ -61,6 +61,7 @@ const toastPopup = (msg) => {
 }
 
 const keyPress = (e) => {
+  if (modal.open && e.key === 'Escape') closeMenu()
   if (animationRunning) return
 
   const letter = e.type == 'keydown' ? e.key.toUpperCase() : e.target.textContent
