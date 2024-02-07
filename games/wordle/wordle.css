@@ -29,13 +29,14 @@ body {
   /* padding: 5rem; */
 }
 
-dialog {
-  transform: translateY(100vh) scale(1, 1);
+.active {
+  transform: translateY(0);
   transition: transform 300ms ease;
 }
 
-.active {
-  transform: translateY(0) scale(1, 1);
+.deactivate {
+  transform: translateY(100vh);
+  transition: transform 300ms ease;
 }
 
 #modal-close {

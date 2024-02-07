@@ -201,14 +201,16 @@ const resetGame = () => {
 
 const openMenu = () => {
   modal.showModal()
+  modal.classList.remove('deactivate')
   modal.classList.add('active')
   animationRunning = true
 }
 
 const closeMenu = () => {
-  modal.close()
   modal.classList.remove('active')
+  modal.classList.add('deactivate')
   animationRunning = false
+  setTimeout(() => modal.close(), 400);
 }
 
 document.getElementById('menu').onclick = openMenu
