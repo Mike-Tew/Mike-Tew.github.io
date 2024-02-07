@@ -25,16 +25,23 @@ body {
 }
 
 #menu:after {
+  display: inline-block;
   content: '';
-  /* padding: 5rem; */
+  border-radius: 50%;
+  padding: 3rem;
+  transform: translate(-2rem, -2rem);
 }
 
-.active {
+dialog {
+  outline: var(--bg-color);
+}
+
+.modal-active {
   transform: translateY(0);
   transition: transform 300ms ease;
 }
 
-.deactivate {
+.modal-deactive {
   transform: translateY(100vh);
   transition: transform 300ms ease;
 }
@@ -47,6 +54,14 @@ body {
   border-right: 4px solid var(--gray);
   cursor: pointer;
   transform: rotate(45deg);
+}
+
+#modal-close:after {
+  display: inline-block;
+  content: '';
+  border-radius: 50%;
+  padding: 3rem;
+  transform: translate(-1rem, -1rem);
 }
 
 h1 {
