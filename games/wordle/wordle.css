@@ -80,7 +80,6 @@ hr {
 }
 
 .toast-message {
-  opacity: 0;
   width: 11rem;
   margin-bottom: 1rem;
   padding: 0.8rem 0.5rem;
@@ -88,7 +87,6 @@ hr {
   color: var(--bg-color);
   font-size: 0.9rem;
   border-radius: 0.2rem;
-  animation: fade-out 1.5s 1;
 }
 
 #guess-container {

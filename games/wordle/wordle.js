@@ -55,8 +55,15 @@ const toastPopup = (msg) => {
   const toastContainer = document.getElementById('toast-container')
   const toast = document.createElement('div')
   toast.textContent = msg
-  toast.classList.add('toast-message')
   toastContainer.prepend(toast)
+  toast.classList.add('toast-message')
+  if (msg === word) {
+    toast.style.opacity = '1'
+    return
+  }
+
+  toast.style.opacity = '0'
+  toast.style.animation = 'fade-out 1.5s'
   setTimeout(() => toast.remove(), 1500)
 }
 
