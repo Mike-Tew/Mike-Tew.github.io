@@ -3,6 +3,7 @@ import { allWords } from './allWords.js'
 
 const guessContainer = document.getElementById('guess-container')
 const keyboard = document.getElementById('keyboard')
+const toastContainer = document.getElementById('toast-container')
 const LETTERS = ['QWERTYUIOP', 'ASDFGHJKL', '1ZXCVBNM0']
 const toastMsgs = ['Genius', 'Magnificent', 'Impressive', 'Splendid', 'Great', 'Phew']
 let turn,
@@ -52,16 +53,12 @@ const createKeyboard = () => {
 }
 
 const toastPopup = (msg) => {
-  const toastContainer = document.getElementById('toast-container')
   const toast = document.createElement('div')
   toast.textContent = msg
   toastContainer.prepend(toast)
   toast.classList.add('toast-message')
-  if (msg === word) {
-    toast.style.opacity = '1'
-    return
-  }
 
+  if (msg === word) return
   toast.style.opacity = '0'
   toast.style.animation = 'fade-out 1.5s'
   setTimeout(() => toast.remove(), 1500)
@@ -193,6 +190,7 @@ const resetGame = () => {
   guessContainer.innerHTML = ''
   createBoard()
   createKeyboard()
+  toastContainer.innerHTML = ''
   grayKeys = new Set()
   greenKeys = new Set()
   yellowKeys = new Set()
@@ -217,7 +215,7 @@ const closeMenu = () => {
   modal.classList.remove('modal-active')
   modal.classList.add('modal-deactive')
   animationRunning = false
-  setTimeout(() => modal.close(), 300);
+  setTimeout(() => modal.close(), 300)
 }
 
 document.getElementById('menu').onclick = openMenu
