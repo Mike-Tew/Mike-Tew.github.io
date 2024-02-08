@@ -153,6 +153,17 @@ hr {
   animation: row-shake 0.2s 2;
 }
 
+#play-again {
+  display: block;
+  width: 15rem;
+  margin: 4rem auto;
+  padding: 1rem;
+  background-color: var(--green);
+  color: var(--text-color);
+  border: 3px solid var(--gray);
+  border-radius: 1rem;
+}
+
 @keyframes flip-gray {
   50% {
     transform: rotateX(90deg);
