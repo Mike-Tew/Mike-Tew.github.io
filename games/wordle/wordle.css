@@ -107,8 +107,8 @@ hr {
   border: 2px solid var(--gray);
   border-radius: 2px;
   color: var(--text-color);
-  line-height: 15vw;
-  font-size: 10vw;
+  line-height: 7.5vh;
+  font-size: 4.5vh;
   box-sizing: border-box;
 }
 
