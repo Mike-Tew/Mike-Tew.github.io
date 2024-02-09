@@ -14,10 +14,20 @@ body {
   user-select: none;
 }
 
-#menu {
+h1 {
   display: inline-block;
-  width: 3rem;
-  height: 3rem;
+  color: var(--text-color);
+  text-align: center;
+  margin: 0;
+}
+
+#menu {
+  position: absolute;
+  top: -1.5rem;
+  right: 3rem;
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
   border-top: 4px solid var(--gray);
   border-left: 4px solid var(--gray);
   cursor: pointer;
@@ -28,8 +38,8 @@ body {
   display: inline-block;
   content: '';
   border-radius: 50%;
-  padding: 3rem;
-  transform: translate(-2rem, -2rem);
+  padding: 1.5rem;
+  transform: translate(-1.25rem, -1.25rem);
 }
 
 dialog {
@@ -64,11 +74,6 @@ dialog {
   transform: translate(-1rem, -1rem);
 }
 
-h1 {
-  color: var(--text-color);
-  margin: 1rem;
-}
-
 hr {
   border-color: var(--gray);
 }
@@ -91,14 +96,13 @@ hr {
 }
 
 #guess-container {
-  width: 90vw;
   margin: auto;
 }
 
 .square {
   display: inline-block;
-  width: 8vh;
-  height: 8vh;
+  width: 7.5vh;
+  height: 7.5vh;
   margin: 0.15rem;
   border: 2px solid var(--gray);
   border-radius: 2px;
@@ -110,7 +114,6 @@ hr {
 
 #keyboard {
   justify-content: center;
-  width: 100%;
   margin: 1rem auto;
   padding: 0;
   max-width: 32rem;
@@ -125,7 +128,7 @@ hr {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 5vh;
+  width: 4vh;
   height: 58px;
   margin: 3px 3px;
   background-color: #818384;
@@ -136,7 +139,7 @@ hr {
 }
 
 .wide {
-  width: 4rem;
+  width: 6vh;
   font-size: 0.8rem;
 }
 
