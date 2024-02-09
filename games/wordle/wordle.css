@@ -97,8 +97,8 @@ hr {
 
 .square {
   display: inline-block;
-  width: 15vw;
-  height: 15vw;
+  width: 8vh;
+  height: 8vh;
   margin: 0.15rem;
   border: 2px solid var(--gray);
   border-radius: 2px;
@@ -113,6 +113,7 @@ hr {
   width: 100%;
   margin: 1rem auto;
   padding: 0;
+  max-width: 32rem;
 }
 
 .row {
@@ -124,7 +125,7 @@ hr {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 47px;
+  width: 5vh;
   height: 58px;
   margin: 3px 3px;
   background-color: #818384;
@@ -135,7 +136,7 @@ hr {
 }
 
 .wide {
-  width: 70px;
+  width: 4rem;
   font-size: 0.8rem;
 }
 
