@@ -1,5 +1,5 @@
 import { allWords } from './allWords.js'
-// import { wordList } from './words.js'
+import { wordList } from './words.js'
 
 const guessContainer = document.getElementById('guess-container')
 const keyboard = document.getElementById('keyboard')
@@ -35,6 +35,8 @@ const createKeyboard = () => {
     keyRow.classList.add('row')
     keyboard.appendChild(keyRow)
     row.split('').forEach((letter) => {
+      if (letter === 'A') keyRow.style.padding = '0 5%'
+
       const keyEl = document.createElement('div')
       keyEl.classList.add('key')
       keyEl.innerText = letter
@@ -197,8 +199,7 @@ const resetGame = () => {
   turn = 0
   currentGuess = []
   animationRunning = false
-  // word = wordList[Math.floor(Math.random() * wordList.length)].toUpperCase()
-  word = 'PARTY'
+  word = wordList[Math.floor(Math.random() * wordList.length)].toUpperCase()
 
   currentRow = document.querySelectorAll('.row')[turn].childNodes
   keyNodes = document.querySelectorAll('.key')
