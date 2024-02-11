@@ -140,10 +140,10 @@ const winAnimation = () => {
 
 const chageKeyColors = () => {
   if (currentGuess.length !== 5) return
-  currentGuess.forEach((letter) => {
+  currentGuess.forEach((letter, idx) => {
     if (!word.includes(letter)) {
       grayKeys.add(letter)
-    } else if (word.indexOf(letter) === currentGuess.indexOf(letter)) {
+    } else if (word[idx] === currentGuess[idx]) {
       greenKeys.add(letter)
     } else {
       yellowKeys.add(letter)
