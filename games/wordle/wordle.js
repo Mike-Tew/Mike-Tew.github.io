@@ -200,6 +200,7 @@ const resetGame = () => {
   currentGuess = []
   animationRunning = false
   word = wordList[Math.floor(Math.random() * wordList.length)].toUpperCase()
+  word = 'PARTY'
 
   currentRow = document.querySelectorAll('.row')[turn].childNodes
   keyNodes = document.querySelectorAll('.key')

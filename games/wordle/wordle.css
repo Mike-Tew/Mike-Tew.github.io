@@ -10,7 +10,6 @@ body {
   margin: 0;
   text-align: center;
   background-color: var(--bg-color);
-  font-family: 'Fira Code', Courier, monospace;
   font-weight: bold;
   user-select: none;
 }
@@ -90,13 +89,14 @@ hr {
 }
 
 .toast-message {
-  width: 11rem;
   margin-bottom: 1rem;
-  padding: 0.8rem 0.5rem;
+  padding: 0.7rem 0.7rem;
   background-color: var(--text-color);
   color: var(--bg-color);
   font-size: 0.9rem;
+  font-weight: bold;
   border-radius: 0.2rem;
+  transform: translateY(-25%);
 }
 
 #guess-container {
