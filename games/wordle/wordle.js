@@ -162,10 +162,16 @@ const chageKeyColors = () => {
 }
 
 const changeBoxColors = () => {
+  const greenIndexes = []
+  const filteredWord = []
+  currentGuess.forEach((letter, idx) =>
+    letter === word[idx] ? greenIndexes.push(idx) : filteredWord.push(word[idx])
+  )
+
   currentGuess.forEach((letter, idx) => {
-    if (letter === word[idx]) {
+    if (greenIndexes.includes(idx)) {
       currentRow[idx].style.animation = `0.4s flip-green ${idx * 0.4}s forwards`
-    } else if (word.includes(letter)) {
+    } else if (filteredWord.includes(letter)) {
       currentRow[idx].style.animation = `0.4s flip-yellow ${idx * 0.4}s forwards`
     } else {
       currentRow[idx].style.animation = `0.4s flip-gray ${idx * 0.4}s forwards`
@@ -200,6 +206,7 @@ const resetGame = () => {
   currentGuess = []
   animationRunning = false
   word = wordList[Math.floor(Math.random() * wordList.length)].toUpperCase()
+  word = 'PEEL'
 
   currentRow = document.querySelectorAll('.row')[turn].childNodes
   keyNodes = document.querySelectorAll('.key')
