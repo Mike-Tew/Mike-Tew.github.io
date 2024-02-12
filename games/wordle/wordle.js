@@ -194,11 +194,12 @@ const displayLetter = (letter) => {
 const resetGame = () => {
   closeMenu()
 
+  toastContainer.innerHTML = ''
   keyboard.innerHTML = ''
   guessContainer.innerHTML = ''
   createBoard()
   createKeyboard()
-  toastContainer.innerHTML = ''
+
   grayKeys = new Set()
   greenKeys = new Set()
   yellowKeys = new Set()
@@ -206,7 +207,7 @@ const resetGame = () => {
   currentGuess = []
   animationRunning = false
   word = wordList[Math.floor(Math.random() * wordList.length)].toUpperCase()
-  word = 'PEEL'
+  word = 'CLOUD'
 
   currentRow = document.querySelectorAll('.row')[turn].childNodes
   keyNodes = document.querySelectorAll('.key')
