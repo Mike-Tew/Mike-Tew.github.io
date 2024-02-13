@@ -109,7 +109,7 @@ const checkGuess = () => {
     currentGuess = []
 
     if (turn === 6) gameLoss()
-  }, 2000)
+  }, 1500)
 }
 
 const gameWin = () => {
@@ -164,15 +164,22 @@ const chageKeyColors = () => {
 const changeBoxColors = () => {
   const greenIndexes = []
   const filteredWord = []
-  currentGuess.forEach((letter, idx) =>
-    letter === word[idx] ? greenIndexes.push(idx) : filteredWord.push(word[idx])
+  const colorCount = {}
+
+  word.split('').forEach((letter) =>
+    colorCount[letter] ? colorCount[letter]++ : (colorCount[letter] = 1)
   )
+  currentGuess.forEach((letter, idx) => {
+    letter === word[idx] ? greenIndexes.push(idx) : filteredWord.push(word[idx])
+  })
 
   currentGuess.forEach((letter, idx) => {
     if (greenIndexes.includes(idx)) {
       currentRow[idx].style.animation = `0.4s flip-green ${idx * 0.3}s forwards`
-    } else if (filteredWord.includes(letter)) {
+      colorCount[letter]--
+    } else if (filteredWord.includes(letter) && colorCount[letter] > 0) {
       currentRow[idx].style.animation = `0.4s flip-yellow ${idx * 0.3}s forwards`
+      colorCount[letter]--
     } else {
       currentRow[idx].style.animation = `0.4s flip-gray ${idx * 0.3}s forwards`
     }
