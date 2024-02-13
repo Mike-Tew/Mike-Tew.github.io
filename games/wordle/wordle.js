@@ -170,11 +170,11 @@ const changeBoxColors = () => {
 
   currentGuess.forEach((letter, idx) => {
     if (greenIndexes.includes(idx)) {
-      currentRow[idx].style.animation = `0.4s flip-green ${idx * 0.4}s forwards`
+      currentRow[idx].style.animation = `0.4s flip-green ${idx * 0.3}s forwards`
     } else if (filteredWord.includes(letter)) {
-      currentRow[idx].style.animation = `0.4s flip-yellow ${idx * 0.4}s forwards`
+      currentRow[idx].style.animation = `0.4s flip-yellow ${idx * 0.3}s forwards`
     } else {
-      currentRow[idx].style.animation = `0.4s flip-gray ${idx * 0.4}s forwards`
+      currentRow[idx].style.animation = `0.4s flip-gray ${idx * 0.3}s forwards`
     }
   })
 }
