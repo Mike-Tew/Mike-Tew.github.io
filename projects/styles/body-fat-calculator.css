@@ -15,7 +15,7 @@
   color: #f1f1f1;
 }
 
-.box {
+.container {
   width: 20rem;
   border: 1px solid black;
   border-radius: 0.4rem;
@@ -32,11 +32,18 @@ h1 {
 input,
 label {
   display: block;
+  margin: 0.5rem 0;
 }
 
 h2 {
+  margin: 0 0 1rem 0;
+  padding: 1rem;
   text-align: center;
   background-color: lightgray;
   border-top: 1px solid grey;
   border-bottom: 1px solid grey;
+}
+
+#calculate {
+  margin-bottom: 1rem; 
 }
