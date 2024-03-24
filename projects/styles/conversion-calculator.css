@@ -15,6 +15,10 @@
   color: #f1f1f1;
 }
 
+.back-button:hover {
+  color: #f1f1f1;
+}
+
 label {
   display: inline-block;
   width: 3rem;
