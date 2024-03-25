@@ -2,8 +2,26 @@ body {
     background-color: #012d4f;
 }
 
+.button-container {
+  position: absolute;
+  background-color: #2c333a;
+  width: 2.5rem;
+  height: 2.5rem;
+  line-height: 2.5rem;
+  margin: 0.7rem;
+  text-align: center;
+  font-size: x-large;
+  border-radius: 0.5rem;
+}
+
+.back-button {
+  display: block;
+  text-decoration: none;
+  color: #f1f1f1;
+}
+
 .container {
-    margin: 3rem auto;
+    margin: 1rem auto;
     width: 40rem;
     text-align: center;
     border: 1px solid black;
