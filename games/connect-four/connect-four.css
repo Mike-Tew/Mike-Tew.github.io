@@ -1,0 +1,25 @@
+body {
+  background-color: #7a45ff;
+}
+
+.board-container {
+  width: 40rem;
+  height: 40rem;
+  margin: auto;
+}
+
+.square {
+  display: inline-block;
+  width: 10vw;
+  height: 10vw;
+  border: 1px solid black;
+}
+
+.bg-red {
+  background-color: red;
+}
+
+.bg-yellow {
+  background-color: yellow;
+}
+
