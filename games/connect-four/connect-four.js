@@ -22,18 +22,32 @@ const createBoard = () => {
 
 const clickSquare = (e) => {
   const colVal = e.target.getAttribute('column-value')
-  console.log(colVal)
   for (let i = boardArr.length - 1; i > -1; i--) {
     if (boardArr[i][colVal] === undefined) {
       boardArr[i][colVal] = playerTurn
       columnEles = document.querySelectorAll(`[column-value="${colVal}"]`)
       playerTurn === "red" ? columnEles[i].classList.add('bg-red') : columnEles[i].classList.add('bg-yellow')
-      console.log(columnEles[i])
       playerTurn = playerTurn === "red" ? "yellow" : "red"
       break
     }
   }
-  console.log(boardArr)
+  checkForWin()
+}
+
+const checkForWin = () => {
+  // Check horizontal rows
+  for (const arr of boardArr) {
+    console.log(checkFourInARow(arr, 'yellow'))
+  }
+}
+
+const checkFourInARow = (arr, color) => {
+  for (let i = 0; i <= arr.length - 4; i++) {
+    if (arr[i] === color && arr[i + 1] === color && arr[i + 2] === color && arr[i + 3] === color)  {
+      return true
+    }
+  }
+  return false
 }
 
 createBoard()
