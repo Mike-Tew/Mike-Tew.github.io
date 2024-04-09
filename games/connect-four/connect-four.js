@@ -35,9 +35,18 @@ const clickSquare = (e) => {
 }
 
 const checkForWin = () => {
-  // Check horizontal rows
+  // Check rows
   for (const arr of boardArr) {
     console.log(checkFourInARow(arr, 'yellow'))
+  }
+
+  // Check columns
+  for (let i = 0; i <= BOARD_WIDTH; i++) {
+    const checkArr = []
+    for (const arr of boardArr) {
+      checkArr.push(arr[i])
+    }
+    console.log(checkFourInARow(checkArr, 'yellow'))
   }
 }
 
