@@ -3,15 +3,21 @@ body {
 }
 
 .board-container {
-  width: 40rem;
-  height: 40rem;
-  margin: auto;
+  display: flex;
+  justify-content: space-around;
+  width: 80vw;
+  height: 80vw;
+}
+
+.row {
+  display: flex;
+  height: 12vw;
+  justify-content: space-around;
 }
 
 .square {
-  display: inline-block;
-  width: 10vw;
-  height: 10vw;
+  width: 12vw;
+  height: 12vw;
   border: 1px solid black;
 }
 
