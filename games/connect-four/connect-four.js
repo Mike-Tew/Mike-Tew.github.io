@@ -11,10 +11,10 @@ const createBoard = () => {
     boardRow.classList.add('row')
     boardContainer.appendChild(boardRow)
     for (let j = 0; j < 7; j++) {
-      const boardSquare = document.createElement('div')
-      boardSquare.setAttribute('column-value', j)
-      boardSquare.classList.add('square')
-      boardRow.appendChild(boardSquare)
+      const square = document.createElement('div')
+      square.setAttribute('column-value', j)
+      square.classList.add('square')
+      boardRow.appendChild(square)
       boardRow.addEventListener('click', clickSquare)
     }
   }

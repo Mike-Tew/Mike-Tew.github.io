@@ -1,24 +1,21 @@
-body {
-  background-color: #7a45ff;
-}
-
-.board-container {
-  display: flex;
-  justify-content: space-around;
-  width: 80vw;
-  height: 80vw;
+#board-container {
+  padding: 1rem;
 }
 
 .row {
   display: flex;
-  height: 12vw;
-  justify-content: space-around;
+  margin: auto;
+  width: 91vw;
 }
 
 .square {
-  width: 12vw;
-  height: 12vw;
-  border: 1px solid black;
+  width: 13vw;
+  height: 13vw;
+  background: radial-gradient(circle at center 6.5vw, transparent, transparent 5vw, blue 2vw);
+}
+
+.circle {
+  border-radius: 50%;
 }
 
 .bg-red {
