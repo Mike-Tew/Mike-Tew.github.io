@@ -11,17 +11,71 @@
   line-height: 3rem;
   text-align: center;
   background-color: lightblue;
-  border-radius: 1rem;
+  border-radius: 1.5rem;
   font-size: large;
   color: black;
-}
-
-#back-btn {
   text-decoration: none;
 }
 
-#restart-btn {
-  
+#player-container {
+  width: 80%;
+  margin: auto;
+  justify-content: space-between;
+  display: flex;
+  text-align: center;
+}
+
+#player-one {
+  position: relative;
+  width: 10rem;
+  height: 6rem;
+  background: orange;
+  border-radius: 1rem;
+}
+
+#player-one-face {
+  position: absolute;
+  content: "";
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background: red;
+  top: 1.5rem;
+  left: -1.5rem;
+}
+
+#player-one-smile {
+  position: absolute;
+  width: 1.5rem;
+  height: 1rem;
+  border-bottom: 2px solid black;
+  border-radius: 50%;
+  top: 1rem;
+  right: 0.3rem;
+}
+
+#player-one-smile::before {
+  content: "";
+  position: absolute;
+  display: block;
+  background-color: black;
+  width: 1px;
+  height: 1px;
+  border: 1px solid black;
+  border-radius: 50%;
+  right: 15px;
+}
+
+#player-one-smile::after {
+  content: "";
+  position: absolute;
+  display: block;
+  background-color: black;
+  width: 1px;
+  height: 1px;
+  border: 1px solid black;
+  border-radius: 50%;
+  right: 6px;
 }
 
 #board-container {
