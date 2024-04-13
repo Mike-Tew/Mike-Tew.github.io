@@ -27,8 +27,8 @@
 
 #player-one {
   position: relative;
-  width: 10rem;
-  height: 6rem;
+  width: 7rem;
+  height: 5rem;
   background: white;
   border: 2px solid black;
   border-radius: 1rem;
@@ -84,8 +84,8 @@
 
 #player-two {
   position: relative;
-  width: 10rem;
-  height: 6rem;
+  width: 8rem;
+  height: 5rem;
   background: white;
   border: 2px solid black;
   border-radius: 1rem;
@@ -137,6 +137,14 @@
   border: 1px solid black;
   border-radius: 50%;
   right: 6px;
+}
+
+h4 {
+  margin: 1rem 0 0 0;
+}
+
+h3 {
+  margin: 0.7rem 0 0 0;
 }
 
 #board-container {
