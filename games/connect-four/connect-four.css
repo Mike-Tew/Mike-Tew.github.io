@@ -29,8 +29,10 @@
   position: relative;
   width: 10rem;
   height: 6rem;
-  background: orange;
+  background: white;
+  border: 2px solid black;
   border-radius: 1rem;
+  box-shadow: 0 5px 10px black;
 }
 
 #player-one-face {
@@ -38,10 +40,12 @@
   content: "";
   width: 3rem;
   height: 3rem;
+  border: 1px solid black;
   border-radius: 50%;
   background: red;
   top: 1.5rem;
   left: -1.5rem;
+  box-shadow: 0 3px 3px black;
 }
 
 #player-one-smile {
@@ -67,6 +71,63 @@
 }
 
 #player-one-smile::after {
+  content: "";
+  position: absolute;
+  display: block;
+  background-color: black;
+  width: 1px;
+  height: 1px;
+  border: 1px solid black;
+  border-radius: 50%;
+  right: 6px;
+}
+
+#player-two {
+  position: relative;
+  width: 10rem;
+  height: 6rem;
+  background: white;
+  border: 2px solid black;
+  border-radius: 1rem;
+  box-shadow: 0 5px 10px black;
+}
+
+#player-two-face {
+  position: absolute;
+  content: "";
+  width: 3rem;
+  height: 3rem;
+  border: 1px solid black;
+  border-radius: 50%;
+  background: yellow;
+  top: 1.5rem;
+  right: -1.5rem;
+  box-shadow: 0 3px 3px black;
+}
+
+#player-two-smile {
+  position: absolute;
+  width: 1.5rem;
+  height: 1rem;
+  border-bottom: 2px solid black;
+  border-radius: 50%;
+  top: 1rem;
+  left: 0.3rem;
+}
+
+#player-two-smile::before {
+  content: "";
+  position: absolute;
+  display: block;
+  background-color: black;
+  width: 1px;
+  height: 1px;
+  border: 1px solid black;
+  border-radius: 50%;
+  right: 15px;
+}
+
+#player-two-smile::after {
   content: "";
   position: absolute;
   display: block;
