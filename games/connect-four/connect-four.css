@@ -1,5 +1,31 @@
+#btn-container {
+  width: 80%;
+  display: flex;
+  margin: 2rem auto;
+  justify-content: space-between;
+}
+
+#back-btn, #restart-btn {
+  width: 7rem;
+  height: 3rem;
+  line-height: 3rem;
+  text-align: center;
+  background-color: lightblue;
+  border-radius: 1rem;
+  font-size: large;
+  color: black;
+}
+
+#back-btn {
+  text-decoration: none;
+}
+
+#restart-btn {
+  
+}
+
 #board-container {
-  margin: 1rem auto;
+  margin: 3rem auto;
   width: 91vw;
   border: 3px solid blue;
 }
