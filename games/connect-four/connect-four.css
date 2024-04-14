@@ -3,21 +3,22 @@ body {
 }
 
 #btn-container {
-  width: 80%;
+  width: 90%;
   display: flex;
-  margin: 2rem auto;
+  margin: 1rem auto;
   justify-content: space-between;
 }
 
 #back-btn, #restart-btn {
-  width: 7rem;
-  height: 3rem;
-  line-height: 3rem;
+  width: 5rem;
+  height: 2rem;
+  line-height: 2rem;
   text-align: center;
   background-color: lightblue;
   border-radius: 1.5rem;
   font-size: large;
   color: black;
+  font-size: 0.8rem;
   text-decoration: none;
 }
 
@@ -153,7 +154,7 @@ h3 {
 
 #board-container {
   position: relative;
-  margin: 3rem auto;
+  margin: 2rem auto;
   width: 91vw;
   border: 3px solid blue;
 }
