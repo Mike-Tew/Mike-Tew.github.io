@@ -217,20 +217,16 @@ h3 {
   background-color: var(--yellow);
 }
 
-#turn-displaya {
-  display: block;
-  margin: auto;
-  width: 240px;
-  height: 145px;
+#turn-display {
+  width: 250px;
+  height: 160px;
   background-color: red;
-  border-radius: 1rem;
-  clip-path: polygon(45% 5%,55% 5%, 100% 45%, 100% 100%, 0 100%, 0% 45%);
-  position: relative;
+  clip-path: path('M105 25 C105 25, 125 15, 145 25 L225, 50 C225 50, 245 50, 245 70 L245, 125 C245 125, 245 145, 230 145 L15 145 C15 145, 5 145, 5 125 L5 65 C5 65, 5 55, 25 50'); 
 }
 
 #turn-display-border {
   display: block;
-  margin: auto;
+  margin: -2rem auto;
   width: 250px;
   height: 160px;
   background-color: black;
