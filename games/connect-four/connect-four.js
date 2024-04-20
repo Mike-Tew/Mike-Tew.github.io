@@ -1,10 +1,11 @@
 const BOARD_HEIGHT = 6
 const BOARD_WIDTH = 7 
+const restartBtn = document.getElementById('restart-btn')
 const boardContainer = document.getElementById('board-container')
 let playerTurn = "red"
 const turnDisplay = document.getElementById('turn-display')
 const turnText = document.getElementById('turn-text')
-const boardArr = new Array(BOARD_HEIGHT)
+let boardArr
 
 const createBoard = () => {
   for (let i = 0; i < 6; i++) {
@@ -63,5 +64,15 @@ const checkFourInARow = (arr, color) => {
   return false
 }
 
-createBoard()
-turnDisplay.style.backgroundColor = playerTurn
+const resetGame  = () => {
+  boardArr = new Array(BOARD_HEIGHT)
+  boardContainer.innerHTML = ''
+  createBoard()
+  turnDisplay.style.backgroundColor = playerTurn
+  turnText.textContent = 'PLAYER 1\'S TURN'
+}
+
+restartBtn.addEventListener('click', resetGame)
+
+resetGame()
+
