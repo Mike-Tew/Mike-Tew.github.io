@@ -2,7 +2,6 @@
   --red: red;
   --yellow: yellow;
   --blue: blue;
-  --dark-blue: #1982A6;
 }
 
 body {
@@ -39,7 +38,7 @@ body {
   text-align: center;
 }
 
-#player-one {
+#player-one, #player-two {
   position: relative;
   width: 8rem;
   height: 5rem;
@@ -47,89 +46,47 @@ body {
   border: 2px solid black;
   border-radius: 1rem;
   box-shadow: 0 5px 10px black;
+}
+
+#player-one-face, #player-two-face {
+  position: absolute;
+  content: "";
+  width: 3rem;
+  height: 3rem;
+  border: 1px solid black;
+  border-radius: 50%;
+  top: 1.5rem;
+  box-shadow: 0 3px 3px black;
 }
 
 #player-one-face {
-  position: absolute;
-  content: "";
-  width: 3rem;
-  height: 3rem;
-  border: 1px solid black;
-  border-radius: 50%;
   background: var(--red);
-  top: 1.5rem;
   left: -1.5rem;
-  box-shadow: 0 3px 3px black;
-}
-
-#player-one-smile {
-  position: absolute;
-  width: 1.5rem;
-  height: 1rem;
-  border-bottom: 4px solid black;
-  border-radius: 50%;
-  top: 1rem;
-  right: 0.3rem;
-}
-
-#player-one-smile::before {
-  content: "";
-  position: absolute;
-  display: block;
-  background-color: black;
-  width: 1px;
-  height: 1px;
-  border: 1px solid black;
-  border-radius: 50%;
-  right: 15px;
-}
-
-#player-one-smile::after {
-  content: "";
-  position: absolute;
-  display: block;
-  background-color: black;
-  width: 1px;
-  height: 1px;
-  border: 1px solid black;
-  border-radius: 50%;
-  right: 6px;
-}
-
-#player-two {
-  position: relative;
-  width: 8rem;
-  height: 5rem;
-  background: white;
-  border: 2px solid black;
-  border-radius: 1rem;
-  box-shadow: 0 5px 10px black;
 }
 
 #player-two-face {
-  position: absolute;
-  content: "";
-  width: 3rem;
-  height: 3rem;
-  border: 1px solid black;
-  border-radius: 50%;
   background: var(--yellow);
-  top: 1.5rem;
   right: -1.5rem;
-  box-shadow: 0 3px 3px black;
 }
 
-#player-two-smile {
+#player-one-smile, #player-two-smile {
   position: absolute;
   width: 1.5rem;
   height: 1rem;
   border-bottom: 4px solid black;
   border-radius: 50%;
   top: 1rem;
+}
+
+#player-one-smile {
+  right: 0.3rem;
+}
+
+#player-two-smile {
   left: 0.3rem;
 }
 
-#player-two-smile::before {
+#player-one-smile::before, #player-two-smile::before {
   content: "";
   position: absolute;
   display: block;
@@ -141,7 +98,7 @@ body {
   right: 15px;
 }
 
-#player-two-smile::after {
+#player-one-smile::after, #player-two-smile::after {
   content: "";
   position: absolute;
   display: block;
@@ -165,32 +122,28 @@ h3 {
   position: relative;
   margin: 2rem auto;
   width: 91vw;
-  border: 3px solid var(--blue);
+  border: 3px solid black;
   border-radius: 0.5rem;
 }
 
-#board-container::before {
+#board-container::before, #board-container::after {
   content: "";
   position: absolute;
   bottom: -2rem;
-  left: -0.4rem;
   width: 1rem;
   height: 3rem;
   background-color: var(--blue);
+  border: 3px solid black;
   border-top-left-radius: 50%;
   border-top-right-radius: 50%;
 }
 
+#board-container::before {
+  left: -0.4rem;
+}
+
 #board-container::after {
-  content: "";
-  position: absolute;
-  bottom: -2rem;
   right: -0.4rem;
-  width: 1rem;
-  height: 3rem;
-  background-color: var(--blue);
-  border-top-left-radius: 50%;
-  border-top-right-radius: 50%;
 }
 
 .row {
@@ -217,20 +170,20 @@ h3 {
   background-color: var(--yellow);
 }
 
-#turn-display {
-  display: flex;
-  width: 250px;
-  height: 160px;
-  background-color: red;
-  clip-path: path('M105 25 C105 25, 125 15, 145 25 L225, 50 C225 50, 245 50, 245 70 L245, 125 C245 125, 245 145, 230 145 L15 145 C15 145, 5 145, 5 125 L5 65 C5 65, 5 55, 25 50'); 
-}
-
 #turn-display-border {
   margin: -2rem auto;
   width: 250px;
   height: 160px;
   background-color: black;
   clip-path: path('M100 20 C100 20, 125 10, 150 20 L230, 45 C230 45, 250 50, 250 70 L250, 140 C250 140, 250 160, 230 160 L20 160 C20 160, 0 160, 0 140 L0 70 C0 70, 0 50, 20 45'); 
+}
+
+#turn-display {
+  display: flex;
+  width: 250px;
+  height: 160px;
+  background-color: var(--red);;
+  clip-path: path('M105 25 C105 25, 125 15, 145 25 L225, 50 C225 50, 245 50, 245 70 L245, 125 C245 125, 245 145, 230 145 L15 145 C15 145, 5 145, 5 125 L5 65 C5 65, 5 55, 25 50'); 
 }
 
 #turn-text {
