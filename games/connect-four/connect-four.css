@@ -218,6 +218,7 @@ h3 {
 }
 
 #turn-display {
+  display: flex;
   width: 250px;
   height: 160px;
   background-color: red;
@@ -225,11 +226,20 @@ h3 {
 }
 
 #turn-display-border {
-  display: block;
   margin: -2rem auto;
   width: 250px;
   height: 160px;
   background-color: black;
   clip-path: path('M100 20 C100 20, 125 10, 150 20 L230, 45 C230 45, 250 50, 250 70 L250, 140 C250 140, 250 160, 230 160 L20 160 C20 160, 0 160, 0 140 L0 70 C0 70, 0 50, 20 45'); 
+}
+
+#turn-text {
+  align-self: flex-end;
+  display: block;
+  margin: auto;
+  padding-top: 1.5rem;
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: bold;
 }
 

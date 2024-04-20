@@ -2,6 +2,8 @@ const BOARD_HEIGHT = 6
 const BOARD_WIDTH = 7 
 const boardContainer = document.getElementById('board-container')
 let playerTurn = "red"
+const turnDisplay = document.getElementById('turn-display')
+const turnText = document.getElementById('turn-text')
 const boardArr = new Array(BOARD_HEIGHT)
 
 const createBoard = () => {
@@ -27,7 +29,9 @@ const clickSquare = (e) => {
       boardArr[i][colVal] = playerTurn
       columnEles = document.querySelectorAll(`[column-value="${colVal}"]`)
       playerTurn === "red" ? columnEles[i].classList.add('bg-red') : columnEles[i].classList.add('bg-yellow')
+      turnText.textContent = playerTurn === "red" ? "PLAYER 2'S TURN" : "PLAYER 1'S TURN"
       playerTurn = playerTurn === "red" ? "yellow" : "red"
+      turnDisplay.style.backgroundColor = playerTurn
       break
     }
   }
@@ -60,4 +64,4 @@ const checkFourInARow = (arr, color) => {
 }
 
 createBoard()
-
+turnDisplay.style.backgroundColor = playerTurn
