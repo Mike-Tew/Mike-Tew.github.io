@@ -31,18 +31,20 @@ const clickSquare = (e) => {
       columnEles = document.querySelectorAll(`[column-value="${colVal}"]`)
       playerTurn === "red" ? columnEles[i].classList.add('bg-red') : columnEles[i].classList.add('bg-yellow')
       turnText.textContent = playerTurn === "red" ? "PLAYER 2'S TURN" : "PLAYER 1'S TURN"
+      console.log(playerTurn, checkForWin(playerTurn))
       playerTurn = playerTurn === "red" ? "yellow" : "red"
       turnDisplay.style.backgroundColor = playerTurn
       break
     }
   }
-  checkForWin()
 }
 
-const checkForWin = () => {
+const checkForWin = (playerTurn) => {
   // Check rows
   for (const arr of boardArr) {
-    console.log(checkFourInARow(arr, 'yellow'))
+    if (checkFourInARow(arr, playerTurn) == true) {
+      return true
+    }
   }
 
   // Check columns
@@ -51,8 +53,12 @@ const checkForWin = () => {
     for (const arr of boardArr) {
       checkArr.push(arr[i])
     }
-    console.log(checkFourInARow(checkArr, 'yellow'))
+
+    if (checkFourInARow(checkArr, playerTurn)) {
+      return true
+    }
   }
+  return false
 }
 
 const checkFourInARow = (arr, color) => {
