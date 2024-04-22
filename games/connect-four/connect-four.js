@@ -34,6 +34,7 @@ const clickSquare = (e) => {
       turnText.textContent = playerTurn === "red" ? "PLAYER 2'S TURN" : "PLAYER 1'S TURN"
 
       if (checkForWin(playerTurn)) {
+        gameWin(playerTurn)
         console.log(playerTurn, "wins")
         playerTurn === "red" ? p1Score++ : p2Score++
       }
@@ -74,6 +75,13 @@ const checkFourInARow = (arr, color) => {
     }
   }
   return false
+}
+
+const gameWin = (playerTurn) => {
+  document.getElementById('player-one-score').textContent = p1Score
+  document.getElementById('player-two-score').textContent = p2Score
+
+  // Trigger play again modal
 }
 
 const resetGame  = () => {
