@@ -2,12 +2,13 @@ const BOARD_HEIGHT = 6
 const BOARD_WIDTH = 7 
 const restartBtn = document.getElementById('restart-btn')
 const boardContainer = document.getElementById('board-container')
-let playerTurn = "red"
 const turnDisplay = document.getElementById('turn-display')
 const turnText = document.getElementById('turn-text')
-let boardArr
+let playerTurn = "red"
+let boardArr, p1Score, p2Score
 
-const createBoard = () => {
+const resetBoard = () => {
+  boardContainer.innerHTML = ''
   for (let i = 0; i < 6; i++) {
     boardArr[i] = new Array(BOARD_WIDTH)
     const boardRow = document.createElement('div')
@@ -31,7 +32,12 @@ const clickSquare = (e) => {
       columnEles = document.querySelectorAll(`[column-value="${colVal}"]`)
       playerTurn === "red" ? columnEles[i].classList.add('bg-red') : columnEles[i].classList.add('bg-yellow')
       turnText.textContent = playerTurn === "red" ? "PLAYER 2'S TURN" : "PLAYER 1'S TURN"
-      console.log(playerTurn, checkForWin(playerTurn))
+
+      if (checkForWin(playerTurn)) {
+        console.log(playerTurn, "wins")
+        playerTurn === "red" ? p1Score++ : p2Score++
+      }
+
       playerTurn = playerTurn === "red" ? "yellow" : "red"
       turnDisplay.style.backgroundColor = playerTurn
       break
@@ -71,9 +77,10 @@ const checkFourInARow = (arr, color) => {
 }
 
 const resetGame  = () => {
+  p1Score = 0
+  p2Score = 0
   boardArr = new Array(BOARD_HEIGHT)
-  boardContainer.innerHTML = ''
-  createBoard()
+  resetBoard()
   turnDisplay.style.backgroundColor = playerTurn
   turnText.textContent = 'PLAYER 1\'S TURN'
 }
