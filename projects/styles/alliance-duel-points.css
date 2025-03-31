@@ -3,5 +3,17 @@
 }
 
 .container {
-	width: 20rem;
+	width: 90vw;
+	height: 90vh;
+	margin: auto;
+	background: lightblue;
+}
+
+.task-box {
+	margin: 1rem;
+}
+
+.task-row {
+	display: flex;
+	justify-content: space-around;
 }
